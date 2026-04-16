@@ -44,6 +44,16 @@ export function DashboardPage() {
     closePreferences,
   } = usePreferences();
 
+  const systemNames = useMemo(() => {
+    const seen = new Set<string>();
+    for (const group of groups) {
+      for (const sys of group.systems) {
+        seen.add(sys.name);
+      }
+    }
+    return Array.from(seen).sort();
+  }, [groups]);
+
   const dataCategoriesActive =
     groupBy === "dataCategories" || dimensionFilters.dataCategories.length > 0;
 
@@ -65,6 +75,7 @@ export function DashboardPage() {
         fidesGroupMap={fidesGroupMap}
         viewMode={viewMode}
         filterMode={filterMode}
+        systemNames={systemNames}
         onGroupByChange={setGroupBy}
         onToggleFilter={toggleFilter}
         onClearFilters={clearFilters}

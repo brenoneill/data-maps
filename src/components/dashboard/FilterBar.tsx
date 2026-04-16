@@ -14,6 +14,7 @@ import {
   SlidersHorizontal,
 } from "lucide-react";
 import { FIDESLANG_DOCS_URL } from "@/helpers/constants";
+import { ShareMenu } from "./ShareMenu";
 
 interface FilterBarProps {
   groupBy: GroupBySelection;
@@ -27,6 +28,7 @@ interface FilterBarProps {
   fidesGroupMap: Map<string, string[]>;
   viewMode: ViewMode;
   filterMode: FilterMode;
+  systemNames: string[];
   onGroupByChange: (value: GroupBySelection) => void;
   onToggleFilter: (dimension: GroupByOption, value: string) => void;
   onClearFilters: () => void;
@@ -55,6 +57,7 @@ export function FilterBar({
   fidesGroupMap,
   viewMode,
   filterMode,
+  systemNames,
   onGroupByChange,
   onToggleFilter,
   onClearFilters,
@@ -150,6 +153,11 @@ export function FilterBar({
               <span>List</span>
             </button>
           </div>
+
+          <ShareMenu
+            dimensionFilters={dimensionFilters}
+            systemNames={systemNames}
+          />
         </div>
       </div>
 

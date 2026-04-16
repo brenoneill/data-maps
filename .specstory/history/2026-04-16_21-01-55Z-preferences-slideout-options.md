@@ -1298,7 +1298,35 @@ _**Agent (claude-4.6-opus-high-thinking)**_
 <details>
 <summary>Tool use: **ripgrep_raw_search**</summary>
 
-Status: **loading**
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/brendanoneill/data-maps/src/helpers/constants.ts",
+  "pattern": "FIDESLANG_DOCS_URL"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/brendanoneill/data-maps/src/helpers/constants.ts",
+  "pattern": "FIDESLANG_DOCS_URL",
+  "topFiles": [
+    {
+      "matchCount": 1,
+      "uri": "src/helpers/constants.ts"
+    }
+  ],
+  "totalFiles": 1,
+  "totalMatches": 1
+}
+```
+Status: **completed**
 
 
 </details>
@@ -1308,3 +1336,249 @@ Status: **loading**
 <summary>Tool use: **ripgrep_raw_search**</summary>
 
 </details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<think><details><summary>Thought Process</summary>
+I see the two issues:
+
+1. The Fides Data Group toggle in the PreferencesPanel is conditionally rendered with `{dataCategoriesActive && (` — but `dataCategoriesActive` depends on `groupBy === "dataCategories" || dimensionFilters.dataCategories.length > 0`. When you toggle fidesMode on, `setFidesMode` clears the `dc` filters (`setState({ dc: [] })`). If groupBy isn't "dataCategories", that means `dataCategoriesActive` becomes false and the toggle disappears.
+
+2. The user wants the Fides Data Group toggle to always be visible in the preferences panel (not conditional), with a "Learn more" link and a brief explanation of what it does when enabled.
+   
+Now I need to fix this by removing the conditional rendering so the toggle stays visible regardless of the active state, strip out the `dataCategoriesActive` prop dependency, and add explanatory text with a link to help users understand what enabling Fides data groups does.</details></think>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+I see the problem. Two things are happening:
+
+1. The Fides toggle is wrapped in `{dataCategoriesActive && ...}` which hides it when the condition becomes false
+2. `setFidesMode` clears the `dc` URL params, which can make `dataCategoriesActive` flip to false (unless `groupBy` is `"dataCategories"`), causing the toggle to vanish
+
+The fix is to always show the Fides toggle in preferences, add the "Learn more" link, and give a better explanation.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/layout/PreferencesPanel.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now remove the `dataCategoriesActive` prop and update the interface.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/layout/PreferencesPanel.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now update the ToggleRow component to support children (for the learn-more link) and update the function signature and JSX.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/layout/PreferencesPanel.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now update the function signature and the Fides toggle section — remove the conditional, remove `dataCategoriesActive` from destructuring, and add the learn-more link with explanation.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/layout/PreferencesPanel.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now replace the conditional Fides toggle block with an always-visible version that includes the explanation and learn-more link.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/layout/PreferencesPanel.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now remove the `dataCategoriesActive` prop from DashboardPage where it passes to PreferencesPanel.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Let me verify everything compiles and check lints.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/brendanoneill/data-maps && npx tsc --noEmit 2>&1 | head -30</summary>
+
+```bash
+cd /Users/brendanoneill/data-maps && npx tsc --noEmit 2>&1 | head -30
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints">
+<details>
+<summary>Tool use: **read_lints**</summary>
+
+
+Parameters:
+
+```json
+{
+  "paths": [
+    "/Users/brendanoneill/data-maps/src/components/layout/PreferencesPanel.tsx",
+    "/Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx"
+  ]
+}
+```
+Result:
+
+```json
+{
+  "linterErrorsByFile": [
+    {
+      "relativeWorkspacePath": "/Users/brendanoneill/data-maps/src/components/layout/PreferencesPanel.tsx"
+    },
+    {
+      "relativeWorkspacePath": "/Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx"
+    }
+  ]
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints"><details>
+<summary>Tool use: **read_lints**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+All clean. Here's what changed:
+
+1. **Fides Data Group toggle is now always visible** in the preferences panel — removed the `dataCategoriesActive` conditional that was causing it to disappear when toggled on (because `setFidesMode` clears `dc` filters, which could make the condition false).
+
+2. **Added a "Learn more about Fides data groups" link** below the toggle, pointing to the Fides docs URL.
+
+3. **Updated the description** to explain what enabling it actually does: *"Rolls up individual data categories into their parent Fides taxonomy group, simplifying filters and swimlane headers."*
+
+4. **Refactored `ToggleRow`** to accept `children` so the learn-more link sits naturally below the toggle row without being part of the clickable button itself (so you don't accidentally navigate away when toggling).
+
+---
+
+_**User**_
+
+Just to confirm all of the slideout preferneces use local storage?
+
+---
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/hooks/useDashboardState.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Yes, all four preferences that appear in the slideout are persisted in localStorage under `data-maps:*` keys:
+
+| Preference | localStorage Key | Default |
+|---|---|---|
+| Show Dependencies | `data-maps:showLines` | `true` |
+| Fides Data Group | `data-maps:fidesMode` | `false` |
+| View Mode (Board/List) | `data-maps:viewMode` | `"board"` |
+| Filter Mode (Filters/Query) | `data-maps:filterMode` | `"checkbox"` |
+
+Each setter (lines 68–87) writes to both React state and localStorage via `writeLocal`. On mount, each is initialized from localStorage via `readLocalBool` or `readLocalString` with the fallback defaults above.
+
+One thing worth noting: `setFidesMode` also has a side effect — it clears the `dc` (data categories) URL params (line 76). Similarly, `setGroupBy` resets `fidesMode` to `false` in both state and storage (lines 101–102). So while the preferences themselves are localStorage-backed, they do interact with the URL-based filter state.
+
+---
+
+_**User**_
+
+viewMode should not be in the url, this is irrelevant, this should be managed with localStorage only
