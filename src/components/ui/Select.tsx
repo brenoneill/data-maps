@@ -12,14 +12,15 @@ interface SelectProps {
   onChange: (value: string) => void;
   options: SelectOption[];
   label: string;
+  "data-cy"?: string;
 }
 
-export function Select({ value, onChange, options, label }: SelectProps) {
+export function Select({ value, onChange, options, label, "data-cy": dataCy }: SelectProps) {
   const selectedOption = options.find((o) => o.value === value);
 
   return (
     <Listbox value={value} onChange={onChange}>
-      <div className="relative">
+      <div className="relative" data-cy={dataCy}>
         <label className="mb-1 block text-xs font-medium text-gray-500">
           {label}
         </label>

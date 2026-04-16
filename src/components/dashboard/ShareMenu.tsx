@@ -69,6 +69,7 @@ export function ShareMenu({ dimensionFilters, systemNames }: ShareMenuProps) {
   return (
     <div ref={menuRef} className="relative">
       <button
+        data-cy="share-button"
         aria-label="Share"
         aria-expanded={open}
         aria-haspopup="true"
@@ -81,15 +82,18 @@ export function ShareMenu({ dimensionFilters, systemNames }: ShareMenuProps) {
 
       {open && (
         <div
+          data-cy="share-menu"
           role="menu"
           className="absolute right-0 top-full z-50 mt-2 w-52 overflow-hidden rounded-lg border border-gray-700 bg-gray-900 shadow-xl"
         >
           <MenuItem
+            data-cy="copy-link"
             icon={copied === "link" ? Check : Link}
             label="Copy link"
             onClick={handleCopyLink}
           />
           <MenuItem
+            data-cy="copy-summary"
             icon={copied === "summary" ? Check : FileText}
             label="Copy summary"
             onClick={handleCopySummary}
@@ -104,13 +108,16 @@ function MenuItem({
   icon: Icon,
   label,
   onClick,
+  "data-cy": dataCy,
 }: {
   icon: typeof Link;
   label: string;
   onClick: () => void;
+  "data-cy"?: string;
 }) {
   return (
     <button
+      data-cy={dataCy}
       role="menuitem"
       onClick={onClick}
       className="flex w-full items-center gap-3 px-4 py-2.5 text-sm text-gray-300 transition-colors hover:bg-gray-800 hover:text-gray-100"

@@ -57,6 +57,7 @@ export function SystemCard({
 
   return (
     <Card
+      data-cy="system-card"
       ref={refCallback}
       interactive
       onClick={() => openSlideout(system)}

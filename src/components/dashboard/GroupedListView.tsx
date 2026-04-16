@@ -21,7 +21,7 @@ export function GroupedListView({
   const isFidesGrouping = groupBy === "dataCategories" && fidesMode;
 
   return (
-    <div className="flex h-full flex-col overflow-hidden">
+    <div data-cy="list-view" className="flex h-full flex-col overflow-hidden">
       {isFidesGrouping && <FidesGroupBanner />}
 
       <div className="flex flex-col gap-6 overflow-y-auto p-6">

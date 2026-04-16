@@ -48,12 +48,13 @@ export function SlideoutPanel({
             leaveFrom="translate-x-0"
             leaveTo="translate-x-full"
           >
-            <DialogPanel className="flex w-full max-w-3xl flex-col border-l border-gray-800 bg-gray-925 shadow-2xl">
+            <DialogPanel data-cy="slideout-panel" className="flex w-full max-w-3xl flex-col border-l border-gray-800 bg-gray-925 shadow-2xl">
               <div className="flex shrink-0 items-center justify-between px-6 pt-6 pb-4">
-                <DialogTitle className="text-lg font-semibold text-gray-100">
+                <DialogTitle data-cy="slideout-title" className="text-lg font-semibold text-gray-100">
                   {title}
                 </DialogTitle>
                 <button
+                  data-cy="slideout-close"
                   onClick={onClose}
                   className="rounded-lg p-1.5 text-gray-500 transition-colors hover:bg-gray-800 hover:text-gray-300"
                 >

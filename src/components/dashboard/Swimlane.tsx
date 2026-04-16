@@ -32,7 +32,7 @@ export function Swimlane({
       );
 
   return (
-    <div className={`flex shrink-0 flex-col ${isUngrouped ? "w-full" : "w-80"}`}>
+    <div data-cy="swimlane" className={`flex shrink-0 flex-col ${isUngrouped ? "w-full" : "w-80"}`}>
       {colorSet && (
         <div className="mb-3 px-1">
           <div className="flex items-center gap-2.5">

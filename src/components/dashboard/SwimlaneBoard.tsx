@@ -44,7 +44,7 @@ export function SwimlaneBoard({
   return (
     <div className="flex h-full flex-col overflow-hidden">
       {isFidesGrouping && <FidesGroupBanner />}
-      <div ref={boardRef} className="relative flex h-full gap-4 overflow-x-hidden p-6">
+      <div data-cy="swimlane-board" ref={boardRef} className="relative flex h-full gap-4 overflow-x-hidden p-6">
         {showLines && (
           <DependencyLines
             systems={allSystems}

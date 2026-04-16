@@ -113,6 +113,7 @@ export function FilterBar({
         <div className="w-44">
           <Select
             label="Group by"
+            data-cy="group-by-select"
             value={groupBy}
             onChange={(v) => onGroupByChange(v as GroupBySelection)}
             options={GROUP_BY_OPTIONS}
@@ -127,6 +128,7 @@ export function FilterBar({
               aria-label="Filter mode"
             >
               <button
+                data-cy="filter-mode-checkbox"
                 role="radio"
                 aria-checked={filterMode === "checkbox"}
                 aria-label="Checkbox filters"
@@ -141,6 +143,7 @@ export function FilterBar({
                 <span>Filters</span>
               </button>
               <button
+                data-cy="filter-mode-sentence"
                 role="radio"
                 aria-checked={filterMode === "sentence"}
                 aria-label="Sentence filter"
@@ -157,6 +160,7 @@ export function FilterBar({
             </div>
 
             <button
+              data-cy="toggle-filters"
               aria-expanded={expanded}
               aria-label={expanded ? "Collapse filters" : "Expand filters"}
               onClick={toggleExpanded}
@@ -180,6 +184,7 @@ export function FilterBar({
             aria-label="View mode"
           >
             <button
+              data-cy="view-mode-board"
               role="radio"
               aria-checked={viewMode === "board"}
               aria-label="Board view"
@@ -194,6 +199,7 @@ export function FilterBar({
               <span>Board</span>
             </button>
             <button
+              data-cy="view-mode-list"
               role="radio"
               aria-checked={viewMode === "list"}
               aria-label="List view"
@@ -219,6 +225,7 @@ export function FilterBar({
       {/* Collapsed summary — clickable to re-expand */}
       {!expanded && hasAnyFilters && (
         <button
+          data-cy="collapsed-filter-summary"
           onClick={toggleExpanded}
           className="flex items-center gap-2 border-t border-gray-800/60 px-6 py-2 text-left text-xs text-gray-400 transition-colors hover:bg-gray-900 hover:text-gray-200"
         >
@@ -232,6 +239,7 @@ export function FilterBar({
 
       {/* Collapsible filter row */}
       <div
+        data-cy="filter-panel"
         className="overflow-hidden transition-[max-height] duration-200 ease-in-out"
         style={{ maxHeight: expanded ? contentHeight ?? "none" : 0 }}
       >
@@ -246,7 +254,7 @@ export function FilterBar({
                 onToggleFilter={onToggleFilter}
               />
               {hasAnyFilters && (
-                <Button variant="ghost" onClick={onClearFilters} className="ml-1">
+                <Button data-cy="clear-filters" variant="ghost" onClick={onClearFilters} className="ml-1">
                   <X size={12} aria-hidden="true" />
                   <span>Clear</span>
                 </Button>
@@ -365,7 +373,7 @@ function CheckboxFilters({
 
       {hasAnyFilters && (
         <div>
-          <Button variant="ghost" onClick={onClearFilters}>
+          <Button data-cy="clear-filters" variant="ghost" onClick={onClearFilters}>
             <X size={12} aria-hidden="true" />
             <span>Clear all filters</span>
           </Button>

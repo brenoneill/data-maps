@@ -14,7 +14,7 @@ export function FilterCheckbox({
   colorSet,
 }: FilterCheckboxProps) {
   return (
-    <label className="group inline-flex cursor-pointer items-center gap-2">
+    <label data-cy="filter-checkbox" className="group inline-flex cursor-pointer items-center gap-2">
       <input
         type="checkbox"
         checked={checked}

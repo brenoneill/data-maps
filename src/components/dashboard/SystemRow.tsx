@@ -28,6 +28,7 @@ export function SystemRow({ system }: SystemRowProps) {
 
   return (
     <Card
+      data-cy="system-row"
       interactive
       onClick={() => openSlideout(system)}
       className="group flex items-center gap-4 px-4 py-3"
