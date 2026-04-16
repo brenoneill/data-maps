@@ -649,3 +649,966 @@ Status: **completed**
 <summary>Tool use: **todo_write**</summary>
 
 </details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now I need to gate the card highlighting on `showLines` in `SwimlaneBoard`. I'll add a wrapper around `getCardState` and also prevent hover events from firing when lines are off.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/SwimlaneBoard.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SwimlaneBoard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SwimlaneBoard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SwimlaneBoard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Update useDependencyHighlight to track deps and dependents separately, return distinct card states",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Update SystemCard styles for new related-dep / related-dependent states",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "Gate card highlighting on showLines in SwimlaneBoard",
+      "id": "3",
+      "status": "completed"
+    },
+    {
+      "content": "Update DependencyLines to use different stroke colors for dep vs dependent lines",
+      "id": "4",
+      "status": "in_progress"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Update useDependencyHighlight to track deps and dependents separately, return distinct card states",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Update SystemCard styles for new related-dep / related-dependent states",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "Gate card highlighting on showLines in SwimlaneBoard",
+      "id": "3",
+      "status": "in_progress"
+    },
+    {
+      "content": "Update DependencyLines to use different stroke colors for dep vs dependent lines",
+      "id": "4",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now let me update `DependencyLines` to use different stroke colors for dependency vs dependent lines.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/DependencyLines.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/DependencyLines.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now let me check for lint errors across all changed files.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints">
+<details>
+<summary>Tool use: **read_lints**</summary>
+
+
+Parameters:
+
+```json
+{
+  "paths": [
+    "src/hooks/useDependencyHighlight.ts",
+    "src/components/dashboard/SystemCard.tsx",
+    "src/components/dashboard/SwimlaneBoard.tsx",
+    "src/components/dashboard/DependencyLines.tsx"
+  ]
+}
+```
+Result:
+
+```json
+{
+  "linterErrorsByFile": [
+    {
+      "relativeWorkspacePath": "src/hooks/useDependencyHighlight.ts"
+    },
+    {
+      "relativeWorkspacePath": "src/components/dashboard/SystemCard.tsx"
+    },
+    {
+      "relativeWorkspacePath": "src/components/dashboard/SwimlaneBoard.tsx"
+    },
+    {
+      "relativeWorkspacePath": "src/components/dashboard/DependencyLines.tsx"
+    }
+  ]
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints"><details>
+<summary>Tool use: **read_lints**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Update useDependencyHighlight to track deps and dependents separately, return distinct card states",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Update SystemCard styles for new related-dep / related-dependent states",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "Gate card highlighting on showLines in SwimlaneBoard",
+      "id": "3",
+      "status": "completed"
+    },
+    {
+      "content": "Update DependencyLines to use different stroke colors for dep vs dependent lines",
+      "id": "4",
+      "status": "completed"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Update useDependencyHighlight to track deps and dependents separately, return distinct card states",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Update SystemCard styles for new related-dep / related-dependent states",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "Gate card highlighting on showLines in SwimlaneBoard",
+      "id": "3",
+      "status": "completed"
+    },
+    {
+      "content": "Update DependencyLines to use different stroke colors for dep vs dependent lines",
+      "id": "4",
+      "status": "in_progress"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+All four changes are in place. Here's a summary of what was fixed:
+
+**1. "Show Dependencies" off no longer greys out cards** — In `SwimlaneBoard.tsx`, the `getCardState` and `setHoverInfo` callbacks are now gated behind `showLines`. When the toggle is off, every card stays `"idle"` and hover events are suppressed entirely.
+
+**2. Dependencies vs dependents are now visually distinct** — Three layers of differentiation:
+
+- **Card rings**: Dependencies get a blue ring (`ring-blue-400/30`), dependents get a violet ring (`ring-violet-400/30`) — matching the existing blue/violet convention on the count buttons.
+- **Connector lines**: Dependency lines turn blue (`#60a5fa`), dependent lines turn violet (`#a78bfa`) on hover.
+- **Hook state**: `CardState` was split from a single `"related"` into `"related-dep"` and `"related-dependent"`, tracked via separate `depKeys` / `dependentKeys` sets in `useDependencyHighlight`.
+
+---
+
+_**User**_
+
+In the Modal with the chart I want a "See more" button which will close the modal and open the slideout with more information and in the slideout I want a 'See graph' button which will close the slideout and show the graph modal
+
+---
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Let me explore the relevant components first.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/DependencyModal.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/SystemDetail.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/layout/SlideoutPanel.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/context/SlideoutContext.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now let me check `DashboardPage` again to understand how both the modal and slideout are wired.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search">
+<details>
+<summary>Tool use: **glob_file_search** • Searched codebase "" • **1** result in **1** directory</summary>
+
+Directory: **** (1 file)
+
+| File |
+|------|
+| `./src/components/ui/Button.tsx` |
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search"><details>
+<summary>Tool use: **glob_file_search**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/ui/Button.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Good, I have a full picture now. Here's the plan:
+
+1. **DependencyModal** needs a "See more" button that closes the modal and opens the slideout for the same system. It needs access to `openSlideout` from the `SlideoutContext`.
+2. **SystemDetail** (shown inside the slideout) needs a "See graph" button that closes the slideout and opens the dependency modal. It needs callbacks for both `closeSlideout` and `openDepModal`.
+3. **DashboardPage** orchestrates both — it needs to pass `openDepModal` into the slideout flow, and the modal needs access to `openSlideout`.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Add 'See more' button to DependencyModal (close modal, open slideout)",
+      "id": "a",
+      "status": "in_progress"
+    },
+    {
+      "content": "Add 'See graph' button to SystemDetail (close slideout, open dep modal)",
+      "id": "b",
+      "status": "pending"
+    },
+    {
+      "content": "Wire callbacks through DashboardPage",
+      "id": "c",
+      "status": "pending"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Update useDependencyHighlight to track deps and dependents separately, return distinct card states",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Update SystemCard styles for new related-dep / related-dependent states",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "Gate card highlighting on showLines in SwimlaneBoard",
+      "id": "3",
+      "status": "completed"
+    },
+    {
+      "content": "Update DependencyLines to use different stroke colors for dep vs dependent lines",
+      "id": "4",
+      "status": "completed"
+    }
+  ],
+  "success": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/DependencyModal.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/DependencyModal.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now add the "See more" button in the modal header, next to the close button.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/DependencyModal.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Add 'See more' button to DependencyModal (close modal, open slideout)",
+      "id": "a",
+      "status": "completed"
+    },
+    {
+      "content": "Add 'See graph' button to SystemDetail (close slideout, open dep modal)",
+      "id": "b",
+      "status": "in_progress"
+    },
+    {
+      "content": "Wire callbacks through DashboardPage",
+      "id": "c",
+      "status": "pending"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Add 'See more' button to DependencyModal (close modal, open slideout)",
+      "id": "a",
+      "status": "in_progress"
+    },
+    {
+      "content": "Add 'See graph' button to SystemDetail (close slideout, open dep modal)",
+      "id": "b",
+      "status": "pending"
+    },
+    {
+      "content": "Wire callbacks through DashboardPage",
+      "id": "c",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now add the "See graph" button to `SystemDetail`. I'll add it at the top of the component, below the system info section.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SystemDetail.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SystemDetail.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Add 'See more' button to DependencyModal (close modal, open slideout)",
+      "id": "a",
+      "status": "completed"
+    },
+    {
+      "content": "Add 'See graph' button to SystemDetail (close slideout, open dep modal)",
+      "id": "b",
+      "status": "completed"
+    },
+    {
+      "content": "Wire callbacks through DashboardPage",
+      "id": "c",
+      "status": "in_progress"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Add 'See more' button to DependencyModal (close modal, open slideout)",
+      "id": "a",
+      "status": "completed"
+    },
+    {
+      "content": "Add 'See graph' button to SystemDetail (close slideout, open dep modal)",
+      "id": "b",
+      "status": "in_progress"
+    },
+    {
+      "content": "Wire callbacks through DashboardPage",
+      "id": "c",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now wire everything up in `DashboardPage`. The modal's "See more" needs to close the modal and open the slideout. The slideout's "See graph" needs to close the slideout and open the modal.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now pass the new callbacks to the components.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints">
+<details>
+<summary>Tool use: **read_lints**</summary>
+
+
+Parameters:
+
+```json
+{
+  "paths": [
+    "src/components/dashboard/DashboardPage.tsx",
+    "src/components/dashboard/DependencyModal.tsx",
+    "src/components/dashboard/SystemDetail.tsx"
+  ]
+}
+```
+Result:
+
+```json
+{
+  "linterErrorsByFile": [
+    {
+      "relativeWorkspacePath": "src/components/dashboard/DashboardPage.tsx"
+    },
+    {
+      "relativeWorkspacePath": "src/components/dashboard/DependencyModal.tsx"
+    },
+    {
+      "relativeWorkspacePath": "src/components/dashboard/SystemDetail.tsx"
+    }
+  ]
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints"><details>
+<summary>Tool use: **read_lints**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Add 'See more' button to DependencyModal (close modal, open slideout)",
+      "id": "a",
+      "status": "completed"
+    },
+    {
+      "content": "Add 'See graph' button to SystemDetail (close slideout, open dep modal)",
+      "id": "b",
+      "status": "completed"
+    },
+    {
+      "content": "Wire callbacks through DashboardPage",
+      "id": "c",
+      "status": "completed"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Add 'See more' button to DependencyModal (close modal, open slideout)",
+      "id": "a",
+      "status": "completed"
+    },
+    {
+      "content": "Add 'See graph' button to SystemDetail (close slideout, open dep modal)",
+      "id": "b",
+      "status": "completed"
+    },
+    {
+      "content": "Wire callbacks through DashboardPage",
+      "id": "c",
+      "status": "in_progress"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+All done. Here's what was added:
+
+**Dependency Modal → "See more" button**
+- Added in the modal header next to the close button, using the `Info` icon.
+- Clicking it closes the modal, waits for the exit animation (200ms), then opens the slideout panel for the same system.
+
+**Slideout Panel → "See graph" button**
+- Added in the `SystemDetail` component just below the system description, using the `GitFork` icon. Only appears when the system has dependencies or dependents.
+- Clicking it closes the slideout, waits for the exit animation (300ms), then opens the dependency graph modal for the same system.
+
+Both transitions use `setTimeout` delays matched to their respective Headless UI exit animation durations so there's no visual overlap between the two panels.
+
+---
+
+_**User**_
+
+The See Graph should be undrneath the Dependencies and Dependents sections of the slideout
+
+---
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/SystemDetail.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+I'll remove the button from the system info section and place it after the Dependents section.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SystemDetail.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SystemDetail.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Done. The "See graph" button now sits at the bottom of the slideout, below both the Dependencies and Dependents sections.

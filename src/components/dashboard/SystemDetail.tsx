@@ -7,14 +7,19 @@ import {
   getSystemDependencies,
   getSystemDependents,
 } from "@/helpers/systemLookup";
-import { Database, Globe, Shield, ArrowDown, ArrowUp } from "lucide-react";
+import { Database, Globe, Shield, ArrowDown, ArrowUp, GitFork } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 interface SystemDetailProps {
   system: System;
+  onSeeGraph?: (system: System) => void;
 }
 
-export function SystemDetail({ system }: SystemDetailProps) {
+export function SystemDetail({ system, onSeeGraph }: SystemDetailProps) {
   const resolved = resolveSystem(system.fides_key) ?? system;
+  const hasDeps =
+    getSystemDependencies(resolved.fides_key).length > 0 ||
+    getSystemDependents(resolved.fides_key).length > 0;
 
   return (
     <div className="space-y-6 py-2">
@@ -147,6 +152,16 @@ export function SystemDetail({ system }: SystemDetailProps) {
             ))}
           </div>
         </section>
+      )}
+
+      {hasDeps && onSeeGraph && (
+        <Button
+          variant="secondary"
+          onClick={() => onSeeGraph(resolved)}
+        >
+          <GitFork size={14} aria-hidden="true" />
+          <span>See Dependency Graph</span>
+        </Button>
       )}
     </div>
   );

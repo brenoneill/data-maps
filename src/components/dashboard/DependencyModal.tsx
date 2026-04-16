@@ -6,9 +6,10 @@ import {
   TransitionChild,
 } from "@headlessui/react";
 import { Fragment } from "react";
-import { X, ArrowDown, ArrowUp } from "lucide-react";
+import { X, ArrowDown, ArrowUp, Info } from "lucide-react";
 import type { System } from "@/types";
 import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
 import { getColorForValue } from "@/helpers/colors";
 import {
   getSystemDependencies,
@@ -21,12 +22,14 @@ interface DependencyModalProps {
   system: System | null;
   isOpen: boolean;
   onClose: () => void;
+  onSeeMore?: (system: System) => void;
 }
 
 export function DependencyModal({
   system,
   isOpen,
   onClose,
+  onSeeMore,
 }: DependencyModalProps) {
   const resolved = system ? (resolveSystem(system.fides_key) ?? system) : null;
   const deps = resolved ? getSystemDependencies(resolved.fides_key) : [];
@@ -75,13 +78,24 @@ export function DependencyModal({
                     </Badge>
                   )}
                 </div>
-                <button
-                  onClick={onClose}
-                  className="rounded-lg p-1.5 text-gray-500 transition-colors hover:bg-gray-800 hover:text-gray-300"
-                >
-                  <X size={18} aria-hidden="true" />
-                  <span className="sr-only">Close</span>
-                </button>
+                <div className="flex items-center gap-2">
+                  {resolved && onSeeMore && (
+                    <Button
+                      variant="ghost"
+                      onClick={() => onSeeMore(resolved)}
+                    >
+                      <Info size={14} aria-hidden="true" />
+                      <span>See More</span>
+                    </Button>
+                  )}
+                  <button
+                    onClick={onClose}
+                    className="rounded-lg p-1.5 text-gray-500 transition-colors hover:bg-gray-800 hover:text-gray-300"
+                  >
+                    <X size={18} aria-hidden="true" />
+                    <span className="sr-only">Close</span>
+                  </button>
+                </div>
               </div>
 
               {/* Two-column body */}

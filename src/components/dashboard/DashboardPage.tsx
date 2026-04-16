@@ -35,7 +35,7 @@ export function DashboardPage() {
     fidesMode,
   });
 
-  const { isOpen, activeSystem, closeSlideout } = useSlideout();
+  const { isOpen, activeSystem, openSlideout, closeSlideout } = useSlideout();
 
   const [depSystem, setDepSystem] = useState<System | null>(null);
   const [depModalOpen, setDepModalOpen] = useState(false);
@@ -49,6 +49,25 @@ export function DashboardPage() {
     setDepModalOpen(false);
     setTimeout(() => setDepSystem(null), 200);
   }, []);
+
+  const handleModalSeeMore = useCallback(
+    (system: System) => {
+      setDepModalOpen(false);
+      setTimeout(() => {
+        setDepSystem(null);
+        openSlideout(system);
+      }, 200);
+    },
+    [openSlideout]
+  );
+
+  const handleSlideoutSeeGraph = useCallback(
+    (system: System) => {
+      closeSlideout();
+      setTimeout(() => openDepModal(system), 300);
+    },
+    [closeSlideout, openDepModal]
+  );
 
   return (
     <div className="flex h-full flex-col">
@@ -81,13 +100,19 @@ export function DashboardPage() {
         onClose={closeSlideout}
         title={activeSystem?.name ?? ""}
       >
-        {activeSystem && <SystemDetail system={activeSystem} />}
+        {activeSystem && (
+          <SystemDetail
+            system={activeSystem}
+            onSeeGraph={handleSlideoutSeeGraph}
+          />
+        )}
       </SlideoutPanel>
 
       <DependencyModal
         system={depSystem}
         isOpen={depModalOpen}
         onClose={closeDepModal}
+        onSeeMore={handleModalSeeMore}
       />
     </div>
   );
