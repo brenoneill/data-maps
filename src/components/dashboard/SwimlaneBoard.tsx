@@ -15,7 +15,6 @@ interface SwimlaneBoardProps {
   fidesMode: boolean;
   allSystems: System[];
   showLines: boolean;
-  onOpenDeps: (system: System) => void;
 }
 
 export function SwimlaneBoard({
@@ -24,7 +23,6 @@ export function SwimlaneBoard({
   fidesMode,
   allSystems,
   showLines,
-  onOpenDeps,
 }: SwimlaneBoardProps) {
   const boardRef = useRef<HTMLDivElement | null>(null);
   const { hoverInfo, setHoverInfo, getCardState } =
@@ -89,7 +87,6 @@ export function SwimlaneBoard({
             registerCard={registerCard}
             getCardState={gatedGetCardState}
             onHoverChange={gatedSetHoverInfo}
-            onOpenDeps={onOpenDeps}
           />
         ))}
       </div>

@@ -7,19 +7,17 @@ import {
   getSystemDependencies,
   getSystemDependents,
 } from "@/helpers/systemLookup";
-import { Database, Globe, Shield, ArrowDown, ArrowUp, GitFork } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { Database, Globe, Shield, ArrowDown, ArrowUp } from "lucide-react";
+import { RadialGraph } from "./DependencyTree";
 
 interface SystemDetailProps {
   system: System;
-  onSeeGraph?: (system: System) => void;
 }
 
-export function SystemDetail({ system, onSeeGraph }: SystemDetailProps) {
+export function SystemDetail({ system }: SystemDetailProps) {
   const resolved = resolveSystem(system.fides_key) ?? system;
-  const hasDeps =
-    getSystemDependencies(resolved.fides_key).length > 0 ||
-    getSystemDependents(resolved.fides_key).length > 0;
+  const deps = getSystemDependencies(resolved.fides_key);
+  const dependents = getSystemDependents(resolved.fides_key);
 
   return (
     <div className="space-y-6 py-2">
@@ -101,14 +99,17 @@ export function SystemDetail({ system, onSeeGraph }: SystemDetailProps) {
         </section>
       )}
       {/* Dependencies */}
-      {getSystemDependencies(resolved.fides_key).length > 0 && (
+      {deps.length > 0 && (
         <section>
           <h3 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-blue-400/70">
             <ArrowDown size={14} aria-hidden="true" />
             Dependencies
+            <span className="rounded-full bg-gray-800 px-2 py-0.5 text-[10px] font-medium text-gray-400">
+              {deps.length}
+            </span>
           </h3>
           <div className="space-y-2">
-            {getSystemDependencies(resolved.fides_key).map((dep) => (
+            {deps.map((dep) => (
               <div
                 key={dep.fides_key}
                 className="flex items-center gap-2 rounded-lg border border-gray-800 bg-gray-900 px-3 py-2"
@@ -124,18 +125,22 @@ export function SystemDetail({ system, onSeeGraph }: SystemDetailProps) {
               </div>
             ))}
           </div>
+          <RadialGraph rootSystem={resolved} systems={deps} />
         </section>
       )}
 
       {/* Dependents */}
-      {getSystemDependents(resolved.fides_key).length > 0 && (
+      {dependents.length > 0 && (
         <section>
           <h3 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-violet-400/70">
             <ArrowUp size={14} aria-hidden="true" />
             Dependents
+            <span className="rounded-full bg-gray-800 px-2 py-0.5 text-[10px] font-medium text-gray-400">
+              {dependents.length}
+            </span>
           </h3>
           <div className="space-y-2">
-            {getSystemDependents(resolved.fides_key).map((dep) => (
+            {dependents.map((dep) => (
               <div
                 key={dep.fides_key}
                 className="flex items-center gap-2 rounded-lg border border-gray-800 bg-gray-900 px-3 py-2"
@@ -151,17 +156,8 @@ export function SystemDetail({ system, onSeeGraph }: SystemDetailProps) {
               </div>
             ))}
           </div>
+          <RadialGraph rootSystem={resolved} systems={dependents} />
         </section>
-      )}
-
-      {hasDeps && onSeeGraph && (
-        <Button
-          variant="secondary"
-          onClick={() => onSeeGraph(resolved)}
-        >
-          <GitFork size={14} aria-hidden="true" />
-          <span>See Dependency Graph</span>
-        </Button>
       )}
     </div>
   );

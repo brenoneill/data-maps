@@ -1,4 +1,4 @@
-import type { GroupByOption, GroupedSystems, System } from "@/types";
+import type { GroupByOption, GroupedSystems } from "@/types";
 import type { CardState, HoverInfo } from "@/hooks/useDependencyHighlight";
 import { getColorForValue } from "@/helpers/colors";
 import { SystemCard } from "./SystemCard";
@@ -12,7 +12,6 @@ interface SwimlaneProps {
   registerCard: (fidesKey: string) => (el: HTMLElement | null) => void;
   getCardState: (fidesKey: string) => CardState;
   onHoverChange: (info: HoverInfo) => void;
-  onOpenDeps: (system: System) => void;
 }
 
 export function Swimlane({
@@ -23,7 +22,6 @@ export function Swimlane({
   registerCard,
   getCardState,
   onHoverChange,
-  onOpenDeps,
 }: SwimlaneProps) {
   const colorSet = getColorForValue(
     group.key,
@@ -66,7 +64,6 @@ export function Swimlane({
               registerCard={registerCard}
               cardState={getCardState(system.fides_key)}
               onHoverChange={onHoverChange}
-              onOpenDeps={onOpenDeps}
             />
           ))
         ) : (

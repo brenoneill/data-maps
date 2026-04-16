@@ -22,7 +22,6 @@ interface SystemCardProps {
   registerCard: (fidesKey: string) => (el: HTMLElement | null) => void;
   cardState: CardState;
   onHoverChange: (info: HoverInfo) => void;
-  onOpenDeps: (system: System) => void;
 }
 
 export function SystemCard({
@@ -30,7 +29,6 @@ export function SystemCard({
   registerCard,
   cardState,
   onHoverChange,
-  onOpenDeps,
 }: SystemCardProps) {
   const { openSlideout } = useSlideout();
 
@@ -131,42 +129,32 @@ export function SystemCard({
       {hasConnections && (
         <div className="mt-3 flex items-center gap-3 border-t border-gray-800 pt-2">
           {depCount > 0 && (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                onOpenDeps(system);
-              }}
+            <span
               onMouseEnter={() =>
                 onHoverChange({ key: system.fides_key, mode: "deps" })
               }
               onMouseLeave={() =>
                 onHoverChange({ key: system.fides_key, mode: "all" })
               }
-              className="flex items-center gap-1 rounded px-1 py-0.5 text-xs text-blue-400 transition-colors hover:bg-blue-500/10"
+              className="flex items-center gap-1 rounded px-1 py-0.5 text-xs text-blue-400"
             >
               <ArrowDown size={11} aria-hidden="true" />
               {depCount}
-            </button>
+            </span>
           )}
           {dependentCount > 0 && (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                onOpenDeps(system);
-              }}
+            <span
               onMouseEnter={() =>
                 onHoverChange({ key: system.fides_key, mode: "dependents" })
               }
               onMouseLeave={() =>
                 onHoverChange({ key: system.fides_key, mode: "all" })
               }
-              className="flex items-center gap-1 rounded px-1 py-0.5 text-xs text-violet-400 transition-colors hover:bg-violet-500/10"
+              className="flex items-center gap-1 rounded px-1 py-0.5 text-xs text-violet-400"
             >
               <ArrowUp size={11} aria-hidden="true" />
               {dependentCount}
-            </button>
+            </span>
           )}
         </div>
       )}

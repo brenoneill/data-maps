@@ -48,7 +48,7 @@ export function SlideoutPanel({
             leaveFrom="translate-x-0"
             leaveTo="translate-x-full"
           >
-            <DialogPanel className="flex w-full max-w-2xl flex-col border-l border-gray-800 bg-gray-925 shadow-2xl">
+            <DialogPanel className="flex w-full max-w-3xl flex-col border-l border-gray-800 bg-gray-925 shadow-2xl">
               <div className="flex shrink-0 items-center justify-between px-6 pt-6 pb-4">
                 <DialogTitle className="text-lg font-semibold text-gray-100">
                   {title}
