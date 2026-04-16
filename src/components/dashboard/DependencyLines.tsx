@@ -186,20 +186,21 @@ export function DependencyLines({
       aria-hidden="true"
     >
       {lines.map((line) => {
-        let isRelated = false;
+        let lineType: "none" | "dep" | "dependent" = "none";
         if (hoverInfo) {
           const { key, mode } = hoverInfo;
           if (mode === "all") {
-            isRelated =
-              line.sourceKey === key || line.targetKey === key;
-          } else if (mode === "deps") {
-            isRelated = line.sourceKey === key;
-          } else if (mode === "dependents") {
-            isRelated = line.targetKey === key;
+            if (line.sourceKey === key) lineType = "dep";
+            else if (line.targetKey === key) lineType = "dependent";
+          } else if (mode === "deps" && line.sourceKey === key) {
+            lineType = "dep";
+          } else if (mode === "dependents" && line.targetKey === key) {
+            lineType = "dependent";
           }
         }
 
         const isHovering = hoverInfo !== null;
+        const isRelated = lineType !== "none";
 
         const dx = (line.x2 - line.x1) * 0.4;
         const path = `M ${line.x1} ${line.y1} C ${line.x1 + dx} ${line.y1}, ${line.x2 - dx} ${line.y2}, ${line.x2} ${line.y2}`;
@@ -218,15 +219,22 @@ export function DependencyLines({
           strokeDasharray = "6 4";
         }
 
+        const strokeColor =
+          lineType === "dep"
+            ? "#60a5fa"
+            : lineType === "dependent"
+              ? "#a78bfa"
+              : undefined;
+
         return (
           <path
             key={line.id}
             d={path}
             fill="none"
-            stroke="currentColor"
+            stroke={strokeColor ?? "currentColor"}
             strokeWidth={1.5}
             strokeDasharray={strokeDasharray}
-            className="text-gray-400 transition-opacity duration-200"
+            className={`${strokeColor ? "" : "text-gray-400"} transition-opacity duration-200`}
             style={{ opacity }}
           />
         );

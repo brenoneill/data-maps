@@ -12,7 +12,8 @@ import { ChevronRight, ArrowDown, ArrowUp } from "lucide-react";
 const cardStateStyles: Record<CardState, string> = {
   idle: "",
   active: "ring-1 ring-blue-500/40",
-  related: "",
+  "related-dep": "ring-1 ring-blue-400/30",
+  "related-dependent": "ring-1 ring-violet-400/30",
   dimmed: "opacity-30",
 };
 

@@ -1,6 +1,7 @@
-import { useRef, useMemo } from "react";
+import { useCallback, useRef, useMemo } from "react";
 import type { GroupByOption, GroupedSystems, System } from "@/types";
 import { useDependencyHighlight } from "@/hooks/useDependencyHighlight";
+import type { CardState, HoverInfo } from "@/hooks/useDependencyHighlight";
 import { useCardRegistry } from "@/hooks/useCardRegistry";
 import { getFidesGroupCategoryMap } from "@/helpers/groupSystems";
 import { Swimlane } from "./Swimlane";
@@ -29,6 +30,16 @@ export function SwimlaneBoard({
   const { hoverInfo, setHoverInfo, getCardState } =
     useDependencyHighlight(allSystems);
   const { cardRefs, registerCard } = useCardRegistry();
+
+  const gatedGetCardState = useCallback(
+    (fidesKey: string): CardState => (showLines ? getCardState(fidesKey) : "idle"),
+    [showLines, getCardState]
+  );
+
+  const gatedSetHoverInfo = useCallback(
+    (info: HoverInfo) => { if (showLines) setHoverInfo(info); },
+    [showLines, setHoverInfo]
+  );
 
   const isFidesGrouping = groupBy === "dataCategories" && fidesMode;
 
@@ -76,8 +87,8 @@ export function SwimlaneBoard({
                 : undefined
             }
             registerCard={registerCard}
-            getCardState={getCardState}
-            onHoverChange={setHoverInfo}
+            getCardState={gatedGetCardState}
+            onHoverChange={gatedSetHoverInfo}
             onOpenDeps={onOpenDeps}
           />
         ))}
