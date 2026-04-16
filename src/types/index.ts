@@ -16,8 +16,6 @@ export interface System {
 
 export type GroupByOption = "systemType" | "dataUse" | "dataCategories";
 
-export type FilterDimension = "systemType" | "dataUse" | "dataCategories";
-
 export interface GroupedSystems {
   key: string;
   label: string;

@@ -10,6 +10,7 @@ interface UseFilteredSystemsParams {
   groupBy: GroupByOption;
   filterType: GroupByOption | "";
   filters: string[];
+  fidesMode: boolean;
 }
 
 interface UseFilteredSystemsResult {
@@ -22,6 +23,7 @@ export function useFilteredSystems({
   groupBy,
   filterType,
   filters,
+  fidesMode,
 }: UseFilteredSystemsParams): UseFilteredSystemsResult {
   const groups = useMemo(
     () =>
@@ -29,14 +31,15 @@ export function useFilteredSystems({
         systems,
         groupBy,
         filterType || null,
-        filters
+        filters,
+        fidesMode
       ),
-    [systems, groupBy, filterType, filters]
+    [systems, groupBy, filterType, filters, fidesMode]
   );
 
   const availableFilterValues = useMemo(
-    () => (filterType ? getUniqueValues(systems, filterType) : []),
-    [systems, filterType]
+    () => (filterType ? getUniqueValues(systems, filterType, fidesMode) : []),
+    [systems, filterType, fidesMode]
   );
 
   return { groups, availableFilterValues };

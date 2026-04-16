@@ -98,6 +98,33 @@ const DATA_CATEGORY_COLORS: Record<string, ColorSet> = {
   },
 };
 
+const FIDES_GROUP_COLORS: Record<string, ColorSet> = {
+  Device: {
+    bg: "bg-cyan-500/10",
+    border: "border-cyan-500/30",
+    text: "text-cyan-400",
+    dot: "bg-cyan-400",
+  },
+  Contact: {
+    bg: "bg-green-500/10",
+    border: "border-green-500/30",
+    text: "text-green-400",
+    dot: "bg-green-400",
+  },
+  Location: {
+    bg: "bg-yellow-500/10",
+    border: "border-yellow-500/30",
+    text: "text-yellow-400",
+    dot: "bg-yellow-400",
+  },
+  Financial: {
+    bg: "bg-pink-500/10",
+    border: "border-pink-500/30",
+    text: "text-pink-400",
+    dot: "bg-pink-400",
+  },
+};
+
 const DEFAULT_COLOR: ColorSet = {
   bg: "bg-gray-500/10",
   border: "border-gray-500/30",
@@ -105,9 +132,15 @@ const DEFAULT_COLOR: ColorSet = {
   dot: "bg-gray-400",
 };
 
+type ColorDimension =
+  | "systemType"
+  | "dataUse"
+  | "dataCategories"
+  | "fidesGroup";
+
 export function getColorForValue(
   value: string,
-  dimension: "systemType" | "dataUse" | "dataCategories"
+  dimension: ColorDimension
 ): ColorSet {
   switch (dimension) {
     case "systemType":
@@ -116,6 +149,8 @@ export function getColorForValue(
       return DATA_USE_COLORS[value] ?? DEFAULT_COLOR;
     case "dataCategories":
       return DATA_CATEGORY_COLORS[value] ?? DEFAULT_COLOR;
+    case "fidesGroup":
+      return FIDES_GROUP_COLORS[value] ?? DEFAULT_COLOR;
     default:
       return DEFAULT_COLOR;
   }

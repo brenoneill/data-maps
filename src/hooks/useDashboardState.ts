@@ -10,13 +10,19 @@ const VALID_GROUP_BY: GroupByOption[] = [
 
 const SHOW_LINES_KEY = "data-maps:showLines";
 
-function readShowLines(): boolean {
+function readLocalBool(key: string, fallback: boolean): boolean {
   try {
-    const stored = localStorage.getItem(SHOW_LINES_KEY);
-    return stored === null ? true : stored === "true";
+    const stored = localStorage.getItem(key);
+    return stored === null ? fallback : stored === "true";
   } catch {
-    return true;
+    return fallback;
   }
+}
+
+function writeLocalBool(key: string, value: boolean) {
+  try {
+    localStorage.setItem(key, String(value));
+  } catch { /* storage full or unavailable */ }
 }
 
 /**
@@ -28,15 +34,14 @@ export function useDashboardState() {
     groupBy: parseAsString.withDefault("systemType"),
     filterType: parseAsString.withDefault(""),
     filters: parseAsArrayOf(parseAsString, ",").withDefault([]),
+    fidesMode: parseAsString.withDefault("off"),
   });
 
-  const [showLines, setShowLinesState] = useState(readShowLines);
+  const [showLines, setShowLinesRaw] = useState(() => readLocalBool(SHOW_LINES_KEY, true));
 
   const setShowLines = useCallback((value: boolean) => {
-    setShowLinesState(value);
-    try {
-      localStorage.setItem(SHOW_LINES_KEY, String(value));
-    } catch { /* storage full or unavailable */ }
+    setShowLinesRaw(value);
+    writeLocalBool(SHOW_LINES_KEY, value);
   }, []);
 
   const groupBy = VALID_GROUP_BY.includes(state.groupBy as GroupByOption)
@@ -44,13 +49,18 @@ export function useDashboardState() {
     : "systemType";
 
   const filterType = state.filterType as GroupByOption | "";
+  const fidesMode = state.fidesMode === "on";
 
   const setGroupBy = (value: GroupByOption) => {
-    setState({ groupBy: value, filterType: "", filters: [] });
+    setState({ groupBy: value, filterType: "", filters: [], fidesMode: "off" });
   };
 
   const setFilterType = (value: GroupByOption | "") => {
-    setState({ filterType: value, filters: [] });
+    setState({ filterType: value, filters: [], fidesMode: "off" });
+  };
+
+  const setFidesMode = (on: boolean) => {
+    setState({ fidesMode: on ? "on" : "off", filters: [] });
   };
 
   const toggleFilter = (value: string) => {
@@ -69,9 +79,11 @@ export function useDashboardState() {
     groupBy,
     filterType,
     filters: state.filters,
+    fidesMode,
     showLines,
     setGroupBy,
     setFilterType,
+    setFidesMode,
     toggleFilter,
     clearFilters,
     setShowLines,

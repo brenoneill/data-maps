@@ -17,9 +17,11 @@ export function DashboardPage() {
     groupBy,
     filterType,
     filters,
+    fidesMode,
     showLines,
     setGroupBy,
     setFilterType,
+    setFidesMode,
     toggleFilter,
     clearFilters,
     setShowLines,
@@ -30,6 +32,7 @@ export function DashboardPage() {
     groupBy,
     filterType,
     filters,
+    fidesMode,
   });
 
   const { isOpen, activeSystem, closeSlideout } = useSlideout();
@@ -53,10 +56,13 @@ export function DashboardPage() {
         groupBy={groupBy}
         filterType={filterType}
         filters={filters}
+        fidesMode={fidesMode}
         availableFilterValues={availableFilterValues}
+        systems={systems}
         showLines={showLines}
         onGroupByChange={setGroupBy}
         onFilterTypeChange={setFilterType}
+        onFidesModeChange={setFidesMode}
         onToggleFilter={toggleFilter}
         onClearFilters={clearFilters}
         onShowLinesChange={setShowLines}
@@ -64,6 +70,7 @@ export function DashboardPage() {
       <SwimlaneBoard
         groups={groups}
         groupBy={groupBy}
+        fidesMode={fidesMode}
         allSystems={systems}
         showLines={showLines}
         onOpenDeps={openDepModal}

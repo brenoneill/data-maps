@@ -7,6 +7,8 @@ import { EmptyState } from "@/components/ui/EmptyState";
 interface SwimlaneProps {
   group: GroupedSystems;
   groupBy: GroupByOption;
+  colorDimension?: string;
+  secondaryText?: string;
   registerCard: (fidesKey: string) => (el: HTMLElement | null) => void;
   getCardState: (fidesKey: string) => CardState;
   onHoverChange: (info: HoverInfo) => void;
@@ -16,27 +18,39 @@ interface SwimlaneProps {
 export function Swimlane({
   group,
   groupBy,
+  colorDimension,
+  secondaryText,
   registerCard,
   getCardState,
   onHoverChange,
   onOpenDeps,
 }: SwimlaneProps) {
-  const colorSet = getColorForValue(group.key, groupBy);
+  const colorSet = getColorForValue(
+    group.key,
+    (colorDimension ?? groupBy) as Parameters<typeof getColorForValue>[1]
+  );
 
   return (
     <div className="flex w-80 shrink-0 flex-col">
       {/* Swimlane header */}
-      <div className="mb-3 flex items-center gap-2.5 px-1">
-        <span
-          className={`h-2 w-2 rounded-full ${colorSet.dot}`}
-          aria-hidden="true"
-        />
-        <h2 className={`text-sm font-semibold ${colorSet.text}`}>
-          {group.label}
-        </h2>
-        <span className="rounded-full bg-gray-800 px-2 py-0.5 text-xs font-medium text-gray-400">
-          {group.systems.length}
-        </span>
+      <div className="mb-3 px-1">
+        <div className="flex items-center gap-2.5">
+          <span
+            className={`h-2 w-2 shrink-0 rounded-full ${colorSet.dot}`}
+            aria-hidden="true"
+          />
+          <h2 className={`text-sm font-semibold ${colorSet.text}`}>
+            {group.label}
+          </h2>
+          <span className="rounded-full bg-gray-800 px-2 py-0.5 text-xs font-medium text-gray-400">
+            {group.systems.length}
+          </span>
+        </div>
+        {secondaryText && (
+          <p className="mt-1 pl-[18px] text-[10px] leading-tight text-gray-500">
+            {secondaryText}
+          </p>
+        )}
       </div>
 
       {/* System cards */}

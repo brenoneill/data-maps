@@ -1,12 +1,21 @@
 import type { System, GroupByOption, GroupedSystems } from "@/types";
 import { formatLabel } from "./formatLabel";
+import { classifyCategory } from "./categoryClassification";
 
 /**
  * Extracts unique values for a given dimension from all systems.
+ * When dimension is "dataCategories" and fidesMode is true, returns
+ * Fides Group names instead of raw category strings.
+ *
+ * @param systems - Array of systems to extract values from
+ * @param dimension - The dimension to extract unique values for
+ * @param fidesMode - When true and dimension is dataCategories, use Fides Group grouping
+ * @returns Sorted array of unique string values
  */
 export function getUniqueValues(
   systems: System[],
-  dimension: GroupByOption
+  dimension: GroupByOption,
+  fidesMode = false
 ): string[] {
   const values = new Set<string>();
 
@@ -23,7 +32,7 @@ export function getUniqueValues(
       case "dataCategories":
         for (const decl of system.privacy_declarations) {
           for (const cat of decl.data_categories) {
-            values.add(cat);
+            values.add(fidesMode ? classifyCategory(cat) : cat);
           }
         }
         break;
@@ -34,13 +43,40 @@ export function getUniqueValues(
 }
 
 /**
- * Checks whether a system matches at least one of the given filter values
- * for the specified dimension.
+ * Builds a map from Fides Group name to the formatted category labels that belong to it.
+ *
+ * @param systems - Array of systems to scan
+ * @returns Map where keys are Fides Group names and values are formatted category labels
  */
+export function getFidesGroupCategoryMap(
+  systems: System[]
+): Map<string, string[]> {
+  const groupMap = new Map<string, Set<string>>();
+
+  for (const system of systems) {
+    for (const decl of system.privacy_declarations) {
+      for (const cat of decl.data_categories) {
+        const group = classifyCategory(cat);
+        if (!groupMap.has(group)) {
+          groupMap.set(group, new Set());
+        }
+        groupMap.get(group)!.add(formatLabel(cat));
+      }
+    }
+  }
+
+  const result = new Map<string, string[]>();
+  for (const [group, labels] of groupMap) {
+    result.set(group, Array.from(labels).sort());
+  }
+  return result;
+}
+
 function systemMatchesFilter(
   system: System,
   dimension: GroupByOption,
-  filterValues: string[]
+  filterValues: string[],
+  fidesMode: boolean
 ): boolean {
   if (filterValues.length === 0) return true;
 
@@ -52,6 +88,13 @@ function systemMatchesFilter(
         filterValues.includes(d.data_use)
       );
     case "dataCategories":
+      if (fidesMode) {
+        return system.privacy_declarations.some((d) =>
+          d.data_categories.some((c) =>
+            filterValues.includes(classifyCategory(c))
+          )
+        );
+      }
       return system.privacy_declarations.some((d) =>
         d.data_categories.some((c) => filterValues.includes(c))
       );
@@ -62,22 +105,31 @@ function systemMatchesFilter(
 
 /**
  * Groups systems into swimlane buckets by the selected dimension,
- * then filters them by the active filter dimension and values.
+ * then filters them by the active filter dimension/values.
+ *
+ * @param systems - All systems to group
+ * @param groupBy - The dimension to group by
+ * @param filterDimension - The dimension to filter on (null for no filter)
+ * @param filterValues - The values to include from the filter dimension
+ * @param fidesMode - When true and a dataCategories dimension is involved, use Fides Group logic
+ * @returns Array of grouped systems
  */
 export function groupAndFilterSystems(
   systems: System[],
   groupBy: GroupByOption,
   filterDimension: GroupByOption | null,
-  filterValues: string[]
+  filterValues: string[],
+  fidesMode = false
 ): GroupedSystems[] {
-  const filtered =
-    filterDimension && filterValues.length > 0
-      ? systems.filter((s) =>
-          systemMatchesFilter(s, filterDimension, filterValues)
-        )
-      : systems;
+  let filtered = systems;
 
-  const groupKeys = getUniqueValues(systems, groupBy);
+  if (filterDimension && filterValues.length > 0) {
+    filtered = filtered.filter((s) =>
+      systemMatchesFilter(s, filterDimension, filterValues, fidesMode)
+    );
+  }
+
+  const groupKeys = getUniqueValues(systems, groupBy, fidesMode);
   const groups: GroupedSystems[] = [];
 
   for (const key of groupKeys) {
@@ -88,6 +140,13 @@ export function groupAndFilterSystems(
         case "dataUse":
           return system.privacy_declarations.some((d) => d.data_use === key);
         case "dataCategories":
+          if (fidesMode) {
+            return system.privacy_declarations.some((d) =>
+              d.data_categories.some(
+                (c) => classifyCategory(c) === key
+              )
+            );
+          }
           return system.privacy_declarations.some((d) =>
             d.data_categories.includes(key)
           );

@@ -39,7 +39,7 @@ export function formatLabel(value: string): string {
  * Converts a GroupByOption or FilterDimension key to a display name.
  */
 export function formatDimensionLabel(
-  dimension: "systemType" | "dataUse" | "dataCategories"
+  dimension: string
 ): string {
   const map: Record<string, string> = {
     systemType: "System Type",

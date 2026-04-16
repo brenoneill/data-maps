@@ -1,23 +1,13 @@
 import type { System } from "@/types";
 import { Badge } from "@/components/ui/Badge";
 import { getColorForValue } from "@/helpers/colors";
-import {
-  resolveSystem,
-  getSystemDependencies,
-  getSystemDependents,
-} from "@/helpers/systemLookup";
-import { ArrowDown, ArrowUp } from "lucide-react";
-
-interface DependencyTreeProps {
-  fidesKey: string;
-}
 
 const NODE_W = 112;
 const NODE_H = 56;
 const CENTER_W = 128;
 const CENTER_H = 64;
 
-export function RadialNodeCard({
+function RadialNodeCard({
   system,
   isCenter,
 }: {
@@ -139,43 +129,3 @@ export function RadialGraph({
   );
 }
 
-export function DependencyTree({ fidesKey }: DependencyTreeProps) {
-  const rootSystem = resolveSystem(fidesKey);
-
-  if (!rootSystem) {
-    return <p className="pt-4 text-xs text-gray-500">System not found</p>;
-  }
-
-  const deps = getSystemDependencies(fidesKey);
-  const dependents = getSystemDependents(fidesKey);
-
-  return (
-    <div className="space-y-6">
-      {/* Outgoing: systems this one depends on */}
-      <section>
-        <h4 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gray-500">
-          <ArrowDown size={14} aria-hidden="true" />
-          Dependencies
-        </h4>
-        {deps.length > 0 ? (
-          <RadialGraph rootSystem={rootSystem} systems={deps} />
-        ) : (
-          <p className="py-4 text-center text-xs text-gray-600">None</p>
-        )}
-      </section>
-
-      {/* Incoming: systems that depend on this one */}
-      <section>
-        <h4 className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gray-500">
-          <ArrowUp size={14} aria-hidden="true" />
-          Dependents
-        </h4>
-        {dependents.length > 0 ? (
-          <RadialGraph rootSystem={rootSystem} systems={dependents} />
-        ) : (
-          <p className="py-4 text-center text-xs text-gray-600">None</p>
-        )}
-      </section>
-    </div>
-  );
-}
