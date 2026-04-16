@@ -3,8 +3,8 @@ import { FilterCheckbox } from "@/components/ui/FilterCheckbox";
 import { Button } from "@/components/ui/Button";
 import { formatLabel, formatDimensionLabel } from "@/helpers/formatLabel";
 import { getColorForValue } from "@/helpers/colors";
-import type { GroupByOption } from "@/types";
-import { X, Link2, Link2Off, ExternalLink, Layers, List } from "lucide-react";
+import type { GroupByOption, ViewMode } from "@/types";
+import { X, Link2, Link2Off, ExternalLink, Layers, List, Columns3, LayoutList } from "lucide-react";
 import { FIDESLANG_DOCS_URL } from "@/helpers/constants";
 
 interface FilterBarProps {
@@ -15,12 +15,14 @@ interface FilterBarProps {
   availableFilterValues: string[];
   fidesGroupMap: Map<string, string[]>;
   showLines: boolean;
+  viewMode: ViewMode;
   onGroupByChange: (value: GroupByOption) => void;
   onFilterTypeChange: (value: GroupByOption | "") => void;
   onFidesModeChange: (on: boolean) => void;
   onToggleFilter: (value: string) => void;
   onClearFilters: () => void;
   onShowLinesChange: (value: boolean) => void;
+  onViewModeChange: (value: ViewMode) => void;
 }
 
 const GROUP_BY_OPTIONS = [
@@ -41,12 +43,14 @@ export function FilterBar({
   availableFilterValues,
   fidesGroupMap,
   showLines,
+  viewMode,
   onGroupByChange,
   onFilterTypeChange,
   onFidesModeChange,
   onToggleFilter,
   onClearFilters,
   onShowLinesChange,
+  onViewModeChange,
 }: FilterBarProps) {
   const filterDimensionOptions = [
     { value: "", label: "None" },
@@ -154,21 +158,55 @@ export function FilterBar({
           </button>
         )}
 
-        <button
-          onClick={() => onShowLinesChange(!showLines)}
-          className={`flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
-            showLines
-              ? "border-blue-500/30 bg-blue-500/10 text-blue-400"
-              : "border-gray-700 bg-gray-800/50 text-gray-500"
-          }`}
-        >
-          {showLines ? (
-            <Link2 size={13} aria-hidden="true" />
-          ) : (
-            <Link2Off size={13} aria-hidden="true" />
-          )}
-          Show Dependencies
-        </button>
+        {viewMode === "board" && (
+          <button
+            onClick={() => onShowLinesChange(!showLines)}
+            className={`flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
+              showLines
+                ? "border-blue-500/30 bg-blue-500/10 text-blue-400"
+                : "border-gray-700 bg-gray-800/50 text-gray-500"
+            }`}
+          >
+            {showLines ? (
+              <Link2 size={13} aria-hidden="true" />
+            ) : (
+              <Link2Off size={13} aria-hidden="true" />
+            )}
+            Show Dependencies
+          </button>
+        )}
+
+        {/* View mode segmented toggle */}
+        <div className="flex overflow-hidden rounded-full border border-gray-700" role="radiogroup" aria-label="View mode">
+          <button
+            role="radio"
+            aria-checked={viewMode === "board"}
+            aria-label="Board view"
+            onClick={() => onViewModeChange("board")}
+            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium transition-colors ${
+              viewMode === "board"
+                ? "bg-gray-700 text-gray-100"
+                : "bg-gray-800/50 text-gray-500 hover:text-gray-400"
+            }`}
+          >
+            <Columns3 size={13} aria-hidden="true" />
+            <span>Board</span>
+          </button>
+          <button
+            role="radio"
+            aria-checked={viewMode === "list"}
+            aria-label="List view"
+            onClick={() => onViewModeChange("list")}
+            className={`flex items-center gap-1.5 border-l border-gray-700 px-3 py-1.5 text-xs font-medium transition-colors ${
+              viewMode === "list"
+                ? "bg-gray-700 text-gray-100"
+                : "bg-gray-800/50 text-gray-500 hover:text-gray-400"
+            }`}
+          >
+            <LayoutList size={13} aria-hidden="true" />
+            <span>List</span>
+          </button>
+        </div>
       </div>
     </div>
   );

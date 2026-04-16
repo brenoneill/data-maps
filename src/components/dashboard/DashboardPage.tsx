@@ -6,6 +6,7 @@ import { getAllSystems } from "@/helpers/systemLookup";
 import { getFidesGroupCategoryMap } from "@/helpers/groupSystems";
 import { FilterBar } from "./FilterBar";
 import { SwimlaneBoard } from "./SwimlaneBoard";
+import { GroupedListView } from "./GroupedListView";
 import { SlideoutPanel } from "@/components/layout/SlideoutPanel";
 import { SystemDetail } from "./SystemDetail";
 
@@ -18,12 +19,14 @@ export function DashboardPage() {
     filters,
     fidesMode,
     showLines,
+    viewMode,
     setGroupBy,
     setFilterType,
     setFidesMode,
     toggleFilter,
     clearFilters,
     setShowLines,
+    setViewMode,
   } = useDashboardState();
 
   const { groups, availableFilterValues } = useFilteredSystems({
@@ -57,21 +60,32 @@ export function DashboardPage() {
         availableFilterValues={availableFilterValues}
         fidesGroupMap={fidesGroupMap}
         showLines={showLines}
+        viewMode={viewMode}
         onGroupByChange={setGroupBy}
         onFilterTypeChange={setFilterType}
         onFidesModeChange={setFidesMode}
         onToggleFilter={toggleFilter}
         onClearFilters={clearFilters}
         onShowLinesChange={setShowLines}
+        onViewModeChange={setViewMode}
       />
-      <SwimlaneBoard
-        groups={groups}
-        groupBy={groupBy}
-        fidesMode={fidesMode}
-        fidesGroupMap={fidesGroupMap}
-        allSystems={systems}
-        showLines={showLines}
-      />
+      {viewMode === "board" ? (
+        <SwimlaneBoard
+          groups={groups}
+          groupBy={groupBy}
+          fidesMode={fidesMode}
+          fidesGroupMap={fidesGroupMap}
+          allSystems={systems}
+          showLines={showLines}
+        />
+      ) : (
+        <GroupedListView
+          groups={groups}
+          groupBy={groupBy}
+          fidesMode={fidesMode}
+          fidesGroupMap={fidesGroupMap}
+        />
+      )}
 
       <SlideoutPanel
         isOpen={isOpen}

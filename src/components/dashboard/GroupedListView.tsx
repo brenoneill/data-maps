@@ -1,0 +1,97 @@
+import type { GroupByOption, GroupedSystems } from "@/types";
+import { getColorForValue } from "@/helpers/colors";
+import { EmptyState } from "@/components/ui/EmptyState";
+import { SystemRow } from "./SystemRow";
+import { ExternalLink } from "lucide-react";
+import { FIDESLANG_DOCS_URL } from "@/helpers/constants";
+
+interface GroupedListViewProps {
+  groups: GroupedSystems[];
+  groupBy: GroupByOption;
+  fidesMode: boolean;
+  fidesGroupMap: Map<string, string[]>;
+}
+
+export function GroupedListView({
+  groups,
+  groupBy,
+  fidesMode,
+  fidesGroupMap,
+}: GroupedListViewProps) {
+  const isFidesGrouping = groupBy === "dataCategories" && fidesMode;
+
+  return (
+    <div className="flex h-full flex-col overflow-hidden">
+      {isFidesGrouping && (
+        <div className="flex items-center gap-3 px-6 pt-4 pb-1">
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-gray-500">
+            Grouped by Fides Data Group
+          </span>
+          <a
+            href={FIDESLANG_DOCS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 text-[10px] text-gray-500 transition-colors hover:text-gray-300"
+          >
+            Learn more about Fides Data Groups
+            <ExternalLink size={10} aria-hidden="true" />
+          </a>
+        </div>
+      )}
+
+      <div className="flex flex-col gap-6 overflow-y-auto p-6">
+        {groups.map((group) => {
+          const colorSet = getColorForValue(
+            group.key,
+            (isFidesGrouping ? "fidesGroup" : groupBy) as Parameters<
+              typeof getColorForValue
+            >[1]
+          );
+
+          const secondaryText = isFidesGrouping
+            ? (fidesGroupMap.get(group.key) ?? []).join(", ")
+            : undefined;
+
+          return (
+            <section key={group.key} aria-label={group.label}>
+              {/* Group header */}
+              <div className="mb-3">
+                <div className="flex items-center gap-2.5">
+                  <span
+                    className={`h-2 w-2 shrink-0 rounded-full ${colorSet.dot}`}
+                    aria-hidden="true"
+                  />
+                  <h2 className={`text-sm font-semibold ${colorSet.text}`}>
+                    {group.label}
+                  </h2>
+                  <span className="rounded-full bg-gray-800 px-2 py-0.5 text-xs font-medium text-gray-400">
+                    {group.systems.length}
+                  </span>
+                </div>
+                {secondaryText && (
+                  <p className="mt-1 pl-[18px] text-[10px] leading-tight text-gray-500">
+                    {secondaryText}
+                  </p>
+                )}
+              </div>
+
+              {/* System rows */}
+              <div className="flex flex-col gap-2">
+                {group.systems.length > 0 ? (
+                  group.systems.map((system) => (
+                    <SystemRow key={system.fides_key} system={system} />
+                  ))
+                ) : (
+                  <EmptyState
+                    title="No systems"
+                    description="No systems match the current filters"
+                  />
+                )}
+              </div>
+            </section>
+          );
+        })}
+      </div>
+    </div>
+  );
+}

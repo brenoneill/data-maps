@@ -16,6 +16,8 @@ export interface System {
 
 export type GroupByOption = "systemType" | "dataUse" | "dataCategories";
 
+export type ViewMode = "board" | "list";
+
 export interface GroupedSystems {
   key: string;
   label: string;
