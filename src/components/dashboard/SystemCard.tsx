@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { getColorForValue } from "@/helpers/colors";
@@ -39,15 +39,20 @@ export function SystemCard({
     [registerCard, system.fides_key]
   );
 
-  const allDataUses = [
-    ...new Set(system.privacy_declarations.map((d) => d.data_use)),
-  ];
-  const allCategories = [
-    ...new Set(system.privacy_declarations.flatMap((d) => d.data_categories)),
-  ];
+  const allDataUses = useMemo(
+    () => [...new Set(system.privacy_declarations.map((d) => d.data_use))],
+    [system.privacy_declarations]
+  );
+  const allCategories = useMemo(
+    () => [...new Set(system.privacy_declarations.flatMap((d) => d.data_categories))],
+    [system.privacy_declarations]
+  );
 
   const depCount = system.system_dependencies.length;
-  const dependentCount = getSystemDependents(system.fides_key).length;
+  const dependentCount = useMemo(
+    () => getSystemDependents(system.fides_key).length,
+    [system.fides_key]
+  );
   const hasConnections = depCount > 0 || dependentCount > 0;
 
   return (

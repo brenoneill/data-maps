@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { useQueryStates, parseAsString, parseAsArrayOf } from "nuqs";
 import type { GroupByOption, GroupBySelection, ViewMode, FilterMode, DimensionFilters } from "@/types";
 
@@ -90,11 +90,14 @@ export function useDashboardState() {
     ? (state.groupBy as GroupBySelection)
     : "systemType";
 
-  const dimensionFilters: DimensionFilters = {
-    systemType: state.st,
-    dataUse: state.du,
-    dataCategories: state.dc,
-  };
+  const dimensionFilters: DimensionFilters = useMemo(
+    () => ({
+      systemType: state.st,
+      dataUse: state.du,
+      dataCategories: state.dc,
+    }),
+    [state.st, state.du, state.dc]
+  );
 
   const setGroupBy = useCallback((value: GroupBySelection) => {
     setState({ groupBy: value, st: [], du: [], dc: [] });

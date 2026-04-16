@@ -16,7 +16,10 @@ export function SystemRow({ system }: SystemRowProps) {
   const { openSlideout } = useSlideout();
 
   const depCount = system.system_dependencies.length;
-  const dependentCount = getSystemDependents(system.fides_key).length;
+  const dependentCount = useMemo(
+    () => getSystemDependents(system.fides_key).length,
+    [system.fides_key]
+  );
 
   const allCategories = useMemo(
     () => [...new Set(system.privacy_declarations.flatMap((d) => d.data_categories))],

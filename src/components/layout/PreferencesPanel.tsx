@@ -17,7 +17,7 @@ import {
   MessageSquareText,
   SlidersHorizontal,
 } from "lucide-react";
-import { Fragment } from "react";
+import { Fragment, type ReactNode } from "react";
 import type { ViewMode, FilterMode } from "@/types";
 import { FIDESLANG_DOCS_URL } from "@/helpers/constants";
 
@@ -48,10 +48,10 @@ function ToggleRow({
   description: string;
   enabled: boolean;
   onToggle: () => void;
-  activeIcon: React.ReactNode;
-  inactiveIcon: React.ReactNode;
+  activeIcon: ReactNode;
+  inactiveIcon: ReactNode;
   activeColor?: "blue" | "emerald";
-  children?: React.ReactNode;
+  children?: ReactNode;
 }) {
   const colorMap = {
     blue: {
@@ -103,7 +103,7 @@ function SegmentedControl<T extends string>({
   label: string;
   value: T;
   onChange: (value: T) => void;
-  options: { value: T; label: string; icon: React.ReactNode }[];
+  options: { value: T; label: string; icon: ReactNode }[];
 }) {
   return (
     <div className="px-3 py-3">
