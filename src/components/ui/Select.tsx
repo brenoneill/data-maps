@@ -27,7 +27,7 @@ export function Select({ value, onChange, options, label }: SelectProps) {
           <span className="block truncate">
             {selectedOption?.label ?? "Select..."}
           </span>
-          <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 pt-5">
+          <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
             <ChevronDown size={16} aria-hidden="true" className="text-gray-500" />
           </span>
         </ListboxButton>
