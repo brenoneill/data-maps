@@ -4,17 +4,19 @@ import { Button } from "@/components/ui/Button";
 import { formatLabel, formatDimensionLabel } from "@/helpers/formatLabel";
 import { getColorForValue } from "@/helpers/colors";
 import type { GroupByOption } from "@/types";
-import { X } from "lucide-react";
+import { X, Link2, Link2Off } from "lucide-react";
 
 interface FilterBarProps {
   groupBy: GroupByOption;
   filterType: GroupByOption | "";
   filters: string[];
   availableFilterValues: string[];
+  showLines: boolean;
   onGroupByChange: (value: GroupByOption) => void;
   onFilterTypeChange: (value: GroupByOption | "") => void;
   onToggleFilter: (value: string) => void;
   onClearFilters: () => void;
+  onShowLinesChange: (value: boolean) => void;
 }
 
 const GROUP_BY_OPTIONS = [
@@ -32,10 +34,12 @@ export function FilterBar({
   filterType,
   filters,
   availableFilterValues,
+  showLines,
   onGroupByChange,
   onFilterTypeChange,
   onToggleFilter,
   onClearFilters,
+  onShowLinesChange,
 }: FilterBarProps) {
   const filterDimensionOptions = [
     { value: "", label: "None" },
@@ -88,6 +92,23 @@ export function FilterBar({
           )}
         </div>
       )}
+
+      {/* Dependency lines toggle */}
+      <button
+        onClick={() => onShowLinesChange(!showLines)}
+        className={`ml-auto flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
+          showLines
+            ? "border-blue-500/30 bg-blue-500/10 text-blue-400"
+            : "border-gray-700 bg-gray-800/50 text-gray-500"
+        }`}
+      >
+        {showLines ? (
+          <Link2 size={13} aria-hidden="true" />
+        ) : (
+          <Link2Off size={13} aria-hidden="true" />
+        )}
+        Show Dependencies
+      </button>
     </div>
   );
 }

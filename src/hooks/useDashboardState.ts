@@ -1,3 +1,4 @@
+import { useState, useCallback } from "react";
 import { useQueryStates, parseAsString, parseAsArrayOf } from "nuqs";
 import type { GroupByOption } from "@/types";
 
@@ -6,6 +7,17 @@ const VALID_GROUP_BY: GroupByOption[] = [
   "dataUse",
   "dataCategories",
 ];
+
+const SHOW_LINES_KEY = "data-maps:showLines";
+
+function readShowLines(): boolean {
+  try {
+    const stored = localStorage.getItem(SHOW_LINES_KEY);
+    return stored === null ? true : stored === "true";
+  } catch {
+    return true;
+  }
+}
 
 /**
  * URL-backed dashboard state via nuqs.
@@ -17,6 +29,15 @@ export function useDashboardState() {
     filterType: parseAsString.withDefault(""),
     filters: parseAsArrayOf(parseAsString, ",").withDefault([]),
   });
+
+  const [showLines, setShowLinesState] = useState(readShowLines);
+
+  const setShowLines = useCallback((value: boolean) => {
+    setShowLinesState(value);
+    try {
+      localStorage.setItem(SHOW_LINES_KEY, String(value));
+    } catch { /* storage full or unavailable */ }
+  }, []);
 
   const groupBy = VALID_GROUP_BY.includes(state.groupBy as GroupByOption)
     ? (state.groupBy as GroupByOption)
@@ -48,9 +69,11 @@ export function useDashboardState() {
     groupBy,
     filterType,
     filters: state.filters,
+    showLines,
     setGroupBy,
     setFilterType,
     toggleFilter,
     clearFilters,
+    setShowLines,
   };
 }

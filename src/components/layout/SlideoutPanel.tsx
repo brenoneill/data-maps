@@ -48,8 +48,8 @@ export function SlideoutPanel({
             leaveFrom="translate-x-0"
             leaveTo="translate-x-full"
           >
-            <DialogPanel className="w-full max-w-lg overflow-y-auto border-l border-gray-800 bg-gray-925 p-6 shadow-2xl">
-              <div className="mb-6 flex items-center justify-between">
+            <DialogPanel className="flex w-full max-w-2xl flex-col border-l border-gray-800 bg-gray-925 shadow-2xl">
+              <div className="flex shrink-0 items-center justify-between px-6 pt-6 pb-4">
                 <DialogTitle className="text-lg font-semibold text-gray-100">
                   {title}
                 </DialogTitle>
@@ -61,7 +61,9 @@ export function SlideoutPanel({
                   <span className="sr-only">Close panel</span>
                 </button>
               </div>
-              {children}
+              <div className="min-h-0 flex-1 overflow-y-auto px-6 pb-6">
+                {children}
+              </div>
             </DialogPanel>
           </TransitionChild>
         </div>

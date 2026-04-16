@@ -2,45 +2,46 @@ import type { System } from "@/types";
 import { Badge } from "@/components/ui/Badge";
 import { getColorForValue } from "@/helpers/colors";
 import { formatLabel } from "@/helpers/formatLabel";
-import { Database, Globe, Shield, Link2 } from "lucide-react";
-import sampleData from "../../../sample_data.json";
+import {
+  resolveSystem,
+  getSystemDependencies,
+  getSystemDependents,
+} from "@/helpers/systemLookup";
+import { Database, Globe, Shield, ArrowDown, ArrowUp } from "lucide-react";
 
 interface SystemDetailProps {
   system: System;
 }
 
-function resolveSystemName(fidesKey: string): string {
-  const match = (sampleData as System[]).find((s) => s.fides_key === fidesKey);
-  return match?.name ?? fidesKey;
-}
-
 export function SystemDetail({ system }: SystemDetailProps) {
+  const resolved = resolveSystem(system.fides_key) ?? system;
+
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 py-2">
       {/* System info */}
       <section>
         <div className="mb-3 flex items-center gap-2">
           <Badge
-            colorSet={getColorForValue(system.system_type, "systemType")}
+            colorSet={getColorForValue(resolved.system_type, "systemType")}
           >
-            {system.system_type}
+            {resolved.system_type}
           </Badge>
-          <span className="text-xs text-gray-500">{system.fides_key}</span>
+          <span className="text-xs text-gray-500">{resolved.fides_key}</span>
         </div>
         <p className="text-sm leading-relaxed text-gray-400">
-          {system.description}
+          {resolved.description}
         </p>
       </section>
 
       {/* Privacy Declarations */}
-      {system.privacy_declarations.length > 0 && (
+      {resolved.privacy_declarations.length > 0 && (
         <section>
           <h3 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gray-500">
             <Shield size={14} aria-hidden="true" />
             Privacy Declarations
           </h3>
           <div className="space-y-3">
-            {system.privacy_declarations.map((decl, idx) => (
+            {resolved.privacy_declarations.map((decl, idx) => (
               <div
                 key={`${decl.data_use}-${idx}`}
                 className="rounded-lg border border-gray-800 bg-gray-900 p-4"
@@ -56,7 +57,6 @@ export function SystemDetail({ system }: SystemDetailProps) {
                   </Badge>
                 </div>
 
-                {/* Categories */}
                 <div className="mb-2">
                   <span className="mb-1 flex items-center gap-1.5 text-xs text-gray-500">
                     <Database size={11} aria-hidden="true" />
@@ -74,7 +74,6 @@ export function SystemDetail({ system }: SystemDetailProps) {
                   </div>
                 </div>
 
-                {/* Subjects */}
                 <div>
                   <span className="mb-1 flex items-center gap-1.5 text-xs text-gray-500">
                     <Globe size={11} aria-hidden="true" />
@@ -96,22 +95,55 @@ export function SystemDetail({ system }: SystemDetailProps) {
           </div>
         </section>
       )}
-
       {/* Dependencies */}
-      {system.system_dependencies.length > 0 && (
+      {getSystemDependencies(resolved.fides_key).length > 0 && (
         <section>
-          <h3 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gray-500">
-            <Link2 size={14} aria-hidden="true" />
+          <h3 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-blue-400/70">
+            <ArrowDown size={14} aria-hidden="true" />
             Dependencies
           </h3>
-          <div className="flex flex-wrap gap-2">
-            {system.system_dependencies.map((dep) => (
-              <span
-                key={dep}
-                className="inline-flex items-center rounded-lg border border-gray-800 bg-gray-900 px-3 py-1.5 text-xs text-gray-300"
+          <div className="space-y-2">
+            {getSystemDependencies(resolved.fides_key).map((dep) => (
+              <div
+                key={dep.fides_key}
+                className="flex items-center gap-2 rounded-lg border border-gray-800 bg-gray-900 px-3 py-2"
               >
-                {resolveSystemName(dep)}
-              </span>
+                <span className="text-sm font-medium text-gray-200">
+                  {dep.name}
+                </span>
+                <Badge
+                  colorSet={getColorForValue(dep.system_type, "systemType")}
+                >
+                  {dep.system_type}
+                </Badge>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Dependents */}
+      {getSystemDependents(resolved.fides_key).length > 0 && (
+        <section>
+          <h3 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-violet-400/70">
+            <ArrowUp size={14} aria-hidden="true" />
+            Dependents
+          </h3>
+          <div className="space-y-2">
+            {getSystemDependents(resolved.fides_key).map((dep) => (
+              <div
+                key={dep.fides_key}
+                className="flex items-center gap-2 rounded-lg border border-gray-800 bg-gray-900 px-3 py-2"
+              >
+                <span className="text-sm font-medium text-gray-200">
+                  {dep.name}
+                </span>
+                <Badge
+                  colorSet={getColorForValue(dep.system_type, "systemType")}
+                >
+                  {dep.system_type}
+                </Badge>
+              </div>
             ))}
           </div>
         </section>

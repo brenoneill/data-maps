@@ -1,4 +1,5 @@
-import type { GroupByOption, GroupedSystems } from "@/types";
+import type { GroupByOption, GroupedSystems, System } from "@/types";
+import type { CardState, HoverInfo } from "@/hooks/useDependencyHighlight";
 import { getColorForValue } from "@/helpers/colors";
 import { SystemCard } from "./SystemCard";
 import { EmptyState } from "@/components/ui/EmptyState";
@@ -6,9 +7,20 @@ import { EmptyState } from "@/components/ui/EmptyState";
 interface SwimlaneProps {
   group: GroupedSystems;
   groupBy: GroupByOption;
+  registerCard: (fidesKey: string) => (el: HTMLElement | null) => void;
+  getCardState: (fidesKey: string) => CardState;
+  onHoverChange: (info: HoverInfo) => void;
+  onOpenDeps: (system: System) => void;
 }
 
-export function Swimlane({ group, groupBy }: SwimlaneProps) {
+export function Swimlane({
+  group,
+  groupBy,
+  registerCard,
+  getCardState,
+  onHoverChange,
+  onOpenDeps,
+}: SwimlaneProps) {
   const colorSet = getColorForValue(group.key, groupBy);
 
   return (
@@ -28,10 +40,20 @@ export function Swimlane({ group, groupBy }: SwimlaneProps) {
       </div>
 
       {/* System cards */}
-      <div className="flex flex-1 flex-col gap-3 overflow-y-auto rounded-xl border border-gray-800/50 bg-gray-925 p-3">
+      <div
+        data-swimlane-column
+        className="flex flex-1 flex-col gap-3 overflow-y-auto rounded-xl border border-gray-800/50 bg-gray-925 p-3"
+      >
         {group.systems.length > 0 ? (
           group.systems.map((system) => (
-            <SystemCard key={system.fides_key} system={system} />
+            <SystemCard
+              key={system.fides_key}
+              system={system}
+              registerCard={registerCard}
+              cardState={getCardState(system.fides_key)}
+              onHoverChange={onHoverChange}
+              onOpenDeps={onOpenDeps}
+            />
           ))
         ) : (
           <EmptyState

@@ -1,17 +1,44 @@
+import { useCallback } from "react";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { getColorForValue } from "@/helpers/colors";
 import { formatLabel } from "@/helpers/formatLabel";
+import { getSystemDependents } from "@/helpers/systemLookup";
 import type { System } from "@/types";
+import type { CardState, HoverInfo } from "@/hooks/useDependencyHighlight";
 import { useSlideout } from "@/context/SlideoutContext";
-import { ChevronRight, Link2 } from "lucide-react";
+import { ChevronRight, ArrowDown, ArrowUp } from "lucide-react";
+
+const cardStateStyles: Record<CardState, string> = {
+  idle: "",
+  active: "ring-1 ring-blue-500/40",
+  related: "",
+  dimmed: "opacity-30",
+};
 
 interface SystemCardProps {
   system: System;
+  registerCard: (fidesKey: string) => (el: HTMLElement | null) => void;
+  cardState: CardState;
+  onHoverChange: (info: HoverInfo) => void;
+  onOpenDeps: (system: System) => void;
 }
 
-export function SystemCard({ system }: SystemCardProps) {
+export function SystemCard({
+  system,
+  registerCard,
+  cardState,
+  onHoverChange,
+  onOpenDeps,
+}: SystemCardProps) {
   const { openSlideout } = useSlideout();
+
+  const refCallback = useCallback(
+    (el: HTMLElement | null) => {
+      registerCard(system.fides_key)(el);
+    },
+    [registerCard, system.fides_key]
+  );
 
   const allDataUses = [
     ...new Set(system.privacy_declarations.map((d) => d.data_use)),
@@ -20,11 +47,20 @@ export function SystemCard({ system }: SystemCardProps) {
     ...new Set(system.privacy_declarations.flatMap((d) => d.data_categories)),
   ];
 
+  const depCount = system.system_dependencies.length;
+  const dependentCount = getSystemDependents(system.fides_key).length;
+  const hasConnections = depCount > 0 || dependentCount > 0;
+
   return (
     <Card
+      ref={refCallback}
       interactive
       onClick={() => openSlideout(system)}
-      className="group p-4"
+      onMouseEnter={() =>
+        onHoverChange({ key: system.fides_key, mode: "all" })
+      }
+      onMouseLeave={() => onHoverChange(null)}
+      className={`group p-4 transition-opacity duration-200 ${cardStateStyles[cardState]}`}
     >
       {/* System type pill */}
       <div className="mb-3">
@@ -90,14 +126,47 @@ export function SystemCard({ system }: SystemCardProps) {
         </div>
       )}
 
-      {/* Dependencies count */}
-      {system.system_dependencies.length > 0 && (
-        <div className="mt-3 flex items-center gap-1 border-t border-gray-800 pt-2 text-xs text-gray-500">
-          <Link2 size={12} aria-hidden="true" />
-          <span>
-            {system.system_dependencies.length} dependenc
-            {system.system_dependencies.length === 1 ? "y" : "ies"}
-          </span>
+      {/* Dependency / Dependent counts */}
+      {hasConnections && (
+        <div className="mt-3 flex items-center gap-3 border-t border-gray-800 pt-2">
+          {depCount > 0 && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onOpenDeps(system);
+              }}
+              onMouseEnter={() =>
+                onHoverChange({ key: system.fides_key, mode: "deps" })
+              }
+              onMouseLeave={() =>
+                onHoverChange({ key: system.fides_key, mode: "all" })
+              }
+              className="flex items-center gap-1 rounded px-1 py-0.5 text-xs text-blue-400 transition-colors hover:bg-blue-500/10"
+            >
+              <ArrowDown size={11} aria-hidden="true" />
+              {depCount}
+            </button>
+          )}
+          {dependentCount > 0 && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onOpenDeps(system);
+              }}
+              onMouseEnter={() =>
+                onHoverChange({ key: system.fides_key, mode: "dependents" })
+              }
+              onMouseLeave={() =>
+                onHoverChange({ key: system.fides_key, mode: "all" })
+              }
+              className="flex items-center gap-1 rounded px-1 py-0.5 text-xs text-violet-400 transition-colors hover:bg-violet-500/10"
+            >
+              <ArrowUp size={11} aria-hidden="true" />
+              {dependentCount}
+            </button>
+          )}
         </div>
       )}
     </Card>
