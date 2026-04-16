@@ -5,6 +5,7 @@ import { SentenceFilter } from "./SentenceFilter";
 import { formatLabel, formatDimensionLabel } from "@/helpers/formatLabel";
 import { getColorForValue } from "@/helpers/colors";
 import type { GroupByOption, GroupBySelection, ViewMode, FilterMode, DimensionFilters } from "@/types";
+import { useState, useRef, useCallback, useEffect } from "react";
 import {
   X,
   ExternalLink,
@@ -12,6 +13,7 @@ import {
   LayoutList,
   MessageSquareText,
   SlidersHorizontal,
+  ChevronDown,
 } from "lucide-react";
 import { FIDESLANG_DOCS_URL } from "@/helpers/constants";
 import { ShareMenu } from "./ShareMenu";
@@ -64,15 +66,50 @@ export function FilterBar({
   onViewModeChange,
   onFilterModeChange,
 }: FilterBarProps) {
+  const STORAGE_KEY = "data-maps:filtersExpanded";
+
+  const [expanded, setExpanded] = useState(() => {
+    try {
+      return localStorage.getItem(STORAGE_KEY) !== "false";
+    } catch {
+      return true;
+    }
+  });
+
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [contentHeight, setContentHeight] = useState<number | undefined>(undefined);
+
+  const measureHeight = useCallback(() => {
+    if (contentRef.current) {
+      setContentHeight(contentRef.current.scrollHeight);
+    }
+  }, []);
+
+  useEffect(measureHeight, [
+    measureHeight,
+    filterMode,
+    dimensionFilters,
+    availableValues,
+    fidesMode,
+  ]);
+
+  const toggleExpanded = () => {
+    const next = !expanded;
+    setExpanded(next);
+    try {
+      localStorage.setItem(STORAGE_KEY, String(next));
+    } catch { /* storage unavailable */ }
+  };
+
   const hasAnyFilters =
     dimensionFilters.systemType.length > 0 ||
     dimensionFilters.dataUse.length > 0 ||
     dimensionFilters.dataCategories.length > 0;
 
   return (
-    <div className="flex shrink-0 flex-col gap-3 border-b border-gray-800 bg-gray-950 px-6 py-4">
-      {/* Top row: Group by + toggle pills */}
-      <div className="flex flex-wrap items-end gap-4">
+    <div className="flex shrink-0 flex-col border-b border-gray-800 bg-gray-950">
+      {/* Top row: Group by + toggle pills + collapse toggle */}
+      <div className="flex flex-wrap items-end gap-4 px-6 py-4">
         <div className="w-44">
           <Select
             label="Group by"
@@ -158,39 +195,92 @@ export function FilterBar({
             dimensionFilters={dimensionFilters}
             systemNames={systemNames}
           />
+
+          <button
+            aria-expanded={expanded}
+            aria-label={expanded ? "Collapse filters" : "Expand filters"}
+            onClick={toggleExpanded}
+            className="relative flex items-center gap-1.5 rounded-full border border-gray-700 bg-gray-800/50 px-3 py-1.5 text-xs font-medium text-gray-400 transition-colors hover:bg-gray-700 hover:text-gray-200"
+          >
+            <ChevronDown
+              size={13}
+              aria-hidden="true"
+              className={`transition-transform duration-200 ${expanded ? "rotate-180" : ""}`}
+            />
+            <span>{expanded ? "Hide" : "Show"}</span>
+          </button>
         </div>
       </div>
 
-      {/* Filter row: either checkboxes or sentence builder */}
-      {filterMode === "sentence" ? (
-        <div className="flex items-center gap-2">
-          <SentenceFilter
-            dimensionFilters={dimensionFilters}
-            availableValues={availableValues}
-            fidesMode={fidesMode}
-            fidesGroupMap={fidesGroupMap}
-            onToggleFilter={onToggleFilter}
-          />
-          {hasAnyFilters && (
-            <Button variant="ghost" onClick={onClearFilters} className="ml-1">
-              <X size={12} aria-hidden="true" />
-              <span>Clear</span>
-            </Button>
+      {/* Collapsed summary — clickable to re-expand */}
+      {!expanded && hasAnyFilters && (
+        <button
+          onClick={toggleExpanded}
+          className="flex items-center gap-2 border-t border-gray-800/60 px-6 py-2 text-left text-xs text-gray-400 transition-colors hover:bg-gray-900 hover:text-gray-200"
+        >
+          <SlidersHorizontal size={12} className="shrink-0 text-gray-500" aria-hidden="true" />
+          <span className="truncate">
+            <CollapsedFilterSummary dimensionFilters={dimensionFilters} />
+          </span>
+          <ChevronDown size={12} className="ml-auto shrink-0 text-gray-600" aria-hidden="true" />
+        </button>
+      )}
+
+      {/* Collapsible filter row */}
+      <div
+        className="overflow-hidden transition-[max-height] duration-200 ease-in-out"
+        style={{ maxHeight: expanded ? contentHeight ?? "none" : 0 }}
+      >
+        <div ref={contentRef} className="px-6 pb-4">
+          {filterMode === "sentence" ? (
+            <div className="flex items-center gap-2">
+              <SentenceFilter
+                dimensionFilters={dimensionFilters}
+                availableValues={availableValues}
+                fidesMode={fidesMode}
+                fidesGroupMap={fidesGroupMap}
+                onToggleFilter={onToggleFilter}
+              />
+              {hasAnyFilters && (
+                <Button variant="ghost" onClick={onClearFilters} className="ml-1">
+                  <X size={12} aria-hidden="true" />
+                  <span>Clear</span>
+                </Button>
+              )}
+            </div>
+          ) : (
+            <CheckboxFilters
+              dimensionFilters={dimensionFilters}
+              availableValues={availableValues}
+              fidesMode={fidesMode}
+              fidesGroupMap={fidesGroupMap}
+              hasAnyFilters={hasAnyFilters}
+              onToggleFilter={onToggleFilter}
+              onClearFilters={onClearFilters}
+            />
           )}
         </div>
-      ) : (
-        <CheckboxFilters
-          dimensionFilters={dimensionFilters}
-          availableValues={availableValues}
-          fidesMode={fidesMode}
-          fidesGroupMap={fidesGroupMap}
-          hasAnyFilters={hasAnyFilters}
-          onToggleFilter={onToggleFilter}
-          onClearFilters={onClearFilters}
-        />
-      )}
+      </div>
     </div>
   );
+}
+
+function CollapsedFilterSummary({
+  dimensionFilters,
+}: {
+  dimensionFilters: DimensionFilters;
+}) {
+  const segments: string[] = [];
+
+  for (const dim of DIMENSION_ORDER) {
+    const selected = dimensionFilters[dim];
+    if (selected.length === 0) continue;
+    const label = formatDimensionLabel(dim);
+    const values = selected.map(formatLabel).join(", ");
+    segments.push(`${label}: ${values}`);
+  }
+
+  return <>{segments.join("  ·  ")}</>;
 }
 
 function CheckboxFilters({

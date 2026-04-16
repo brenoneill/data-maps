@@ -60,7 +60,7 @@ export function SwimlaneBoard({
           </a>
         </div>
       )}
-      <div ref={boardRef} className="relative flex h-full gap-4 overflow-x-auto p-6">
+      <div ref={boardRef} className="relative flex h-full gap-4 overflow-x-hidden p-6">
         {showLines && (
           <DependencyLines
             systems={allSystems}
