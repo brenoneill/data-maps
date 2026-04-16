@@ -721,7 +721,20 @@ _**Agent (claude-4.6-opus-high-thinking)**_
 
 <details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/vite.config.ts</summary>
 
-Status: **loading**
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/tsconfig.json</summary>
 
 </details>
 
@@ -731,3 +744,1681 @@ Status: **loading**
 <summary>Tool use: **edit_file_v2**</summary>
 
 </details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/index.css</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now let me create the types, helpers, and core files in parallel.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Install dependencies and configure Tailwind v4, path aliases",
+      "id": "setup-deps",
+      "status": "completed"
+    },
+    {
+      "content": "Create src/types/index.ts with System, PrivacyDeclaration, GroupByOption, FilterDimension types",
+      "id": "types",
+      "status": "in_progress"
+    },
+    {
+      "content": "Create helpers: formatLabel.ts (dot-notation to readable labels), colors.ts (color palette maps), groupSystems.ts (grouping + filtering logic)",
+      "id": "helpers",
+      "status": "pending"
+    },
+    {
+      "content": "Create AlertContext and SlideoutContext with providers, plus AlertContainer and SlideoutPanel components",
+      "id": "context",
+      "status": "pending"
+    },
+    {
+      "content": "Build reusable UI primitives: Button, Badge, Card, Select (Headless UI Listbox), EmptyState, Alert, FilterCheckbox",
+      "id": "ui-components",
+      "status": "pending"
+    },
+    {
+      "content": "Build AppLayout and Header components, wire up provider stack in main.tsx",
+      "id": "layout",
+      "status": "pending"
+    },
+    {
+      "content": "Create useDashboardState (nuqs URL state) and useFilteredSystems (derived grouped/filtered data) hooks",
+      "id": "dashboard-hooks",
+      "status": "pending"
+    },
+    {
+      "content": "Build DashboardPage, FilterBar (group-by selector + dynamic filter chips), SwimlaneBoard, Swimlane, and SystemCard components",
+      "id": "dashboard-page",
+      "status": "pending"
+    },
+    {
+      "content": "Build SystemDetail slideout content with full system info, privacy declarations, and dependencies",
+      "id": "system-detail",
+      "status": "pending"
+    },
+    {
+      "content": "Final polish: index.html title/favicon, scrollbar styling, responsive tweaks, accessibility review (aria-hidden on icons, sr-only spans)",
+      "id": "polish",
+      "status": "pending"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Install dependencies (tailwindcss, @tailwindcss/vite, @headlessui/react, lucide-react, nuqs), configure Tailwind v4 in vite.config.ts and index.css, add path alias to tsconfig",
+      "id": "setup-deps",
+      "status": "in_progress"
+    },
+    {
+      "content": "Create src/types/index.ts with System, PrivacyDeclaration, GroupByOption, FilterDimension types",
+      "id": "types",
+      "status": "pending"
+    },
+    {
+      "content": "Create helpers: formatLabel.ts (dot-notation to readable labels), colors.ts (color palette maps), groupSystems.ts (grouping + filtering logic)",
+      "id": "helpers",
+      "status": "pending"
+    },
+    {
+      "content": "Create AlertContext and SlideoutContext with providers, plus AlertContainer and SlideoutPanel components",
+      "id": "context",
+      "status": "pending"
+    },
+    {
+      "content": "Build reusable UI primitives: Button, Badge, Card, Select (Headless UI Listbox), EmptyState, Alert, FilterCheckbox",
+      "id": "ui-components",
+      "status": "pending"
+    },
+    {
+      "content": "Build AppLayout and Header components, wire up provider stack in main.tsx",
+      "id": "layout",
+      "status": "pending"
+    },
+    {
+      "content": "Create useDashboardState (nuqs URL state) and useFilteredSystems (derived grouped/filtered data) hooks",
+      "id": "dashboard-hooks",
+      "status": "pending"
+    },
+    {
+      "content": "Build DashboardPage, FilterBar (group-by selector + dynamic filter chips), SwimlaneBoard, Swimlane, and SystemCard components",
+      "id": "dashboard-page",
+      "status": "pending"
+    },
+    {
+      "content": "Build SystemDetail slideout content with full system info, privacy declarations, and dependencies",
+      "id": "system-detail",
+      "status": "pending"
+    },
+    {
+      "content": "Final polish: index.html title/favicon, scrollbar styling, responsive tweaks, accessibility review (aria-hidden on icons, sr-only spans)",
+      "id": "polish",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/types/index.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/helpers/formatLabel.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/helpers/colors.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/helpers/groupSystems.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now let me build the context providers and UI components in parallel.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Install dependencies and configure Tailwind v4, path aliases",
+      "id": "setup-deps",
+      "status": "completed"
+    },
+    {
+      "content": "Create src/types/index.ts",
+      "id": "types",
+      "status": "completed"
+    },
+    {
+      "content": "Create helpers: formatLabel.ts, colors.ts, groupSystems.ts",
+      "id": "helpers",
+      "status": "completed"
+    },
+    {
+      "content": "Create AlertContext and SlideoutContext with providers",
+      "id": "context",
+      "status": "in_progress"
+    },
+    {
+      "content": "Build reusable UI primitives: Button, Badge, Card, Select (Headless UI Listbox), EmptyState, Alert, FilterCheckbox",
+      "id": "ui-components",
+      "status": "pending"
+    },
+    {
+      "content": "Build AppLayout and Header components, wire up provider stack in main.tsx",
+      "id": "layout",
+      "status": "pending"
+    },
+    {
+      "content": "Create useDashboardState (nuqs URL state) and useFilteredSystems (derived grouped/filtered data) hooks",
+      "id": "dashboard-hooks",
+      "status": "pending"
+    },
+    {
+      "content": "Build DashboardPage, FilterBar (group-by selector + dynamic filter chips), SwimlaneBoard, Swimlane, and SystemCard components",
+      "id": "dashboard-page",
+      "status": "pending"
+    },
+    {
+      "content": "Build SystemDetail slideout content with full system info, privacy declarations, and dependencies",
+      "id": "system-detail",
+      "status": "pending"
+    },
+    {
+      "content": "Final polish: index.html title/favicon, scrollbar styling, responsive tweaks, accessibility review (aria-hidden on icons, sr-only spans)",
+      "id": "polish",
+      "status": "pending"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Install dependencies and configure Tailwind v4, path aliases",
+      "id": "setup-deps",
+      "status": "completed"
+    },
+    {
+      "content": "Create src/types/index.ts with System, PrivacyDeclaration, GroupByOption, FilterDimension types",
+      "id": "types",
+      "status": "in_progress"
+    },
+    {
+      "content": "Create helpers: formatLabel.ts (dot-notation to readable labels), colors.ts (color palette maps), groupSystems.ts (grouping + filtering logic)",
+      "id": "helpers",
+      "status": "pending"
+    },
+    {
+      "content": "Create AlertContext and SlideoutContext with providers, plus AlertContainer and SlideoutPanel components",
+      "id": "context",
+      "status": "pending"
+    },
+    {
+      "content": "Build reusable UI primitives: Button, Badge, Card, Select (Headless UI Listbox), EmptyState, Alert, FilterCheckbox",
+      "id": "ui-components",
+      "status": "pending"
+    },
+    {
+      "content": "Build AppLayout and Header components, wire up provider stack in main.tsx",
+      "id": "layout",
+      "status": "pending"
+    },
+    {
+      "content": "Create useDashboardState (nuqs URL state) and useFilteredSystems (derived grouped/filtered data) hooks",
+      "id": "dashboard-hooks",
+      "status": "pending"
+    },
+    {
+      "content": "Build DashboardPage, FilterBar (group-by selector + dynamic filter chips), SwimlaneBoard, Swimlane, and SystemCard components",
+      "id": "dashboard-page",
+      "status": "pending"
+    },
+    {
+      "content": "Build SystemDetail slideout content with full system info, privacy declarations, and dependencies",
+      "id": "system-detail",
+      "status": "pending"
+    },
+    {
+      "content": "Final polish: index.html title/favicon, scrollbar styling, responsive tweaks, accessibility review (aria-hidden on icons, sr-only spans)",
+      "id": "polish",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/context/AlertContext.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/context/SlideoutContext.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/ui/Button.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/ui/Badge.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/ui/Card.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/ui/EmptyState.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/ui/Alert.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/ui/Select.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/ui/FilterCheckbox.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Good progress. Now let me build the layout components, hooks, and dashboard pieces.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Install dependencies and configure Tailwind v4, path aliases",
+      "id": "setup-deps",
+      "status": "completed"
+    },
+    {
+      "content": "Create src/types/index.ts",
+      "id": "types",
+      "status": "completed"
+    },
+    {
+      "content": "Create helpers: formatLabel.ts, colors.ts, groupSystems.ts",
+      "id": "helpers",
+      "status": "completed"
+    },
+    {
+      "content": "Create AlertContext and SlideoutContext with providers",
+      "id": "context",
+      "status": "completed"
+    },
+    {
+      "content": "Build reusable UI primitives",
+      "id": "ui-components",
+      "status": "completed"
+    },
+    {
+      "content": "Build AppLayout and Header components, wire up provider stack in main.tsx",
+      "id": "layout",
+      "status": "in_progress"
+    },
+    {
+      "content": "Create useDashboardState (nuqs URL state) and useFilteredSystems (derived grouped/filtered data) hooks",
+      "id": "dashboard-hooks",
+      "status": "pending"
+    },
+    {
+      "content": "Build DashboardPage, FilterBar (group-by selector + dynamic filter chips), SwimlaneBoard, Swimlane, and SystemCard components",
+      "id": "dashboard-page",
+      "status": "pending"
+    },
+    {
+      "content": "Build SystemDetail slideout content with full system info, privacy declarations, and dependencies",
+      "id": "system-detail",
+      "status": "pending"
+    },
+    {
+      "content": "Final polish: index.html title/favicon, scrollbar styling, responsive tweaks, accessibility review (aria-hidden on icons, sr-only spans)",
+      "id": "polish",
+      "status": "pending"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Install dependencies and configure Tailwind v4, path aliases",
+      "id": "setup-deps",
+      "status": "completed"
+    },
+    {
+      "content": "Create src/types/index.ts",
+      "id": "types",
+      "status": "completed"
+    },
+    {
+      "content": "Create helpers: formatLabel.ts, colors.ts, groupSystems.ts",
+      "id": "helpers",
+      "status": "completed"
+    },
+    {
+      "content": "Create AlertContext and SlideoutContext with providers",
+      "id": "context",
+      "status": "in_progress"
+    },
+    {
+      "content": "Build reusable UI primitives: Button, Badge, Card, Select (Headless UI Listbox), EmptyState, Alert, FilterCheckbox",
+      "id": "ui-components",
+      "status": "pending"
+    },
+    {
+      "content": "Build AppLayout and Header components, wire up provider stack in main.tsx",
+      "id": "layout",
+      "status": "pending"
+    },
+    {
+      "content": "Create useDashboardState (nuqs URL state) and useFilteredSystems (derived grouped/filtered data) hooks",
+      "id": "dashboard-hooks",
+      "status": "pending"
+    },
+    {
+      "content": "Build DashboardPage, FilterBar (group-by selector + dynamic filter chips), SwimlaneBoard, Swimlane, and SystemCard components",
+      "id": "dashboard-page",
+      "status": "pending"
+    },
+    {
+      "content": "Build SystemDetail slideout content with full system info, privacy declarations, and dependencies",
+      "id": "system-detail",
+      "status": "pending"
+    },
+    {
+      "content": "Final polish: index.html title/favicon, scrollbar styling, responsive tweaks, accessibility review (aria-hidden on icons, sr-only spans)",
+      "id": "polish",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/layout/AlertContainer.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/layout/SlideoutPanel.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/layout/Header.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/layout/AppLayout.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now let me create the hooks and the dashboard components.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Install dependencies and configure Tailwind v4, path aliases",
+      "id": "setup-deps",
+      "status": "completed"
+    },
+    {
+      "content": "Create src/types/index.ts",
+      "id": "types",
+      "status": "completed"
+    },
+    {
+      "content": "Create helpers: formatLabel.ts, colors.ts, groupSystems.ts",
+      "id": "helpers",
+      "status": "completed"
+    },
+    {
+      "content": "Create AlertContext and SlideoutContext with providers",
+      "id": "context",
+      "status": "completed"
+    },
+    {
+      "content": "Build reusable UI primitives",
+      "id": "ui-components",
+      "status": "completed"
+    },
+    {
+      "content": "Build AppLayout, Header, AlertContainer, SlideoutPanel",
+      "id": "layout",
+      "status": "completed"
+    },
+    {
+      "content": "Create useDashboardState and useFilteredSystems hooks",
+      "id": "dashboard-hooks",
+      "status": "in_progress"
+    },
+    {
+      "content": "Build DashboardPage, FilterBar (group-by selector + dynamic filter chips), SwimlaneBoard, Swimlane, and SystemCard components",
+      "id": "dashboard-page",
+      "status": "pending"
+    },
+    {
+      "content": "Build SystemDetail slideout content with full system info, privacy declarations, and dependencies",
+      "id": "system-detail",
+      "status": "pending"
+    },
+    {
+      "content": "Final polish: index.html title/favicon, scrollbar styling, responsive tweaks, accessibility review (aria-hidden on icons, sr-only spans)",
+      "id": "polish",
+      "status": "pending"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Install dependencies and configure Tailwind v4, path aliases",
+      "id": "setup-deps",
+      "status": "completed"
+    },
+    {
+      "content": "Create src/types/index.ts",
+      "id": "types",
+      "status": "completed"
+    },
+    {
+      "content": "Create helpers: formatLabel.ts, colors.ts, groupSystems.ts",
+      "id": "helpers",
+      "status": "completed"
+    },
+    {
+      "content": "Create AlertContext and SlideoutContext with providers",
+      "id": "context",
+      "status": "completed"
+    },
+    {
+      "content": "Build reusable UI primitives",
+      "id": "ui-components",
+      "status": "completed"
+    },
+    {
+      "content": "Build AppLayout and Header components, wire up provider stack in main.tsx",
+      "id": "layout",
+      "status": "in_progress"
+    },
+    {
+      "content": "Create useDashboardState (nuqs URL state) and useFilteredSystems (derived grouped/filtered data) hooks",
+      "id": "dashboard-hooks",
+      "status": "pending"
+    },
+    {
+      "content": "Build DashboardPage, FilterBar (group-by selector + dynamic filter chips), SwimlaneBoard, Swimlane, and SystemCard components",
+      "id": "dashboard-page",
+      "status": "pending"
+    },
+    {
+      "content": "Build SystemDetail slideout content with full system info, privacy declarations, and dependencies",
+      "id": "system-detail",
+      "status": "pending"
+    },
+    {
+      "content": "Final polish: index.html title/favicon, scrollbar styling, responsive tweaks, accessibility review (aria-hidden on icons, sr-only spans)",
+      "id": "polish",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/hooks/useDashboardState.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/hooks/useFilteredSystems.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SystemCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/Swimlane.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SwimlaneBoard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now let me build the DashboardPage, SystemDetail, and wire everything up in App.tsx and main.tsx.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Install dependencies and configure Tailwind v4, path aliases",
+      "id": "setup-deps",
+      "status": "completed"
+    },
+    {
+      "content": "Create src/types/index.ts",
+      "id": "types",
+      "status": "completed"
+    },
+    {
+      "content": "Create helpers: formatLabel.ts, colors.ts, groupSystems.ts",
+      "id": "helpers",
+      "status": "completed"
+    },
+    {
+      "content": "Create AlertContext and SlideoutContext with providers",
+      "id": "context",
+      "status": "completed"
+    },
+    {
+      "content": "Build reusable UI primitives",
+      "id": "ui-components",
+      "status": "completed"
+    },
+    {
+      "content": "Build AppLayout, Header, AlertContainer, SlideoutPanel",
+      "id": "layout",
+      "status": "completed"
+    },
+    {
+      "content": "Create useDashboardState and useFilteredSystems hooks",
+      "id": "dashboard-hooks",
+      "status": "completed"
+    },
+    {
+      "content": "Build FilterBar, SwimlaneBoard, Swimlane, SystemCard",
+      "id": "dashboard-page",
+      "status": "completed"
+    },
+    {
+      "content": "Build SystemDetail slideout content and DashboardPage orchestrator",
+      "id": "system-detail",
+      "status": "in_progress"
+    },
+    {
+      "content": "Final polish: index.html title/favicon, scrollbar styling, responsive tweaks, accessibility review (aria-hidden on icons, sr-only spans)",
+      "id": "polish",
+      "status": "pending"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Install dependencies and configure Tailwind v4, path aliases",
+      "id": "setup-deps",
+      "status": "completed"
+    },
+    {
+      "content": "Create src/types/index.ts",
+      "id": "types",
+      "status": "completed"
+    },
+    {
+      "content": "Create helpers: formatLabel.ts, colors.ts, groupSystems.ts",
+      "id": "helpers",
+      "status": "completed"
+    },
+    {
+      "content": "Create AlertContext and SlideoutContext with providers",
+      "id": "context",
+      "status": "completed"
+    },
+    {
+      "content": "Build reusable UI primitives",
+      "id": "ui-components",
+      "status": "completed"
+    },
+    {
+      "content": "Build AppLayout, Header, AlertContainer, SlideoutPanel",
+      "id": "layout",
+      "status": "completed"
+    },
+    {
+      "content": "Create useDashboardState and useFilteredSystems hooks",
+      "id": "dashboard-hooks",
+      "status": "in_progress"
+    },
+    {
+      "content": "Build DashboardPage, FilterBar (group-by selector + dynamic filter chips), SwimlaneBoard, Swimlane, and SystemCard components",
+      "id": "dashboard-page",
+      "status": "pending"
+    },
+    {
+      "content": "Build SystemDetail slideout content with full system info, privacy declarations, and dependencies",
+      "id": "system-detail",
+      "status": "pending"
+    },
+    {
+      "content": "Final polish: index.html title/favicon, scrollbar styling, responsive tweaks, accessibility review (aria-hidden on icons, sr-only spans)",
+      "id": "polish",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SystemDetail.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/App.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/main.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now let me do the final polish -- update the index.html and clean up the old CSS file.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Install dependencies and configure Tailwind v4, path aliases",
+      "id": "setup-deps",
+      "status": "completed"
+    },
+    {
+      "content": "Create src/types/index.ts",
+      "id": "types",
+      "status": "completed"
+    },
+    {
+      "content": "Create helpers: formatLabel.ts, colors.ts, groupSystems.ts",
+      "id": "helpers",
+      "status": "completed"
+    },
+    {
+      "content": "Create AlertContext and SlideoutContext with providers",
+      "id": "context",
+      "status": "completed"
+    },
+    {
+      "content": "Build reusable UI primitives",
+      "id": "ui-components",
+      "status": "completed"
+    },
+    {
+      "content": "Build AppLayout, Header, AlertContainer, SlideoutPanel",
+      "id": "layout",
+      "status": "completed"
+    },
+    {
+      "content": "Create useDashboardState and useFilteredSystems hooks",
+      "id": "dashboard-hooks",
+      "status": "completed"
+    },
+    {
+      "content": "Build FilterBar, SwimlaneBoard, Swimlane, SystemCard",
+      "id": "dashboard-page",
+      "status": "completed"
+    },
+    {
+      "content": "Build SystemDetail slideout and DashboardPage orchestrator",
+      "id": "system-detail",
+      "status": "completed"
+    },
+    {
+      "content": "Final polish: index.html title/favicon, clean up old files, accessibility review",
+      "id": "polish",
+      "status": "in_progress"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Install dependencies and configure Tailwind v4, path aliases",
+      "id": "setup-deps",
+      "status": "completed"
+    },
+    {
+      "content": "Create src/types/index.ts",
+      "id": "types",
+      "status": "completed"
+    },
+    {
+      "content": "Create helpers: formatLabel.ts, colors.ts, groupSystems.ts",
+      "id": "helpers",
+      "status": "completed"
+    },
+    {
+      "content": "Create AlertContext and SlideoutContext with providers",
+      "id": "context",
+      "status": "completed"
+    },
+    {
+      "content": "Build reusable UI primitives",
+      "id": "ui-components",
+      "status": "completed"
+    },
+    {
+      "content": "Build AppLayout, Header, AlertContainer, SlideoutPanel",
+      "id": "layout",
+      "status": "completed"
+    },
+    {
+      "content": "Create useDashboardState and useFilteredSystems hooks",
+      "id": "dashboard-hooks",
+      "status": "completed"
+    },
+    {
+      "content": "Build FilterBar, SwimlaneBoard, Swimlane, SystemCard",
+      "id": "dashboard-page",
+      "status": "completed"
+    },
+    {
+      "content": "Build SystemDetail slideout content and DashboardPage orchestrator",
+      "id": "system-detail",
+      "status": "in_progress"
+    },
+    {
+      "content": "Final polish: index.html title/favicon, scrollbar styling, responsive tweaks, accessibility review (aria-hidden on icons, sr-only spans)",
+      "id": "polish",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/index.html</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="delete_file">
+<details><summary>Tool use: **delete_file**</summary>
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="delete_file"><details>
+<summary>Tool use: **delete_file**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now let me try to build the project to catch any issues.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/brendanoneill/data-maps && npx tsc --noEmit 2>&1</summary>
+
+```bash
+cd /Users/brendanoneill/data-maps && npx tsc --noEmit 2>&1
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Zero TypeScript errors. Let me also do a quick Vite build check to make sure everything compiles.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/brendanoneill/data-maps && npx vite build 2>&1</summary>
+
+```bash
+cd /Users/brendanoneill/data-maps && npx vite build 2>&1
+```
+
+```
+vite v5.4.21 building for production...
+transforming...
+✓ 1976 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.46 kB │ gzip:  0.30 kB
+dist/assets/index-_MOtmIdP.css   29.29 kB │ gzip:  6.03 kB
+dist/assets/index-5T1ZY38z.js   306.16 kB │ gzip: 98.51 kB
+✓ built in 1.48s
+
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Clean build with zero errors. Let me also run the linter on the key files to check for any issues.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints">
+<details>
+<summary>Tool use: **read_lints**</summary>
+
+
+Parameters:
+
+```json
+{
+  "paths": [
+    "/Users/brendanoneill/data-maps/src/main.tsx",
+    "/Users/brendanoneill/data-maps/src/App.tsx",
+    "/Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx",
+    "/Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx",
+    "/Users/brendanoneill/data-maps/src/hooks/useDashboardState.ts"
+  ]
+}
+```
+Result:
+
+```json
+{
+  "linterErrorsByFile": [
+    {
+      "relativeWorkspacePath": "/Users/brendanoneill/data-maps/src/main.tsx"
+    },
+    {
+      "relativeWorkspacePath": "/Users/brendanoneill/data-maps/src/App.tsx"
+    },
+    {
+      "relativeWorkspacePath": "/Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx"
+    },
+    {
+      "relativeWorkspacePath": "/Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx"
+    },
+    {
+      "relativeWorkspacePath": "/Users/brendanoneill/data-maps/src/hooks/useDashboardState.ts"
+    }
+  ]
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints"><details>
+<summary>Tool use: **read_lints**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Install dependencies and configure Tailwind v4, path aliases",
+      "id": "setup-deps",
+      "status": "completed"
+    },
+    {
+      "content": "Create src/types/index.ts",
+      "id": "types",
+      "status": "completed"
+    },
+    {
+      "content": "Create helpers: formatLabel.ts, colors.ts, groupSystems.ts",
+      "id": "helpers",
+      "status": "completed"
+    },
+    {
+      "content": "Create AlertContext and SlideoutContext with providers",
+      "id": "context",
+      "status": "completed"
+    },
+    {
+      "content": "Build reusable UI primitives",
+      "id": "ui-components",
+      "status": "completed"
+    },
+    {
+      "content": "Build AppLayout, Header, AlertContainer, SlideoutPanel",
+      "id": "layout",
+      "status": "completed"
+    },
+    {
+      "content": "Create useDashboardState and useFilteredSystems hooks",
+      "id": "dashboard-hooks",
+      "status": "completed"
+    },
+    {
+      "content": "Build FilterBar, SwimlaneBoard, Swimlane, SystemCard",
+      "id": "dashboard-page",
+      "status": "completed"
+    },
+    {
+      "content": "Build SystemDetail slideout and DashboardPage orchestrator",
+      "id": "system-detail",
+      "status": "completed"
+    },
+    {
+      "content": "Final polish: index.html title/favicon, clean up old files, accessibility review",
+      "id": "polish",
+      "status": "completed"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Install dependencies and configure Tailwind v4, path aliases",
+      "id": "setup-deps",
+      "status": "completed"
+    },
+    {
+      "content": "Create src/types/index.ts",
+      "id": "types",
+      "status": "completed"
+    },
+    {
+      "content": "Create helpers: formatLabel.ts, colors.ts, groupSystems.ts",
+      "id": "helpers",
+      "status": "completed"
+    },
+    {
+      "content": "Create AlertContext and SlideoutContext with providers",
+      "id": "context",
+      "status": "completed"
+    },
+    {
+      "content": "Build reusable UI primitives",
+      "id": "ui-components",
+      "status": "completed"
+    },
+    {
+      "content": "Build AppLayout, Header, AlertContainer, SlideoutPanel",
+      "id": "layout",
+      "status": "completed"
+    },
+    {
+      "content": "Create useDashboardState and useFilteredSystems hooks",
+      "id": "dashboard-hooks",
+      "status": "completed"
+    },
+    {
+      "content": "Build FilterBar, SwimlaneBoard, Swimlane, SystemCard",
+      "id": "dashboard-page",
+      "status": "completed"
+    },
+    {
+      "content": "Build SystemDetail slideout and DashboardPage orchestrator",
+      "id": "system-detail",
+      "status": "completed"
+    },
+    {
+      "content": "Final polish: index.html title/favicon, clean up old files, accessibility review",
+      "id": "polish",
+      "status": "in_progress"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Everything is built and compiles cleanly. Here's a summary of what was created:
+
+**Project structure** (22 new/modified files):
+
+```
+src/
+  types/index.ts                           -- System, PrivacyDeclaration, GroupByOption types
+  helpers/
+    formatLabel.ts                         -- "user.provided.identifiable.contact.email" → "Email"
+    colors.ts                              -- Color palette maps per dimension
+    groupSystems.ts                        -- Grouping + filtering logic
+  hooks/
+    useDashboardState.ts                   -- nuqs URL state (groupBy, filterType, filters)
+    useFilteredSystems.ts                  -- Derived grouped/filtered system data
+  context/
+    AlertContext.tsx                        -- App-wide toast alerts
+    SlideoutContext.tsx                     -- App-wide slideout panel state
+  components/
+    ui/Button.tsx, Badge.tsx, Card.tsx      -- Reusable primitives
+    ui/Select.tsx                           -- Headless UI Listbox wrapper
+    ui/EmptyState.tsx, Alert.tsx            -- Empty states + toasts
+    ui/FilterCheckbox.tsx                   -- Colored toggle chips
+    layout/AppLayout.tsx, Header.tsx        -- App shell
+    layout/AlertContainer.tsx               -- Fixed toast container
+    layout/SlideoutPanel.tsx                -- Headless UI Dialog slideout
+    dashboard/DashboardPage.tsx             -- Orchestrator
+    dashboard/FilterBar.tsx                 -- Group-by + dynamic filter bar
+    dashboard/SwimlaneBoard.tsx             -- Horizontal scroll container
+    dashboard/Swimlane.tsx                  -- Vertical column per group
+    dashboard/SystemCard.tsx                -- Clickable system card
+    dashboard/SystemDetail.tsx              -- Full detail in slideout
+  App.tsx                                   -- Root component
+  main.tsx                                  -- Provider stack entry point
+  index.css                                 -- Tailwind + dark scrollbar styles
+```
+
+**Key features working:**
+- **Vertical swimlanes** grouped by System Type (default), Data Use, or Data Categories
+- **Dynamic filters** -- when grouped by System Type, filter by Data Use or Data Categories (and all other permutations)
+- **URL-shareable state** via nuqs -- every grouping/filter combo is encoded in the URL
+- **Slideout panel** -- click any system card to see full details (description, privacy declarations with badges, dependencies resolved to real names)
+- **`formatLabel` helper** -- converts dot-notation values like `user.provided.identifiable.contact.email` to "Email"
+- **Color-coded badges** -- distinct colors for each system type, data use, and data category
+- **Dark mode** -- dark gray backgrounds, subtle borders, Linear/GitHub aesthetic
+- **Accessibility** -- `aria-hidden` on decorative icons, `sr-only` labels on interactive icon buttons, semantic HTML
+
+Run `npm run dev` to see it in action.
+
+---
+
+_**User**_
+
+It's important that we have a pill for 'System Type' this should be at the top and the pill color should match the color associated in the swimlane i.e. Application should be blue, Database yello etc
+
+---
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<think><details><summary>Thought Process</summary>
+The user wants to add a System Type pill/badge at the top of each SystemCard, with the color matching the swimlane colors (Application = blue, Database = amber/yellow, etc.). Let me read the current SystemCard to see what needs to change.</details></think>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/SystemCard.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SystemCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Done. Each system card now has a color-coded System Type pill at the very top -- Application in blue, Service in violet, Database in amber, and Integration in emerald -- matching the swimlane header colors defined in the color palette.
+
+---
+
+_**User**_
+
+Please add a more clear distinciton in the card between the data use and the data categories pills 
+
+---
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/SystemCard.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SystemCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Each section now has a small uppercase label ("DATA USE" and "DATA CATEGORIES") above the pills, giving a clear visual distinction between the two groups.

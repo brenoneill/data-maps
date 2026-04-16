@@ -26,6 +26,13 @@ export function SystemCard({ system }: SystemCardProps) {
       onClick={() => openSlideout(system)}
       className="group p-4"
     >
+      {/* System type pill */}
+      <div className="mb-3">
+        <Badge colorSet={getColorForValue(system.system_type, "systemType")}>
+          {system.system_type}
+        </Badge>
+      </div>
+
       {/* Header row */}
       <div className="mb-3 flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1">
@@ -50,26 +57,36 @@ export function SystemCard({ system }: SystemCardProps) {
 
       {/* Data Uses */}
       {allDataUses.length > 0 && (
-        <div className="mb-2 flex flex-wrap gap-1">
-          {allDataUses.map((use) => (
-            <Badge key={use} colorSet={getColorForValue(use, "dataUse")}>
-              {formatLabel(use)}
-            </Badge>
-          ))}
+        <div className="mb-3">
+          <span className="mb-1.5 block text-[10px] font-semibold uppercase tracking-wider text-gray-500">
+            Data Use
+          </span>
+          <div className="flex flex-wrap gap-1">
+            {allDataUses.map((use) => (
+              <Badge key={use} colorSet={getColorForValue(use, "dataUse")}>
+                {formatLabel(use)}
+              </Badge>
+            ))}
+          </div>
         </div>
       )}
 
       {/* Data Categories */}
       {allCategories.length > 0 && (
-        <div className="mb-2 flex flex-wrap gap-1">
-          {allCategories.map((cat) => (
-            <Badge
-              key={cat}
-              colorSet={getColorForValue(cat, "dataCategories")}
-            >
-              {formatLabel(cat)}
-            </Badge>
-          ))}
+        <div className="mb-2">
+          <span className="mb-1.5 block text-[10px] font-semibold uppercase tracking-wider text-gray-500">
+            Data Categories
+          </span>
+          <div className="flex flex-wrap gap-1">
+            {allCategories.map((cat) => (
+              <Badge
+                key={cat}
+                colorSet={getColorForValue(cat, "dataCategories")}
+              >
+                {formatLabel(cat)}
+              </Badge>
+            ))}
+          </div>
         </div>
       )}
 
