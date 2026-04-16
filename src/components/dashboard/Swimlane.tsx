@@ -57,22 +57,21 @@ export function Swimlane({
 
       <div
         data-swimlane-column
-        className={`flex flex-1 gap-3 overflow-y-auto rounded-xl border border-gray-800/50 bg-gray-925 p-3 ${
+        className={`flex-1 overflow-y-auto rounded-xl border border-gray-800/50 bg-gray-925 p-3 ${
           isUngrouped
-            ? "flex-row flex-wrap content-start"
-            : "flex-col"
+            ? "grid auto-rows-[1fr] grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] gap-3"
+            : "flex flex-col gap-3"
         }`}
       >
         {group.systems.length > 0 ? (
           group.systems.map((system) => (
-            <div key={system.fides_key} className={isUngrouped ? "w-80" : ""}>
-              <SystemCard
-                system={system}
-                registerCard={registerCard}
-                cardState={getCardState(system.fides_key)}
-                onHoverChange={onHoverChange}
-              />
-            </div>
+            <SystemCard
+              key={system.fides_key}
+              system={system}
+              registerCard={registerCard}
+              cardState={getCardState(system.fides_key)}
+              onHoverChange={onHoverChange}
+            />
           ))
         ) : (
           <EmptyState

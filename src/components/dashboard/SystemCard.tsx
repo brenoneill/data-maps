@@ -59,16 +59,14 @@ export function SystemCard({
         onHoverChange({ key: system.fides_key, mode: "all" })
       }
       onMouseLeave={() => onHoverChange(null)}
-      className={`group p-4 transition-opacity duration-200 ${cardStateStyles[cardState]}`}
+      className={`group flex flex-col p-4 transition-opacity duration-200 ${cardStateStyles[cardState]}`}
     >
-      {/* System type pill */}
       <div className="mb-3">
         <Badge colorSet={getColorForValue(system.system_type, "systemType")}>
           {system.system_type}
         </Badge>
       </div>
 
-      {/* Header row */}
       <div className="mb-3 flex items-start justify-between gap-2">
         <div className="min-w-0 flex-1">
           <h3 className="truncate text-sm font-medium text-gray-100">
@@ -85,12 +83,10 @@ export function SystemCard({
         />
       </div>
 
-      {/* Description */}
       <p className="mb-3 line-clamp-2 text-xs leading-relaxed text-gray-400">
         {system.description}
       </p>
 
-      {/* Data Uses */}
       {allDataUses.length > 0 && (
         <div className="mb-3">
           <span className="mb-1.5 block text-[10px] font-semibold uppercase tracking-wider text-gray-500">
@@ -106,7 +102,6 @@ export function SystemCard({
         </div>
       )}
 
-      {/* Data Categories */}
       {allCategories.length > 0 && (
         <div className="mb-2">
           <span className="mb-1.5 block text-[10px] font-semibold uppercase tracking-wider text-gray-500">
@@ -125,39 +120,43 @@ export function SystemCard({
         </div>
       )}
 
-      {/* Dependency / Dependent counts */}
-      {hasConnections && (
-        <div className="mt-3 flex items-center gap-3 border-t border-gray-800 pt-2">
-          {depCount > 0 && (
-            <span
-              onMouseEnter={() =>
-                onHoverChange({ key: system.fides_key, mode: "deps" })
-              }
-              onMouseLeave={() =>
-                onHoverChange({ key: system.fides_key, mode: "all" })
-              }
-              className="flex items-center gap-1 rounded px-1 py-0.5 text-xs text-blue-400"
-            >
-              <ArrowDown size={11} aria-hidden="true" />
-              {depCount}
-            </span>
-          )}
-          {dependentCount > 0 && (
-            <span
-              onMouseEnter={() =>
-                onHoverChange({ key: system.fides_key, mode: "dependents" })
-              }
-              onMouseLeave={() =>
-                onHoverChange({ key: system.fides_key, mode: "all" })
-              }
-              className="flex items-center gap-1 rounded px-1 py-0.5 text-xs text-violet-400"
-            >
-              <ArrowUp size={11} aria-hidden="true" />
-              {dependentCount}
-            </span>
-          )}
-        </div>
-      )}
+      {/* Pinned to bottom via mt-auto so the divider aligns across cards */}
+      <div className="mt-auto flex items-center gap-3 border-t border-gray-800 pt-2">
+        {hasConnections ? (
+          <>
+            {depCount > 0 && (
+              <span
+                onMouseEnter={() =>
+                  onHoverChange({ key: system.fides_key, mode: "deps" })
+                }
+                onMouseLeave={() =>
+                  onHoverChange({ key: system.fides_key, mode: "all" })
+                }
+                className="flex items-center gap-1 rounded px-1 py-0.5 text-xs text-blue-400"
+              >
+                <ArrowDown size={11} aria-hidden="true" />
+                {depCount}
+              </span>
+            )}
+            {dependentCount > 0 && (
+              <span
+                onMouseEnter={() =>
+                  onHoverChange({ key: system.fides_key, mode: "dependents" })
+                }
+                onMouseLeave={() =>
+                  onHoverChange({ key: system.fides_key, mode: "all" })
+                }
+                className="flex items-center gap-1 rounded px-1 py-0.5 text-xs text-violet-400"
+              >
+                <ArrowUp size={11} aria-hidden="true" />
+                {dependentCount}
+              </span>
+            )}
+          </>
+        ) : (
+          <span className="text-xs text-gray-600">No dependencies</span>
+        )}
+      </div>
     </Card>
   );
 }
