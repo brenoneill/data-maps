@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import type { System, GroupByOption, GroupedSystems } from "@/types";
+import type { System, GroupByOption, GroupedSystems, DimensionFilters } from "@/types";
 import {
   groupAndFilterSystems,
   getUniqueValues,
@@ -8,21 +8,25 @@ import {
 interface UseFilteredSystemsParams {
   systems: System[];
   groupBy: GroupByOption;
-  filterType: GroupByOption | "";
-  filters: string[];
+  dimensionFilters: DimensionFilters;
   fidesMode: boolean;
+}
+
+interface AvailableValues {
+  systemType: string[];
+  dataUse: string[];
+  dataCategories: string[];
 }
 
 interface UseFilteredSystemsResult {
   groups: GroupedSystems[];
-  availableFilterValues: string[];
+  availableValues: AvailableValues;
 }
 
 export function useFilteredSystems({
   systems,
   groupBy,
-  filterType,
-  filters,
+  dimensionFilters,
   fidesMode,
 }: UseFilteredSystemsParams): UseFilteredSystemsResult {
   const groups = useMemo(
@@ -30,17 +34,20 @@ export function useFilteredSystems({
       groupAndFilterSystems(
         systems,
         groupBy,
-        filterType || null,
-        filters,
+        dimensionFilters,
         fidesMode
       ),
-    [systems, groupBy, filterType, filters, fidesMode]
+    [systems, groupBy, dimensionFilters, fidesMode]
   );
 
-  const availableFilterValues = useMemo(
-    () => (filterType ? getUniqueValues(systems, filterType, fidesMode) : []),
-    [systems, filterType, fidesMode]
+  const availableValues = useMemo<AvailableValues>(
+    () => ({
+      systemType: getUniqueValues(systems, "systemType", fidesMode),
+      dataUse: getUniqueValues(systems, "dataUse", fidesMode),
+      dataCategories: getUniqueValues(systems, "dataCategories", fidesMode),
+    }),
+    [systems, fidesMode]
   );
 
-  return { groups, availableFilterValues };
+  return { groups, availableValues };
 }

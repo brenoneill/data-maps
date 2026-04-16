@@ -1,4 +1,4 @@
-import type { System, GroupByOption, GroupedSystems } from "@/types";
+import type { System, GroupByOption, GroupedSystems, DimensionFilters } from "@/types";
 import { formatLabel } from "./formatLabel";
 import { classifyCategory } from "./categoryClassification";
 
@@ -103,30 +103,33 @@ function systemMatchesFilter(
   }
 }
 
+const DIMENSIONS: GroupByOption[] = ["systemType", "dataUse", "dataCategories"];
+
 /**
  * Groups systems into swimlane buckets by the selected dimension,
- * then filters them by the active filter dimension/values.
+ * then filters them by all active dimension filters (AND across dimensions, OR within).
  *
  * @param systems - All systems to group
  * @param groupBy - The dimension to group by
- * @param filterDimension - The dimension to filter on (null for no filter)
- * @param filterValues - The values to include from the filter dimension
+ * @param dimensionFilters - Per-dimension filter value arrays
  * @param fidesMode - When true and a dataCategories dimension is involved, use Fides Group logic
  * @returns Array of grouped systems
  */
 export function groupAndFilterSystems(
   systems: System[],
   groupBy: GroupByOption,
-  filterDimension: GroupByOption | null,
-  filterValues: string[],
+  dimensionFilters: DimensionFilters,
   fidesMode = false
 ): GroupedSystems[] {
   let filtered = systems;
 
-  if (filterDimension && filterValues.length > 0) {
-    filtered = filtered.filter((s) =>
-      systemMatchesFilter(s, filterDimension, filterValues, fidesMode)
-    );
+  for (const dim of DIMENSIONS) {
+    const values = dimensionFilters[dim];
+    if (values.length > 0) {
+      filtered = filtered.filter((s) =>
+        systemMatchesFilter(s, dim, values, fidesMode)
+      );
+    }
   }
 
   const groupKeys = getUniqueValues(systems, groupBy, fidesMode);

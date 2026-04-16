@@ -18,6 +18,14 @@ export type GroupByOption = "systemType" | "dataUse" | "dataCategories";
 
 export type ViewMode = "board" | "list";
 
+export type FilterMode = "checkbox" | "sentence";
+
+export interface DimensionFilters {
+  systemType: string[];
+  dataUse: string[];
+  dataCategories: string[];
+}
+
 export interface GroupedSystems {
   key: string;
   label: string;

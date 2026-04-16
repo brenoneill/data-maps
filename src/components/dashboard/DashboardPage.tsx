@@ -15,32 +15,31 @@ const systems = getAllSystems();
 export function DashboardPage() {
   const {
     groupBy,
-    filterType,
-    filters,
+    dimensionFilters,
     fidesMode,
     showLines,
     viewMode,
+    filterMode,
     setGroupBy,
-    setFilterType,
     setFidesMode,
     toggleFilter,
     clearFilters,
     setShowLines,
     setViewMode,
+    setFilterMode,
   } = useDashboardState();
 
-  const { groups, availableFilterValues } = useFilteredSystems({
+  const { groups, availableValues } = useFilteredSystems({
     systems,
     groupBy,
-    filterType,
-    filters,
+    dimensionFilters,
     fidesMode,
   });
 
   const { isOpen, activeSystem, closeSlideout } = useSlideout();
 
   const dataCategoriesActive =
-    groupBy === "dataCategories" || filterType === "dataCategories";
+    groupBy === "dataCategories" || dimensionFilters.dataCategories.length > 0;
 
   const fidesGroupMap = useMemo(
     () =>
@@ -54,20 +53,20 @@ export function DashboardPage() {
     <div className="flex h-full flex-col">
       <FilterBar
         groupBy={groupBy}
-        filterType={filterType}
-        filters={filters}
+        dimensionFilters={dimensionFilters}
         fidesMode={fidesMode}
-        availableFilterValues={availableFilterValues}
+        availableValues={availableValues}
         fidesGroupMap={fidesGroupMap}
         showLines={showLines}
         viewMode={viewMode}
+        filterMode={filterMode}
         onGroupByChange={setGroupBy}
-        onFilterTypeChange={setFilterType}
         onFidesModeChange={setFidesMode}
         onToggleFilter={toggleFilter}
         onClearFilters={clearFilters}
         onShowLinesChange={setShowLines}
         onViewModeChange={setViewMode}
+        onFilterModeChange={setFilterMode}
       />
       {viewMode === "board" ? (
         <SwimlaneBoard
