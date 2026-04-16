@@ -7,11 +7,7 @@ import { getColorForValue } from "@/helpers/colors";
 import type { GroupByOption, GroupBySelection, ViewMode, FilterMode, DimensionFilters } from "@/types";
 import {
   X,
-  Link2,
-  Link2Off,
   ExternalLink,
-  Layers,
-  List,
   Columns3,
   LayoutList,
   MessageSquareText,
@@ -29,14 +25,11 @@ interface FilterBarProps {
     dataCategories: string[];
   };
   fidesGroupMap: Map<string, string[]>;
-  showLines: boolean;
   viewMode: ViewMode;
   filterMode: FilterMode;
   onGroupByChange: (value: GroupBySelection) => void;
-  onFidesModeChange: (on: boolean) => void;
   onToggleFilter: (dimension: GroupByOption, value: string) => void;
   onClearFilters: () => void;
-  onShowLinesChange: (value: boolean) => void;
   onViewModeChange: (value: ViewMode) => void;
   onFilterModeChange: (value: FilterMode) => void;
 }
@@ -60,18 +53,14 @@ export function FilterBar({
   fidesMode,
   availableValues,
   fidesGroupMap,
-  showLines,
   viewMode,
   filterMode,
   onGroupByChange,
-  onFidesModeChange,
   onToggleFilter,
   onClearFilters,
-  onShowLinesChange,
   onViewModeChange,
   onFilterModeChange,
 }: FilterBarProps) {
-  const dataCategoriesActive = groupBy === "dataCategories" || dimensionFilters.dataCategories.length > 0;
   const hasAnyFilters =
     dimensionFilters.systemType.length > 0 ||
     dimensionFilters.dataUse.length > 0 ||
@@ -91,43 +80,6 @@ export function FilterBar({
         </div>
 
         <div className="ml-auto flex shrink-0 items-center gap-2">
-          {dataCategoriesActive && (
-            <button
-              onClick={() => onFidesModeChange(!fidesMode)}
-              className={`flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
-                fidesMode
-                  ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
-                  : "border-gray-700 bg-gray-800/50 text-gray-500"
-              }`}
-            >
-              {fidesMode ? (
-                <Layers size={13} aria-hidden="true" />
-              ) : (
-                <List size={13} aria-hidden="true" />
-              )}
-              Fides Data Group
-            </button>
-          )}
-
-          {viewMode === "board" && (
-            <button
-              onClick={() => onShowLinesChange(!showLines)}
-              className={`flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
-                showLines
-                  ? "border-blue-500/30 bg-blue-500/10 text-blue-400"
-                  : "border-gray-700 bg-gray-800/50 text-gray-500"
-              }`}
-            >
-              {showLines ? (
-                <Link2 size={13} aria-hidden="true" />
-              ) : (
-                <Link2Off size={13} aria-hidden="true" />
-              )}
-              Show Dependencies
-            </button>
-          )}
-
-          {/* Filter mode toggle */}
           <div
             className="flex overflow-hidden rounded-full border border-gray-700"
             role="radiogroup"

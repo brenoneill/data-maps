@@ -2,12 +2,14 @@ import { useMemo } from "react";
 import { useDashboardState } from "@/hooks/useDashboardState";
 import { useFilteredSystems } from "@/hooks/useFilteredSystems";
 import { useSlideout } from "@/context/SlideoutContext";
+import { usePreferences } from "@/context/PreferencesContext";
 import { getAllSystems } from "@/helpers/systemLookup";
 import { getFidesGroupCategoryMap } from "@/helpers/groupSystems";
 import { FilterBar } from "./FilterBar";
 import { SwimlaneBoard } from "./SwimlaneBoard";
 import { GroupedListView } from "./GroupedListView";
 import { SlideoutPanel } from "@/components/layout/SlideoutPanel";
+import { PreferencesPanel } from "@/components/layout/PreferencesPanel";
 import { SystemDetail } from "./SystemDetail";
 
 const systems = getAllSystems();
@@ -37,6 +39,10 @@ export function DashboardPage() {
   });
 
   const { isOpen, activeSystem, closeSlideout } = useSlideout();
+  const {
+    isOpen: prefsOpen,
+    closePreferences,
+  } = usePreferences();
 
   const dataCategoriesActive =
     groupBy === "dataCategories" || dimensionFilters.dataCategories.length > 0;
@@ -57,14 +63,11 @@ export function DashboardPage() {
         fidesMode={fidesMode}
         availableValues={availableValues}
         fidesGroupMap={fidesGroupMap}
-        showLines={showLines}
         viewMode={viewMode}
         filterMode={filterMode}
         onGroupByChange={setGroupBy}
-        onFidesModeChange={setFidesMode}
         onToggleFilter={toggleFilter}
         onClearFilters={clearFilters}
-        onShowLinesChange={setShowLines}
         onViewModeChange={setViewMode}
         onFilterModeChange={setFilterMode}
       />
@@ -93,6 +96,19 @@ export function DashboardPage() {
       >
         {activeSystem && <SystemDetail system={activeSystem} />}
       </SlideoutPanel>
+
+      <PreferencesPanel
+        isOpen={prefsOpen}
+        onClose={closePreferences}
+        showLines={showLines}
+        fidesMode={fidesMode}
+        viewMode={viewMode}
+        filterMode={filterMode}
+        onShowLinesChange={setShowLines}
+        onFidesModeChange={setFidesMode}
+        onViewModeChange={setViewMode}
+        onFilterModeChange={setFilterMode}
+      />
     </div>
   );
 }
