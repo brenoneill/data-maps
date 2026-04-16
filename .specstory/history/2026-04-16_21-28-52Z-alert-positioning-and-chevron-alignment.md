@@ -195,12 +195,198 @@ _**Agent (claude-4.6-opus-high-thinking)**_
 _**Agent (claude-4.6-opus-high-thinking)**_
 
 <tool-use data-tool-type="read" data-tool-name="read_file_v2">
-<details><summary>Tool use: **read_file_v2** • Read file: </summary>
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/ui/Alert.tsx</summary>
 
 </details>
 </tool-use>
 
 <tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
 <summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now let me look at the Select component to find the chevron issue.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/ui/Select.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+I can see both issues:
+
+1. **AlertContainer** is positioned `top-4 right-4` — needs to be `bottom-4 right-4`
+2. **Select chevron** has `pt-5` on the icon wrapper which pushes it down instead of centering it vertically within the button
+
+Let me fix both.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/layout/AlertContainer.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/ui/Select.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+However, the chevron icon wrapper uses `inset-y-0` which spans the full height of the `ListboxButton`, including the label area above. Since the label is outside the button, `inset-y-0` on the button should be fine — but let me double check the structure. The label is a sibling to the `ListboxButton`, not inside it, so `inset-y-0` correctly spans just the button height. Removing `pt-5` should center the chevron vertically within the button now.
+
+Let me verify the final state of both files.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints">
+<details>
+<summary>Tool use: **read_lints**</summary>
+
+
+Parameters:
+
+```json
+{
+  "paths": [
+    "/Users/brendanoneill/data-maps/src/components/layout/AlertContainer.tsx",
+    "/Users/brendanoneill/data-maps/src/components/ui/Select.tsx"
+  ]
+}
+```
+Result:
+
+```json
+{
+  "linterErrorsByFile": [
+    {
+      "relativeWorkspacePath": "/Users/brendanoneill/data-maps/src/components/layout/AlertContainer.tsx"
+    },
+    {
+      "relativeWorkspacePath": "/Users/brendanoneill/data-maps/src/components/ui/Select.tsx"
+    }
+  ]
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints"><details>
+<summary>Tool use: **read_lints**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Both fixes are clean. Here's what I changed:
+
+1. **Alert position** (`AlertContainer.tsx`): Changed from `fixed right-4 top-4` to `fixed bottom-4 right-4` so alerts appear in the bottom-right corner of the screen.
+
+2. **Group By chevron alignment** (`Select.tsx`): Removed the `pt-5` class from the chevron icon wrapper. The wrapper already uses `inset-y-0` with `flex items-center` to vertically center its contents within the button — the extra top padding was pushing the chevron down.
+
+---
+
+_**User**_
+
+The Hide shouldbe closer tot he actual content of the filter bar, it's kind of confusing right now
+
+---
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Let me look at the current FilterBar layout to understand the positioning.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<think><details><summary>Thought Process</summary>
+The user is saying the "Hide" button is too far from the filter content. Right now the layout is:
+
+- Top row: Group By select on the left, and on the far right: Filters/Query toggle, Board/List toggle, Share, Hide button
+- Below that: the collapsible filter content
+
+The "Hide" button is pushed to the far right with `ml-auto` on the parent container, sitting alongside the view mode toggles and share menu. This makes it visually disconnected from the filter content it controls.
+
+I think the best fix is to move the Hide/Show button so it's positioned closer to the filter content area, rather than being lumped in with the right-side controls. One approach would be to move it near the filter content itself — perhaps placing it at the end of the filter row, or making it a smaller toggle that sits adjacent to the filters.
+
+
+The Hide button really should live with the filter content it's controlling, not grouped with the other top-right controls. I'll move it inline with the collapsible filter section so it's visually connected to what it actually toggles.</details></think>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+The issue is that the Hide/Show button is grouped at the far right with the view mode and share controls, making it feel disconnected from the filter content it actually controls. I'll move it to sit right next to the Filters/Query toggle so the filter-related controls are visually grouped together.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx</summary>
+
+Status: **loading**
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
 
 </details></tool-use>

@@ -120,40 +120,58 @@ export function FilterBar({
         </div>
 
         <div className="ml-auto flex shrink-0 items-center gap-2">
-          <div
-            className="flex overflow-hidden rounded-full border border-gray-700"
-            role="radiogroup"
-            aria-label="Filter mode"
-          >
-            <button
-              role="radio"
-              aria-checked={filterMode === "checkbox"}
-              aria-label="Checkbox filters"
-              onClick={() => onFilterModeChange("checkbox")}
-              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium transition-colors ${
-                filterMode === "checkbox"
-                  ? "bg-gray-700 text-gray-100"
-                  : "bg-gray-800/50 text-gray-500 hover:text-gray-400"
-              }`}
+          <div className="flex items-center gap-2">
+            <div
+              className="flex overflow-hidden rounded-full border border-gray-700"
+              role="radiogroup"
+              aria-label="Filter mode"
             >
-              <SlidersHorizontal size={13} aria-hidden="true" />
-              <span>Filters</span>
-            </button>
+              <button
+                role="radio"
+                aria-checked={filterMode === "checkbox"}
+                aria-label="Checkbox filters"
+                onClick={() => { onFilterModeChange("checkbox"); setExpanded(true); }}
+                className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium transition-colors ${
+                  filterMode === "checkbox"
+                    ? "bg-gray-700 text-gray-100"
+                    : "bg-gray-800/50 text-gray-500 hover:text-gray-400"
+                }`}
+              >
+                <SlidersHorizontal size={13} aria-hidden="true" />
+                <span>Filters</span>
+              </button>
+              <button
+                role="radio"
+                aria-checked={filterMode === "sentence"}
+                aria-label="Sentence filter"
+                onClick={() => { onFilterModeChange("sentence"); setExpanded(true); }}
+                className={`flex items-center gap-1.5 border-l border-gray-700 px-3 py-1.5 text-xs font-medium transition-colors ${
+                  filterMode === "sentence"
+                    ? "bg-gray-700 text-gray-100"
+                    : "bg-gray-800/50 text-gray-500 hover:text-gray-400"
+                }`}
+              >
+                <MessageSquareText size={13} aria-hidden="true" />
+                <span>Query</span>
+              </button>
+            </div>
+
             <button
-              role="radio"
-              aria-checked={filterMode === "sentence"}
-              aria-label="Sentence filter"
-              onClick={() => onFilterModeChange("sentence")}
-              className={`flex items-center gap-1.5 border-l border-gray-700 px-3 py-1.5 text-xs font-medium transition-colors ${
-                filterMode === "sentence"
-                  ? "bg-gray-700 text-gray-100"
-                  : "bg-gray-800/50 text-gray-500 hover:text-gray-400"
-              }`}
+              aria-expanded={expanded}
+              aria-label={expanded ? "Collapse filters" : "Expand filters"}
+              onClick={toggleExpanded}
+              className="relative flex items-center gap-1.5 rounded-full border border-gray-700 bg-gray-800/50 px-3 py-1.5 text-xs font-medium text-gray-400 transition-colors hover:bg-gray-700 hover:text-gray-200"
             >
-              <MessageSquareText size={13} aria-hidden="true" />
-              <span>Query</span>
+              <ChevronDown
+                size={13}
+                aria-hidden="true"
+                className={`transition-transform duration-200 ${expanded ? "rotate-180" : ""}`}
+              />
+              <span>{expanded ? "Hide" : "Show"}</span>
             </button>
           </div>
+
+          <div className="mx-1 h-5 w-px bg-gray-700" aria-hidden="true" />
 
           {/* View mode toggle */}
           <div
@@ -195,20 +213,6 @@ export function FilterBar({
             dimensionFilters={dimensionFilters}
             systemNames={systemNames}
           />
-
-          <button
-            aria-expanded={expanded}
-            aria-label={expanded ? "Collapse filters" : "Expand filters"}
-            onClick={toggleExpanded}
-            className="relative flex items-center gap-1.5 rounded-full border border-gray-700 bg-gray-800/50 px-3 py-1.5 text-xs font-medium text-gray-400 transition-colors hover:bg-gray-700 hover:text-gray-200"
-          >
-            <ChevronDown
-              size={13}
-              aria-hidden="true"
-              className={`transition-transform duration-200 ${expanded ? "rotate-180" : ""}`}
-            />
-            <span>{expanded ? "Hide" : "Show"}</span>
-          </button>
         </div>
       </div>
 
