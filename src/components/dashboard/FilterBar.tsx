@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { SentenceFilter } from "./SentenceFilter";
 import { formatLabel, formatDimensionLabel } from "@/helpers/formatLabel";
 import { getColorForValue } from "@/helpers/colors";
-import type { GroupByOption, ViewMode, FilterMode, DimensionFilters } from "@/types";
+import type { GroupByOption, GroupBySelection, ViewMode, FilterMode, DimensionFilters } from "@/types";
 import {
   X,
   Link2,
@@ -20,7 +20,7 @@ import {
 import { FIDESLANG_DOCS_URL } from "@/helpers/constants";
 
 interface FilterBarProps {
-  groupBy: GroupByOption;
+  groupBy: GroupBySelection;
   dimensionFilters: DimensionFilters;
   fidesMode: boolean;
   availableValues: {
@@ -32,7 +32,7 @@ interface FilterBarProps {
   showLines: boolean;
   viewMode: ViewMode;
   filterMode: FilterMode;
-  onGroupByChange: (value: GroupByOption) => void;
+  onGroupByChange: (value: GroupBySelection) => void;
   onFidesModeChange: (on: boolean) => void;
   onToggleFilter: (dimension: GroupByOption, value: string) => void;
   onClearFilters: () => void;
@@ -42,6 +42,7 @@ interface FilterBarProps {
 }
 
 const GROUP_BY_OPTIONS = [
+  { value: "none", label: "None" },
   { value: "systemType", label: "System Type" },
   { value: "dataUse", label: "Data Use" },
   { value: "dataCategories", label: "Data Categories" },
@@ -84,7 +85,7 @@ export function FilterBar({
           <Select
             label="Group by"
             value={groupBy}
-            onChange={(v) => onGroupByChange(v as GroupByOption)}
+            onChange={(v) => onGroupByChange(v as GroupBySelection)}
             options={GROUP_BY_OPTIONS}
           />
         </div>

@@ -623,3 +623,1120 @@ _**Agent (claude-4.6-opus-high-thinking)**_
 <summary>Tool use: **read_file_v2**</summary>
 
 </details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Starting with the types and state model. First, update the types to add `DimensionFilters` and `FilterMode`.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/types/index.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now update `useDashboardState` to replace `filterType`/`filters` with per-dimension URL params and add the filter mode toggle.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/hooks/useDashboardState.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Update types and useDashboardState: replace filterType/filters with 3 per-dimension URL params (stFilters, duFilters, dcFilters), add DimensionFilters type, update toggleFilter signature",
+      "id": "state-model",
+      "status": "completed"
+    },
+    {
+      "content": "Update groupAndFilterSystems and useFilteredSystems to accept DimensionFilters and apply multi-dimension AND filtering using existing systemMatchesFilter",
+      "id": "filter-logic",
+      "status": "in_progress"
+    },
+    {
+      "content": "Create MultiSelect UI component (Headless UI Listbox with multiple selection, chip display, inline style)",
+      "id": "multi-select",
+      "status": "pending"
+    },
+    {
+      "content": "Create SentenceFilter component with 3 inline multi-select dropdowns in natural language sentence format",
+      "id": "sentence-filter",
+      "status": "pending"
+    },
+    {
+      "content": "Upgrade FilterBar checkbox mode to show all 3 dimensions of checkboxes, add toggle between Checkbox and Sentence modes",
+      "id": "upgrade-checkbox",
+      "status": "pending"
+    },
+    {
+      "content": "Update DashboardPage to wire new state shape through to FilterBar and filtered systems",
+      "id": "wire-dashboard",
+      "status": "pending"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Update types and useDashboardState: replace filterType/filters with 3 per-dimension URL params (stFilters, duFilters, dcFilters), add DimensionFilters type, update toggleFilter signature",
+      "id": "state-model",
+      "status": "in_progress"
+    },
+    {
+      "content": "Update groupAndFilterSystems and useFilteredSystems to accept DimensionFilters and apply multi-dimension AND filtering using existing systemMatchesFilter",
+      "id": "filter-logic",
+      "status": "pending"
+    },
+    {
+      "content": "Create MultiSelect UI component (Headless UI Listbox with multiple selection, chip display, inline style)",
+      "id": "multi-select",
+      "status": "pending"
+    },
+    {
+      "content": "Create SentenceFilter component with 3 inline multi-select dropdowns in natural language sentence format",
+      "id": "sentence-filter",
+      "status": "pending"
+    },
+    {
+      "content": "Upgrade FilterBar checkbox mode to show all 3 dimensions of checkboxes, add toggle between Checkbox and Sentence modes",
+      "id": "upgrade-checkbox",
+      "status": "pending"
+    },
+    {
+      "content": "Update DashboardPage to wire new state shape through to FilterBar and filtered systems",
+      "id": "wire-dashboard",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now update `groupSystems.ts` to accept `DimensionFilters` and apply multi-dimension AND filtering.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/helpers/groupSystems.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/helpers/groupSystems.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now update `groupAndFilterSystems` to accept `DimensionFilters` and apply all three dimensions.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/helpers/groupSystems.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now update `useFilteredSystems.ts` to use the new `DimensionFilters` shape.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/hooks/useFilteredSystems.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/hooks/useFilteredSystems.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Update types and useDashboardState: replace filterType/filters with 3 per-dimension URL params (stFilters, duFilters, dcFilters), add DimensionFilters type, update toggleFilter signature",
+      "id": "state-model",
+      "status": "completed"
+    },
+    {
+      "content": "Update groupAndFilterSystems and useFilteredSystems to accept DimensionFilters and apply multi-dimension AND filtering using existing systemMatchesFilter",
+      "id": "filter-logic",
+      "status": "completed"
+    },
+    {
+      "content": "Create MultiSelect UI component (Headless UI Listbox with multiple selection, chip display, inline style)",
+      "id": "multi-select",
+      "status": "in_progress"
+    },
+    {
+      "content": "Create SentenceFilter component with 3 inline multi-select dropdowns in natural language sentence format",
+      "id": "sentence-filter",
+      "status": "pending"
+    },
+    {
+      "content": "Upgrade FilterBar checkbox mode to show all 3 dimensions of checkboxes, add toggle between Checkbox and Sentence modes",
+      "id": "upgrade-checkbox",
+      "status": "pending"
+    },
+    {
+      "content": "Update DashboardPage to wire new state shape through to FilterBar and filtered systems",
+      "id": "wire-dashboard",
+      "status": "pending"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Update types and useDashboardState: replace filterType/filters with 3 per-dimension URL params (stFilters, duFilters, dcFilters), add DimensionFilters type, update toggleFilter signature",
+      "id": "state-model",
+      "status": "completed"
+    },
+    {
+      "content": "Update groupAndFilterSystems and useFilteredSystems to accept DimensionFilters and apply multi-dimension AND filtering using existing systemMatchesFilter",
+      "id": "filter-logic",
+      "status": "in_progress"
+    },
+    {
+      "content": "Create MultiSelect UI component (Headless UI Listbox with multiple selection, chip display, inline style)",
+      "id": "multi-select",
+      "status": "pending"
+    },
+    {
+      "content": "Create SentenceFilter component with 3 inline multi-select dropdowns in natural language sentence format",
+      "id": "sentence-filter",
+      "status": "pending"
+    },
+    {
+      "content": "Upgrade FilterBar checkbox mode to show all 3 dimensions of checkboxes, add toggle between Checkbox and Sentence modes",
+      "id": "upgrade-checkbox",
+      "status": "pending"
+    },
+    {
+      "content": "Update DashboardPage to wire new state shape through to FilterBar and filtered systems",
+      "id": "wire-dashboard",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now let me look at the existing UI components to match the styling patterns.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/ui/Select.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/ui/FilterCheckbox.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/ui/Badge.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/helpers/colors.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now I have a good understanding of the styling patterns. Let me create the `MultiSelect` component.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/ui/MultiSelect.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Update types and useDashboardState: replace filterType/filters with 3 per-dimension URL params (stFilters, duFilters, dcFilters), add DimensionFilters type, update toggleFilter signature",
+      "id": "state-model",
+      "status": "completed"
+    },
+    {
+      "content": "Update groupAndFilterSystems and useFilteredSystems to accept DimensionFilters and apply multi-dimension AND filtering using existing systemMatchesFilter",
+      "id": "filter-logic",
+      "status": "completed"
+    },
+    {
+      "content": "Create MultiSelect UI component (Headless UI Listbox with multiple selection, chip display, inline style)",
+      "id": "multi-select",
+      "status": "completed"
+    },
+    {
+      "content": "Create SentenceFilter component with 3 inline multi-select dropdowns in natural language sentence format",
+      "id": "sentence-filter",
+      "status": "in_progress"
+    },
+    {
+      "content": "Upgrade FilterBar checkbox mode to show all 3 dimensions of checkboxes, add toggle between Checkbox and Sentence modes",
+      "id": "upgrade-checkbox",
+      "status": "pending"
+    },
+    {
+      "content": "Update DashboardPage to wire new state shape through to FilterBar and filtered systems",
+      "id": "wire-dashboard",
+      "status": "pending"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Update types and useDashboardState: replace filterType/filters with 3 per-dimension URL params (stFilters, duFilters, dcFilters), add DimensionFilters type, update toggleFilter signature",
+      "id": "state-model",
+      "status": "completed"
+    },
+    {
+      "content": "Update groupAndFilterSystems and useFilteredSystems to accept DimensionFilters and apply multi-dimension AND filtering using existing systemMatchesFilter",
+      "id": "filter-logic",
+      "status": "completed"
+    },
+    {
+      "content": "Create MultiSelect UI component (Headless UI Listbox with multiple selection, chip display, inline style)",
+      "id": "multi-select",
+      "status": "in_progress"
+    },
+    {
+      "content": "Create SentenceFilter component with 3 inline multi-select dropdowns in natural language sentence format",
+      "id": "sentence-filter",
+      "status": "pending"
+    },
+    {
+      "content": "Upgrade FilterBar checkbox mode to show all 3 dimensions of checkboxes, add toggle between Checkbox and Sentence modes",
+      "id": "upgrade-checkbox",
+      "status": "pending"
+    },
+    {
+      "content": "Update DashboardPage to wire new state shape through to FilterBar and filtered systems",
+      "id": "wire-dashboard",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now create the `SentenceFilter` component.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SentenceFilter.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Update types and useDashboardState: replace filterType/filters with 3 per-dimension URL params (stFilters, duFilters, dcFilters), add DimensionFilters type, update toggleFilter signature",
+      "id": "state-model",
+      "status": "completed"
+    },
+    {
+      "content": "Update groupAndFilterSystems and useFilteredSystems to accept DimensionFilters and apply multi-dimension AND filtering using existing systemMatchesFilter",
+      "id": "filter-logic",
+      "status": "completed"
+    },
+    {
+      "content": "Create MultiSelect UI component (Headless UI Listbox with multiple selection, chip display, inline style)",
+      "id": "multi-select",
+      "status": "completed"
+    },
+    {
+      "content": "Create SentenceFilter component with 3 inline multi-select dropdowns in natural language sentence format",
+      "id": "sentence-filter",
+      "status": "completed"
+    },
+    {
+      "content": "Upgrade FilterBar checkbox mode to show all 3 dimensions of checkboxes, add toggle between Checkbox and Sentence modes",
+      "id": "upgrade-checkbox",
+      "status": "in_progress"
+    },
+    {
+      "content": "Update DashboardPage to wire new state shape through to FilterBar and filtered systems",
+      "id": "wire-dashboard",
+      "status": "pending"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Update types and useDashboardState: replace filterType/filters with 3 per-dimension URL params (stFilters, duFilters, dcFilters), add DimensionFilters type, update toggleFilter signature",
+      "id": "state-model",
+      "status": "completed"
+    },
+    {
+      "content": "Update groupAndFilterSystems and useFilteredSystems to accept DimensionFilters and apply multi-dimension AND filtering using existing systemMatchesFilter",
+      "id": "filter-logic",
+      "status": "completed"
+    },
+    {
+      "content": "Create MultiSelect UI component (Headless UI Listbox with multiple selection, chip display, inline style)",
+      "id": "multi-select",
+      "status": "completed"
+    },
+    {
+      "content": "Create SentenceFilter component with 3 inline multi-select dropdowns in natural language sentence format",
+      "id": "sentence-filter",
+      "status": "in_progress"
+    },
+    {
+      "content": "Upgrade FilterBar checkbox mode to show all 3 dimensions of checkboxes, add toggle between Checkbox and Sentence modes",
+      "id": "upgrade-checkbox",
+      "status": "pending"
+    },
+    {
+      "content": "Update DashboardPage to wire new state shape through to FilterBar and filtered systems",
+      "id": "wire-dashboard",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now the big one -- rewrite the `FilterBar` to support both modes and all 3 dimensions of checkboxes. Let me re-read the current FilterBar one more time to be thorough.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Update types and useDashboardState: replace filterType/filters with 3 per-dimension URL params (stFilters, duFilters, dcFilters), add DimensionFilters type, update toggleFilter signature",
+      "id": "state-model",
+      "status": "completed"
+    },
+    {
+      "content": "Update groupAndFilterSystems and useFilteredSystems to accept DimensionFilters and apply multi-dimension AND filtering using existing systemMatchesFilter",
+      "id": "filter-logic",
+      "status": "completed"
+    },
+    {
+      "content": "Create MultiSelect UI component (Headless UI Listbox with multiple selection, chip display, inline style)",
+      "id": "multi-select",
+      "status": "completed"
+    },
+    {
+      "content": "Create SentenceFilter component with 3 inline multi-select dropdowns in natural language sentence format",
+      "id": "sentence-filter",
+      "status": "completed"
+    },
+    {
+      "content": "Upgrade FilterBar checkbox mode to show all 3 dimensions of checkboxes, add toggle between Checkbox and Sentence modes",
+      "id": "upgrade-checkbox",
+      "status": "completed"
+    },
+    {
+      "content": "Update DashboardPage to wire new state shape through to FilterBar and filtered systems",
+      "id": "wire-dashboard",
+      "status": "in_progress"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Update types and useDashboardState: replace filterType/filters with 3 per-dimension URL params (stFilters, duFilters, dcFilters), add DimensionFilters type, update toggleFilter signature",
+      "id": "state-model",
+      "status": "completed"
+    },
+    {
+      "content": "Update groupAndFilterSystems and useFilteredSystems to accept DimensionFilters and apply multi-dimension AND filtering using existing systemMatchesFilter",
+      "id": "filter-logic",
+      "status": "completed"
+    },
+    {
+      "content": "Create MultiSelect UI component (Headless UI Listbox with multiple selection, chip display, inline style)",
+      "id": "multi-select",
+      "status": "completed"
+    },
+    {
+      "content": "Create SentenceFilter component with 3 inline multi-select dropdowns in natural language sentence format",
+      "id": "sentence-filter",
+      "status": "completed"
+    },
+    {
+      "content": "Upgrade FilterBar checkbox mode to show all 3 dimensions of checkboxes, add toggle between Checkbox and Sentence modes",
+      "id": "upgrade-checkbox",
+      "status": "in_progress"
+    },
+    {
+      "content": "Update DashboardPage to wire new state shape through to FilterBar and filtered systems",
+      "id": "wire-dashboard",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now update `DashboardPage` to wire the new state shape through to all components.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now let me check for lint errors across all the files I've modified and ensure the app compiles.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints">
+<details>
+<summary>Tool use: **read_lints**</summary>
+
+
+Parameters:
+
+```json
+{
+  "paths": [
+    "src/types/index.ts",
+    "src/hooks/useDashboardState.ts",
+    "src/hooks/useFilteredSystems.ts",
+    "src/helpers/groupSystems.ts",
+    "src/components/dashboard/FilterBar.tsx",
+    "src/components/dashboard/SentenceFilter.tsx",
+    "src/components/dashboard/DashboardPage.tsx",
+    "src/components/ui/MultiSelect.tsx"
+  ]
+}
+```
+Result:
+
+```json
+{
+  "linterErrorsByFile": [
+    {
+      "relativeWorkspacePath": "src/types/index.ts"
+    },
+    {
+      "relativeWorkspacePath": "src/hooks/useDashboardState.ts"
+    },
+    {
+      "relativeWorkspacePath": "src/hooks/useFilteredSystems.ts"
+    },
+    {
+      "relativeWorkspacePath": "src/helpers/groupSystems.ts"
+    },
+    {
+      "relativeWorkspacePath": "src/components/dashboard/FilterBar.tsx"
+    },
+    {
+      "relativeWorkspacePath": "src/components/dashboard/SentenceFilter.tsx"
+    },
+    {
+      "relativeWorkspacePath": "src/components/dashboard/DashboardPage.tsx"
+    },
+    {
+      "relativeWorkspacePath": "src/components/ui/MultiSelect.tsx"
+    }
+  ]
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints"><details>
+<summary>Tool use: **read_lints**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Good, no lint errors. Let me try building to make sure TypeScript is happy.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/brendanoneill/data-maps && npx tsc --noEmit 2>&1</summary>
+
+```bash
+cd /Users/brendanoneill/data-maps && npx tsc --noEmit 2>&1
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Clean TypeScript compilation. Let me also verify the dev server starts correctly.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/brendanoneill/data-maps && npx vite build 2>&1 | tail -20</summary>
+
+```bash
+cd /Users/brendanoneill/data-maps && npx vite build 2>&1 | tail -20
+```
+
+```
+vite v5.4.21 building for production...
+transforming...
+✓ 1987 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.46 kB │ gzip:   0.29 kB
+dist/assets/index-mqDw0v4s.css   33.88 kB │ gzip:   6.66 kB
+dist/assets/index-DG7c2LJe.js   333.23 kB │ gzip: 104.76 kB
+✓ built in 1.93s
+
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Build passes cleanly. Let me mark the final todo as complete.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Update types and useDashboardState: replace filterType/filters with 3 per-dimension URL params (stFilters, duFilters, dcFilters), add DimensionFilters type, update toggleFilter signature",
+      "id": "state-model",
+      "status": "completed"
+    },
+    {
+      "content": "Update groupAndFilterSystems and useFilteredSystems to accept DimensionFilters and apply multi-dimension AND filtering using existing systemMatchesFilter",
+      "id": "filter-logic",
+      "status": "completed"
+    },
+    {
+      "content": "Create MultiSelect UI component (Headless UI Listbox with multiple selection, chip display, inline style)",
+      "id": "multi-select",
+      "status": "completed"
+    },
+    {
+      "content": "Create SentenceFilter component with 3 inline multi-select dropdowns in natural language sentence format",
+      "id": "sentence-filter",
+      "status": "completed"
+    },
+    {
+      "content": "Upgrade FilterBar checkbox mode to show all 3 dimensions of checkboxes, add toggle between Checkbox and Sentence modes",
+      "id": "upgrade-checkbox",
+      "status": "completed"
+    },
+    {
+      "content": "Update DashboardPage to wire new state shape through to FilterBar and filtered systems",
+      "id": "wire-dashboard",
+      "status": "completed"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Update types and useDashboardState: replace filterType/filters with 3 per-dimension URL params (stFilters, duFilters, dcFilters), add DimensionFilters type, update toggleFilter signature",
+      "id": "state-model",
+      "status": "completed"
+    },
+    {
+      "content": "Update groupAndFilterSystems and useFilteredSystems to accept DimensionFilters and apply multi-dimension AND filtering using existing systemMatchesFilter",
+      "id": "filter-logic",
+      "status": "completed"
+    },
+    {
+      "content": "Create MultiSelect UI component (Headless UI Listbox with multiple selection, chip display, inline style)",
+      "id": "multi-select",
+      "status": "completed"
+    },
+    {
+      "content": "Create SentenceFilter component with 3 inline multi-select dropdowns in natural language sentence format",
+      "id": "sentence-filter",
+      "status": "completed"
+    },
+    {
+      "content": "Upgrade FilterBar checkbox mode to show all 3 dimensions of checkboxes, add toggle between Checkbox and Sentence modes",
+      "id": "upgrade-checkbox",
+      "status": "completed"
+    },
+    {
+      "content": "Update DashboardPage to wire new state shape through to FilterBar and filtered systems",
+      "id": "wire-dashboard",
+      "status": "in_progress"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+All done. Here's a summary of what was implemented:
+
+### State Model Changes
+- **`types/index.ts`** -- Added `DimensionFilters` interface (with `systemType`, `dataUse`, `dataCategories` string arrays) and `FilterMode` type
+- **`useDashboardState.ts`** -- Replaced the single `filterType`/`filters` URL params with three per-dimension params (`st`, `du`, `dc`). Added `filterMode` localStorage preference. `toggleFilter` now takes `(dimension, value)` so both UI modes call the same function. `clearFilters` resets all three dimensions.
+
+### Filtering Logic
+- **`groupSystems.ts`** -- `groupAndFilterSystems` now accepts a `DimensionFilters` object and applies each non-empty dimension filter using the existing `systemMatchesFilter` (AND across dimensions, OR within a dimension). No new matching logic was needed.
+- **`useFilteredSystems.ts`** -- Returns `availableValues` for all 3 dimensions (not just the single selected filter-by dimension).
+
+### New Components
+- **`MultiSelect.tsx`** -- Reusable Headless UI multi-select dropdown with chip display, inline mode for sentence embedding, and standalone mode. Checkbox-style options in the dropdown panel.
+- **`SentenceFilter.tsx`** -- Natural language sentence builder: "Show me all `[system types]` that collect `[data categories]` for `[data uses]`" with three inline `MultiSelect` dropdowns. Includes Fides group hint when fides mode is active.
+
+### Upgraded FilterBar
+- **`FilterBar.tsx`** -- Now has two rows: top row (Group by + toggle pills) and filter row (either checkboxes or sentence). A **Filters / Query** segmented toggle switches between modes. Checkbox mode now shows all 3 dimensions as labeled rows of checkboxes instead of picking just one dimension. Both modes read/write the same URL params via the same `toggleFilter(dimension, value)` callback.
+
+### Wiring
+- **`DashboardPage.tsx`** -- Updated to pass the new state shape through to `FilterBar` and `useFilteredSystems`.
+
+---
+
+_**User**_
+
+I want to add an ability to not 'Group By' but it should be grouped by default
+
+---
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Let me check the current state of the relevant files to understand what needs to change.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/hooks/useDashboardState.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/types/index.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now let me check the downstream consumers -- how `groupBy` is used in `groupAndFilterSystems` and the view components.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/helpers/groupSystems.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/SwimlaneBoard.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/GroupedListView.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>

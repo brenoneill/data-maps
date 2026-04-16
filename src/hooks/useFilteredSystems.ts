@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import type { System, GroupByOption, GroupedSystems, DimensionFilters } from "@/types";
+import type { System, GroupBySelection, GroupedSystems, DimensionFilters } from "@/types";
 import {
   groupAndFilterSystems,
   getUniqueValues,
@@ -7,7 +7,7 @@ import {
 
 interface UseFilteredSystemsParams {
   systems: System[];
-  groupBy: GroupByOption;
+  groupBy: GroupBySelection;
   dimensionFilters: DimensionFilters;
   fidesMode: boolean;
 }

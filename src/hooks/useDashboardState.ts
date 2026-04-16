@@ -1,8 +1,9 @@
 import { useState, useCallback } from "react";
 import { useQueryStates, parseAsString, parseAsArrayOf } from "nuqs";
-import type { GroupByOption, ViewMode, FilterMode, DimensionFilters } from "@/types";
+import type { GroupByOption, GroupBySelection, ViewMode, FilterMode, DimensionFilters } from "@/types";
 
-const VALID_GROUP_BY: GroupByOption[] = [
+const VALID_GROUP_BY: GroupBySelection[] = [
+  "none",
   "systemType",
   "dataUse",
   "dataCategories",
@@ -85,8 +86,8 @@ export function useDashboardState() {
     writeLocal(FILTER_MODE_KEY, value);
   }, []);
 
-  const groupBy = VALID_GROUP_BY.includes(state.groupBy as GroupByOption)
-    ? (state.groupBy as GroupByOption)
+  const groupBy = VALID_GROUP_BY.includes(state.groupBy as GroupBySelection)
+    ? (state.groupBy as GroupBySelection)
     : "systemType";
 
   const dimensionFilters: DimensionFilters = {
@@ -95,7 +96,7 @@ export function useDashboardState() {
     dataCategories: state.dc,
   };
 
-  const setGroupBy = useCallback((value: GroupByOption) => {
+  const setGroupBy = useCallback((value: GroupBySelection) => {
     setState({ groupBy: value, st: [], du: [], dc: [] });
     setFidesModeRaw(false);
     writeLocal(FIDES_MODE_KEY, "false");

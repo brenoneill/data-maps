@@ -1,5 +1,5 @@
 import { useCallback, useRef } from "react";
-import type { GroupByOption, GroupedSystems, System } from "@/types";
+import type { GroupBySelection, GroupedSystems, System } from "@/types";
 import { useDependencyHighlight } from "@/hooks/useDependencyHighlight";
 import type { CardState, HoverInfo } from "@/hooks/useDependencyHighlight";
 import { useCardRegistry } from "@/hooks/useCardRegistry";
@@ -10,7 +10,7 @@ import { FIDESLANG_DOCS_URL } from "@/helpers/constants";
 
 interface SwimlaneBoardProps {
   groups: GroupedSystems[];
-  groupBy: GroupByOption;
+  groupBy: GroupBySelection;
   fidesMode: boolean;
   fidesGroupMap: Map<string, string[]>;
   allSystems: System[];

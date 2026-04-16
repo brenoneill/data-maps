@@ -16,6 +16,9 @@ export interface System {
 
 export type GroupByOption = "systemType" | "dataUse" | "dataCategories";
 
+/** GroupByOption plus a "none" option that shows all systems in a single flat group. */
+export type GroupBySelection = GroupByOption | "none";
+
 export type ViewMode = "board" | "list";
 
 export type FilterMode = "checkbox" | "sentence";

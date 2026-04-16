@@ -1,4 +1,4 @@
-import type { System, GroupByOption, GroupedSystems, DimensionFilters } from "@/types";
+import type { System, GroupByOption, GroupBySelection, GroupedSystems, DimensionFilters } from "@/types";
 import { formatLabel } from "./formatLabel";
 import { classifyCategory } from "./categoryClassification";
 
@@ -117,7 +117,7 @@ const DIMENSIONS: GroupByOption[] = ["systemType", "dataUse", "dataCategories"];
  */
 export function groupAndFilterSystems(
   systems: System[],
-  groupBy: GroupByOption,
+  groupBy: GroupBySelection,
   dimensionFilters: DimensionFilters,
   fidesMode = false
 ): GroupedSystems[] {
@@ -130,6 +130,10 @@ export function groupAndFilterSystems(
         systemMatchesFilter(s, dim, values, fidesMode)
       );
     }
+  }
+
+  if (groupBy === "none") {
+    return [{ key: "all", label: "All Systems", systems: filtered }];
   }
 
   const groupKeys = getUniqueValues(systems, groupBy, fidesMode);
