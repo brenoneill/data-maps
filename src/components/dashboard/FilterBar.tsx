@@ -1,11 +1,9 @@
-import { useMemo } from "react";
 import { Select } from "@/components/ui/Select";
 import { FilterCheckbox } from "@/components/ui/FilterCheckbox";
 import { Button } from "@/components/ui/Button";
 import { formatLabel, formatDimensionLabel } from "@/helpers/formatLabel";
 import { getColorForValue } from "@/helpers/colors";
-import { getFidesGroupCategoryMap } from "@/helpers/groupSystems";
-import type { GroupByOption, System } from "@/types";
+import type { GroupByOption } from "@/types";
 import { X, Link2, Link2Off, ExternalLink, Layers, List } from "lucide-react";
 import { FIDESLANG_DOCS_URL } from "@/helpers/constants";
 
@@ -15,7 +13,7 @@ interface FilterBarProps {
   filters: string[];
   fidesMode: boolean;
   availableFilterValues: string[];
-  systems: System[];
+  fidesGroupMap: Map<string, string[]>;
   showLines: boolean;
   onGroupByChange: (value: GroupByOption) => void;
   onFilterTypeChange: (value: GroupByOption | "") => void;
@@ -41,7 +39,7 @@ export function FilterBar({
   filters,
   fidesMode,
   availableFilterValues,
-  systems,
+  fidesGroupMap,
   showLines,
   onGroupByChange,
   onFilterTypeChange,
@@ -57,14 +55,6 @@ export function FilterBar({
 
   const dataCategoriesActive =
     groupBy === "dataCategories" || filterType === "dataCategories";
-
-  const fidesGroupMap = useMemo(
-    () =>
-      dataCategoriesActive && fidesMode
-        ? getFidesGroupCategoryMap(systems)
-        : new Map<string, string[]>(),
-    [dataCategoriesActive, fidesMode, systems]
-  );
 
   const chipColorDimension =
     fidesMode && filterType === "dataCategories"

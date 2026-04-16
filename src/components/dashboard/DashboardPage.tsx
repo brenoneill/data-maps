@@ -1,7 +1,9 @@
+import { useMemo } from "react";
 import { useDashboardState } from "@/hooks/useDashboardState";
 import { useFilteredSystems } from "@/hooks/useFilteredSystems";
 import { useSlideout } from "@/context/SlideoutContext";
 import { getAllSystems } from "@/helpers/systemLookup";
+import { getFidesGroupCategoryMap } from "@/helpers/groupSystems";
 import { FilterBar } from "./FilterBar";
 import { SwimlaneBoard } from "./SwimlaneBoard";
 import { SlideoutPanel } from "@/components/layout/SlideoutPanel";
@@ -34,6 +36,17 @@ export function DashboardPage() {
 
   const { isOpen, activeSystem, closeSlideout } = useSlideout();
 
+  const dataCategoriesActive =
+    groupBy === "dataCategories" || filterType === "dataCategories";
+
+  const fidesGroupMap = useMemo(
+    () =>
+      dataCategoriesActive && fidesMode
+        ? getFidesGroupCategoryMap(systems)
+        : new Map<string, string[]>(),
+    [dataCategoriesActive, fidesMode]
+  );
+
   return (
     <div className="flex h-full flex-col">
       <FilterBar
@@ -42,7 +55,7 @@ export function DashboardPage() {
         filters={filters}
         fidesMode={fidesMode}
         availableFilterValues={availableFilterValues}
-        systems={systems}
+        fidesGroupMap={fidesGroupMap}
         showLines={showLines}
         onGroupByChange={setGroupBy}
         onFilterTypeChange={setFilterType}
@@ -55,6 +68,7 @@ export function DashboardPage() {
         groups={groups}
         groupBy={groupBy}
         fidesMode={fidesMode}
+        fidesGroupMap={fidesGroupMap}
         allSystems={systems}
         showLines={showLines}
       />

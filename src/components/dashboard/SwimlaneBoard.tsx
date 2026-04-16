@@ -1,9 +1,8 @@
-import { useCallback, useRef, useMemo } from "react";
+import { useCallback, useRef } from "react";
 import type { GroupByOption, GroupedSystems, System } from "@/types";
 import { useDependencyHighlight } from "@/hooks/useDependencyHighlight";
 import type { CardState, HoverInfo } from "@/hooks/useDependencyHighlight";
 import { useCardRegistry } from "@/hooks/useCardRegistry";
-import { getFidesGroupCategoryMap } from "@/helpers/groupSystems";
 import { Swimlane } from "./Swimlane";
 import { DependencyLines } from "./DependencyLines";
 import { ExternalLink } from "lucide-react";
@@ -13,6 +12,7 @@ interface SwimlaneBoardProps {
   groups: GroupedSystems[];
   groupBy: GroupByOption;
   fidesMode: boolean;
+  fidesGroupMap: Map<string, string[]>;
   allSystems: System[];
   showLines: boolean;
 }
@@ -21,6 +21,7 @@ export function SwimlaneBoard({
   groups,
   groupBy,
   fidesMode,
+  fidesGroupMap,
   allSystems,
   showLines,
 }: SwimlaneBoardProps) {
@@ -40,11 +41,6 @@ export function SwimlaneBoard({
   );
 
   const isFidesGrouping = groupBy === "dataCategories" && fidesMode;
-
-  const fidesGroupMap = useMemo(
-    () => (isFidesGrouping ? getFidesGroupCategoryMap(allSystems) : new Map<string, string[]>()),
-    [isFidesGrouping, allSystems]
-  );
 
   return (
     <div className="flex h-full flex-col overflow-hidden">

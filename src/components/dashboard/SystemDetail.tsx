@@ -3,7 +3,6 @@ import { Badge } from "@/components/ui/Badge";
 import { getColorForValue } from "@/helpers/colors";
 import { formatLabel } from "@/helpers/formatLabel";
 import {
-  resolveSystem,
   getSystemDependencies,
   getSystemDependents,
 } from "@/helpers/systemLookup";
@@ -15,9 +14,8 @@ interface SystemDetailProps {
 }
 
 export function SystemDetail({ system }: SystemDetailProps) {
-  const resolved = resolveSystem(system.fides_key) ?? system;
-  const deps = getSystemDependencies(resolved.fides_key);
-  const dependents = getSystemDependents(resolved.fides_key);
+  const deps = getSystemDependencies(system.fides_key);
+  const dependents = getSystemDependents(system.fides_key);
 
   return (
     <div className="space-y-6 py-2">
@@ -25,26 +23,26 @@ export function SystemDetail({ system }: SystemDetailProps) {
       <section>
         <div className="mb-3 flex items-center gap-2">
           <Badge
-            colorSet={getColorForValue(resolved.system_type, "systemType")}
+            colorSet={getColorForValue(system.system_type, "systemType")}
           >
-            {resolved.system_type}
+            {system.system_type}
           </Badge>
-          <span className="text-xs text-gray-500">{resolved.fides_key}</span>
+          <span className="text-xs text-gray-500">{system.fides_key}</span>
         </div>
         <p className="text-sm leading-relaxed text-gray-400">
-          {resolved.description}
+          {system.description}
         </p>
       </section>
 
       {/* Privacy Declarations */}
-      {resolved.privacy_declarations.length > 0 && (
+      {system.privacy_declarations.length > 0 && (
         <section>
           <h3 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gray-500">
             <Shield size={14} aria-hidden="true" />
             Privacy Declarations
           </h3>
           <div className="space-y-3">
-            {resolved.privacy_declarations.map((decl, idx) => (
+            {system.privacy_declarations.map((decl, idx) => (
               <div
                 key={`${decl.data_use}-${idx}`}
                 className="rounded-lg border border-gray-800 bg-gray-900 p-4"
@@ -125,7 +123,7 @@ export function SystemDetail({ system }: SystemDetailProps) {
               </div>
             ))}
           </div>
-          <RadialGraph rootSystem={resolved} systems={deps} />
+          <RadialGraph rootSystem={system} systems={deps} />
         </section>
       )}
 
@@ -156,7 +154,7 @@ export function SystemDetail({ system }: SystemDetailProps) {
               </div>
             ))}
           </div>
-          <RadialGraph rootSystem={resolved} systems={dependents} />
+          <RadialGraph rootSystem={system} systems={dependents} />
         </section>
       )}
     </div>
