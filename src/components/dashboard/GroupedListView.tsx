@@ -21,10 +21,10 @@ export function GroupedListView({
   const isFidesGrouping = groupBy === "dataCategories" && fidesMode;
 
   return (
-    <div data-cy="list-view" className="flex h-full flex-col overflow-hidden">
+    <div data-cy="list-view" className="flex min-h-0 flex-1 flex-col overflow-hidden">
       {isFidesGrouping && <FidesGroupBanner />}
 
-      <div className="flex flex-col gap-6 overflow-y-auto p-6">
+      <div className="flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto p-6">
         {groups.map((group) => {
           const colorSet = isUngrouped
             ? null

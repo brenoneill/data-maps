@@ -42,9 +42,13 @@ export function SwimlaneBoard({
   const isFidesGrouping = groupBy === "dataCategories" && fidesMode;
 
   return (
-    <div className="flex h-full flex-col overflow-hidden">
+    <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
       {isFidesGrouping && <FidesGroupBanner />}
-      <div data-cy="swimlane-board" ref={boardRef} className="relative flex h-full gap-4 overflow-x-hidden p-6">
+      <div
+        data-cy="swimlane-board"
+        ref={boardRef}
+        className="relative flex min-h-0 flex-1 gap-4 overflow-x-hidden overflow-y-hidden p-6"
+      >
         {showLines && (
           <DependencyLines
             systems={allSystems}

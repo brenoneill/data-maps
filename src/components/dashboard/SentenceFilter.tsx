@@ -67,14 +67,6 @@ export function SentenceFilter({
         inline
       />
 
-      {fidesMode && (
-        <FidesHint
-          availableGroups={availableValues.dataCategories}
-          selectedGroups={dimensionFilters.dataCategories}
-          fidesGroupMap={fidesGroupMap}
-        />
-      )}
-
       <span>for</span>
 
       <MultiSelect
