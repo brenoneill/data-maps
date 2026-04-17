@@ -178,7 +178,7 @@ export function FilterBar({
                 aria-hidden="true"
                 className={`transition-transform duration-200 ${expanded ? "rotate-180" : ""}`}
               />
-              <span>{expanded ? "Hide" : "Show"}</span>
+              <span>{`${expanded ? "Hide" : "Show"} Filters`}</span>
             </button>
           </div>
 
