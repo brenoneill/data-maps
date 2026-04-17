@@ -2,12 +2,7 @@ import { useState, useCallback, useMemo } from "react";
 import { useQueryStates, parseAsString, parseAsArrayOf } from "nuqs";
 import type { FilterDimension, GroupBySelection, ViewMode, FilterMode, DimensionFilters } from "@/types";
 
-const VALID_GROUP_BY: GroupBySelection[] = [
-  "none",
-  "systemType",
-  "dataUse",
-  "dataCategories",
-];
+const VALID_GROUP_BY: GroupBySelection[] = ["none", "systemType", "dataUse", "dataCategories"];
 
 const VALID_VIEW_MODES: ViewMode[] = ["board", "list"];
 const VALID_FILTER_MODES: FilterMode[] = ["checkbox", "sentence"];
@@ -48,7 +43,9 @@ function readLocalString<T extends string>(key: string, fallback: T, valid: T[])
 function writeLocal(key: string, value: string) {
   try {
     localStorage.setItem(key, value);
-  } catch { /* storage full or unavailable */ }
+  } catch {
+    /* storage full or unavailable */
+  }
 }
 
 /**
@@ -69,25 +66,23 @@ export function useDashboardState() {
 
   const [showLines, setShowLinesRaw] = useState(() => readLocalBool(SHOW_LINES_KEY, true));
   const [fidesMode, setFidesModeRaw] = useState(() => readLocalBool(FIDES_MODE_KEY, false));
-  const [viewMode, setViewModeRaw] = useState<ViewMode>(() =>
-    readLocalString(VIEW_MODE_KEY, "board", VALID_VIEW_MODES)
-  );
-  const [filterMode, setFilterModeRaw] = useState<FilterMode>(() =>
-    readLocalString(FILTER_MODE_KEY, "checkbox", VALID_FILTER_MODES)
-  );
+  const [viewMode, setViewModeRaw] = useState<ViewMode>(() => readLocalString(VIEW_MODE_KEY, "board", VALID_VIEW_MODES));
+  const [filterMode, setFilterModeRaw] = useState<FilterMode>(() => readLocalString(FILTER_MODE_KEY, "checkbox", VALID_FILTER_MODES));
 
   const setShowLines = useCallback((value: boolean) => {
     setShowLinesRaw(value);
     writeLocal(SHOW_LINES_KEY, String(value));
   }, []);
 
-
   //Block of functions for setting local state for preferences, if we were to scale and add more preferences, we could make dynamic
-  const setFidesMode = useCallback((on: boolean) => {
-    setFidesModeRaw(on);
-    writeLocal(FIDES_MODE_KEY, String(on));
-    setState({ dc: [] });
-  }, [setState]);
+  const setFidesMode = useCallback(
+    (on: boolean) => {
+      setFidesModeRaw(on);
+      writeLocal(FIDES_MODE_KEY, String(on));
+      setState({ dc: [] });
+    },
+    [setState],
+  );
 
   const setViewMode = useCallback((value: ViewMode) => {
     setViewModeRaw(value);
@@ -99,10 +94,9 @@ export function useDashboardState() {
     writeLocal(FILTER_MODE_KEY, value);
   }, []);
 
-  const groupBy = VALID_GROUP_BY.includes(state.groupBy as GroupBySelection)
-    ? (state.groupBy as GroupBySelection)
-    : "systemType";
+  const groupBy = VALID_GROUP_BY.includes(state.groupBy as GroupBySelection) ? (state.groupBy as GroupBySelection) : "systemType";
 
+  // URL-backed selected values per dimension; drives useFilteredSystems + FilterBar
   const dimensionFilters: DimensionFilters = useMemo(
     () => ({
       systemType: state.st,
@@ -110,23 +104,27 @@ export function useDashboardState() {
       dataCategories: state.dc,
       identifiability: state.id,
     }),
-    [state.st, state.du, state.dc, state.id]
+    [state.st, state.du, state.dc, state.id],
   );
 
-  const setGroupBy = useCallback((value: GroupBySelection) => {
-    setState({ groupBy: value, st: [], du: [], dc: [], id: [] });
-    setFidesModeRaw(false);
-    writeLocal(FIDES_MODE_KEY, "false");
-  }, [setState]);
+  const setGroupBy = useCallback(
+    (value: GroupBySelection) => {
+      setState({ groupBy: value, st: [], du: [], dc: [], id: [] });
+      setFidesModeRaw(false);
+      writeLocal(FIDES_MODE_KEY, "false");
+    },
+    [setState],
+  );
 
-  const toggleFilter = useCallback((dimension: FilterDimension, value: string) => {
-    const paramKey = DIMENSION_TO_PARAM[dimension];
-    const current = state[paramKey];
-    const next = current.includes(value)
-      ? current.filter((v) => v !== value)
-      : [...current, value];
-    setState({ [paramKey]: next });
-  }, [state.st, state.du, state.dc, state.id, setState]);
+  const toggleFilter = useCallback(
+    (dimension: FilterDimension, value: string) => {
+      const paramKey = DIMENSION_TO_PARAM[dimension];
+      const current = state[paramKey];
+      const next = current.includes(value) ? current.filter((v) => v !== value) : [...current, value];
+      setState({ [paramKey]: next });
+    },
+    [state.st, state.du, state.dc, state.id, setState],
+  );
 
   const clearFilters = useCallback(() => {
     setState({ st: [], du: [], dc: [], id: [] });
