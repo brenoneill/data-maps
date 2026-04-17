@@ -5,8 +5,6 @@ import type { FilterDimension, DimensionFilters, AvailableFilterValues } from "@
 interface SentenceFilterProps {
   dimensionFilters: DimensionFilters;
   availableValues: AvailableFilterValues;
-  fidesMode: boolean;
-  fidesGroupMap: Map<string, string[]>;
   onToggleFilter: (dimension: FilterDimension, value: string) => void;
 }
 
@@ -21,8 +19,6 @@ function buildOptions(values: string[]) {
 export function SentenceFilter({
   dimensionFilters,
   availableValues,
-  fidesMode,
-  fidesGroupMap,
   onToggleFilter,
 }: SentenceFilterProps) {
   const systemTypeOptions = buildOptions(availableValues.systemType);
@@ -77,27 +73,5 @@ export function SentenceFilter({
         inline
       />
     </div>
-  );
-}
-
-function FidesHint({
-  availableGroups,
-  selectedGroups,
-  fidesGroupMap,
-}: {
-  availableGroups: string[];
-  selectedGroups: string[];
-  fidesGroupMap: Map<string, string[]>;
-}) {
-  const groups = selectedGroups.length > 0 ? selectedGroups : availableGroups;
-  const allCategories = groups.flatMap(
-    (g) => fidesGroupMap.get(g) ?? []
-  );
-  if (allCategories.length === 0) return null;
-
-  return (
-    <span className="text-[10px] text-gray-600">
-      ({allCategories.join(", ")})
-    </span>
   );
 }

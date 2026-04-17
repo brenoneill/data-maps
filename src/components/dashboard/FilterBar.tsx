@@ -256,8 +256,6 @@ export function FilterBar({
               <SentenceFilter
                 dimensionFilters={dimensionFilters}
                 availableValues={availableValues}
-                fidesMode={fidesMode}
-                fidesGroupMap={fidesGroupMap}
                 onToggleFilter={onToggleFilter}
               />
               {hasAnyFilters && (
