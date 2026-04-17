@@ -16,6 +16,9 @@ export interface System {
 
 export type GroupByOption = "systemType" | "dataUse" | "dataCategories";
 
+/** All filterable dimensions — a superset of GroupByOption. */
+export type FilterDimension = GroupByOption | "identifiability";
+
 /** GroupByOption plus a "none" option that shows all systems in a single flat group. */
 export type GroupBySelection = GroupByOption | "none";
 
@@ -27,6 +30,7 @@ export interface DimensionFilters {
   systemType: string[];
   dataUse: string[];
   dataCategories: string[];
+  identifiability: string[];
 }
 
 export interface GroupedSystems {

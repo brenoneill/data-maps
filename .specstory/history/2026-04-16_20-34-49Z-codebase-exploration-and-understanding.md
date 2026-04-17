@@ -2256,3 +2256,637 @@ _**Agent (composer-2-fast)**_
 <summary>Tool use: **read_file_v2**</summary>
 
 </details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/context/AlertContext.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/context/SlideoutContext.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/helpers/constants.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/helpers/formatLabel.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/helpers/groupSystems.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/helpers/categoryClassification.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/helpers/colors.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/helpers/systemLookup.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/layout/AppLayout.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/layout/Header.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/layout/AlertContainer.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/layout/SlideoutPanel.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/SwimlaneBoard.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/Swimlane.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/SystemCard.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/SystemRow.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/GroupedListView.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/SystemDetail.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/DependencyLines.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/DependencyTree.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/ui/Card.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/ui/Badge.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/ui/Button.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/ui/Select.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/ui/FilterCheckbox.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/ui/Alert.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/ui/EmptyState.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/vite.config.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/tsconfig.json</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+I've reviewed all 38 files in the src/ directory. Let me compile a comprehensive report.
+
+Project structure:
+- Root: index.html, vite.config.ts, package.json, sample_data.json, tsconfig
+- src/: main.tsx, App.tsx, index.css, vite-env.d.ts
+- src/types/index.ts
+- src/context/: AlertContext, SlideoutContext
+- src/hooks/: useDashboardState, useFilteredSystems, useDependencyHighlight, useCardRegistry
+- src/helpers/: constants, formatLabel, groupSystems, categoryClassification, colors, systemLookup
+- src/components/layout/: AppLayout, Header, AlertContainer, SlideoutPanel</details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Here is a consolidated picture of the project based on every file under `/Users/brendanoneill/data-maps/src/`.
+
+---
+
+## 1. Full project structure (source and config)
+
+**Root (non-`src/` but relevant):**
+
+| Path | Role |
+|------|------|
+| `/Users/brendanoneill/data-maps/package.json` | React 18, Vite 5, Tailwind 4, Headless UI, nuqs, lucide-react |
+| `/Users/brendanoneill/data-maps/vite.config.ts` | `@vitejs/plugin-react`, `@tailwindcss/vite`, `@` → `./src` |
+| `/Users/brendanoneill/data-maps/tsconfig.json` | Strict TS, `@/*` paths |
+| `/Users/brendanoneill/data-maps/index.html` | Vite entry (not re-read; standard) |
+| `/Users/brendanoneill/data-maps/sample_data.json` | Imported as JSON in `systemLookup.ts` |
+
+**All 38 files under `src/`:**
+
+| Path |
+|------|
+| `/Users/brendanoneill/data-maps/src/main.tsx` |
+| `/Users/brendanoneill/data-maps/src/App.tsx` |
+| `/Users/brendanoneill/data-maps/src/index.css` |
+| `/Users/brendanoneill/data-maps/src/vite-env.d.ts` |
+| `/Users/brendanoneill/data-maps/src/types/index.ts` |
+| `/Users/brendanoneill/data-maps/src/context/AlertContext.tsx` |
+| `/Users/brendanoneill/data-maps/src/context/SlideoutContext.tsx` |
+| `/Users/brendanoneill/data-maps/src/hooks/useDashboardState.ts` |
+| `/Users/brendanoneill/data-maps/src/hooks/useFilteredSystems.ts` |
+| `/Users/brendanoneill/data-maps/src/hooks/useDependencyHighlight.ts` |
+| `/Users/brendanoneill/data-maps/src/hooks/useCardRegistry.ts` |
+| `/Users/brendanoneill/data-maps/src/helpers/constants.ts` |
+| `/Users/brendanoneill/data-maps/src/helpers/formatLabel.ts` |
+| `/Users/brendanoneill/data-maps/src/helpers/groupSystems.ts` |
+| `/Users/brendanoneill/data-maps/src/helpers/categoryClassification.ts` |
+| `/Users/brendanoneill/data-maps/src/helpers/colors.ts` |
+| `/Users/brendanoneill/data-maps/src/helpers/systemLookup.ts` |
+| `/Users/brendanoneill/data-maps/src/components/layout/AppLayout.tsx` |
+| `/Users/brendanoneill/data-maps/src/components/layout/Header.tsx` |
+| `/Users/brendanoneill/data-maps/src/components/layout/AlertContainer.tsx` |
+| `/Users/brendanoneill/data-maps/src/components/layout/SlideoutPanel.tsx` |
+| `/Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx` |
+| `/Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx` |
+| `/Users/brendanoneill/data-maps/src/components/dashboard/SwimlaneBoard.tsx` |
+| `/Users/brendanoneill/data-maps/src/components/dashboard/Swimlane.tsx` |
+| `/Users/brendanoneill/data-maps/src/components/dashboard/SystemCard.tsx` |
+| `/Users/brendanoneill/data-maps/src/components/dashboard/SystemRow.tsx` |
+| `/Users/brendanoneill/data-maps/src/components/dashboard/GroupedListView.tsx` |
+| `/Users/brendanoneill/data-maps/src/components/dashboard/SystemDetail.tsx` |
+| `/Users/brendanoneill/data-maps/src/components/dashboard/DependencyLines.tsx` |
+| `/Users/brendanoneill/data-maps/src/components/dashboard/DependencyTree.tsx` |
+| `/Users/brendanoneill/data-maps/src/components/ui/Card.tsx` |
+| `/Users/brendanoneill/data-maps/src/components/ui/Badge.tsx` |
+| `/Users/brendanoneill/data-maps/src/components/ui/Button.tsx` |
+| `/Users/brendanoneill/data-maps/src/components/ui/Select.tsx` |
+| `/Users/brendanoneill/data-maps/src/components/ui/FilterCheckbox.tsx` |
+| `/Users/brendanoneill/data-maps/src/components/ui/Alert.tsx` |
+| `/Users/brendanoneill/data-maps/src/components/ui/EmptyState.tsx` |
+
+**App wiring:** `/Users/brendanoneill/data-maps/src/main.tsx` wraps the tree with `NuqsAdapter`, `AlertProvider`, and `SlideoutProvider`. `/Users/brendanoneill/data-maps/src/App.tsx` renders `AppLayout` → `DashboardPage`.
+
+---
+
+## 2. Data model and `sample_data.json`
+
+**TypeScript model** (`/Users/brendanoneill/data-maps/src/types/index.ts`):
+
+- **`System`**: `description`, `fides_key`, `name`, `privacy_declarations[]`, `system_dependencies[]` (strings referencing other systems’ `fides_key`), `system_type` (string).
+- **`PrivacyDeclaration`**: `data_categories[]`, `data_subjects[]`, `data_use`, `name`.
+- **Supporting types**: `GroupByOption`, `ViewMode`, `GroupedSystems`, `AlertItem`.
+
+There is **one primary entity in the JSON: “System”** in the Fides inventory sense. **“Application”, “Service”, “Database”, and “Integration”** are values of `system_type`, not separate top-level types in the schema.
+
+**`sample_data.json` contents (conceptual):**
+
+- Array of system objects aligned with `System`.
+- **`system_type`** in the sample includes: `Application`, `Service`, `Database`, `Integration`.
+- **`system_dependencies`**: directed edges by `fides_key` (e.g. apps depend on `app_database`, `search_database`, integrations, etc.).
+- **`privacy_declarations`**: nested privacy metadata (Fideslang-style `data_use`, `data_categories`, `data_subjects`, human `name`).
+
+**Note:** The file contains **two objects with the same `fides_key` `orders_service`** (duplicate rows). `/Users/brendanoneill/data-maps/src/helpers/systemLookup.ts` builds a `Map` and **keeps the first occurrence only** when resolving systems.
+
+---
+
+## 3. How the dashboard is organized (components and flow)
+
+| Layer | Responsibility |
+|--------|----------------|
+| **`AppLayout`** | Full-height column: `Header`, scroll-contained `main`, `AlertContainer`. |
+| **`DashboardPage`** | Loads systems via `getAllSystems()`, owns `useDashboardState` + `useFilteredSystems`, renders `FilterBar`, then either **`SwimlaneBoard`** (board) or **`GroupedListView`** (list), and **`SlideoutPanel`** + **`SystemDetail`**. |
+| **`FilterBar`** | Group-by select, filter-by select, filter chips, Fides Data Group toggle, dependency lines toggle (board only), board/list toggle. |
+| **`SwimlaneBoard`** | Horizontal scroll of **`Swimlane`** columns; optional **`DependencyLines`** SVG overlay; uses **`useDependencyHighlight`** and **`useCardRegistry`**. |
+| **`Swimlane`** | Column header + list of **`SystemCard`** (or empty state). |
+| **`GroupedListView`** | Vertical sections per group, each with **`SystemRow`** list. |
+| **`SystemCard`** | Rich card: badges, description, data use/category badges, dep/dependent counts with hover modes for lines; opens slideout. |
+| **`SystemRow`** | Compact row for list view; opens slideout. |
+| **`SystemDetail`** | Slideout content: metadata, privacy declarations, dependencies/dependents lists, and **`RadialGraph`** from **`DependencyTree.tsx`** (exported as `RadialGraph`). |
+| **`DependencyLines`** | SVG Bézier curves between cards from `system_dependencies`, styled by hover. |
+| **`DependencyTree.tsx`** | Defines **`RadialGraph`**: radial layout SVG for deps or dependents around the root system. |
+
+**Contexts:**
+
+- **`SlideoutContext`**: `activeSystem`, `openSlideout` / `closeSlideout` (used by cards/rows and `DashboardPage` for the panel).
+- **`AlertContext`**: toast list + auto-dismiss (used by `AlertContainer`; nothing in the read files calls `addAlert` from dashboard code, but the infrastructure is there).
+
+---
+
+## 4. Filtering and grouping mechanisms
+
+**Grouping (`groupBy`)** — one of `systemType` | `dataUse` | `dataCategories` (`/Users/brendanoneill/data-maps/src/types/index.ts`):
+
+- **`systemType`**: one column per distinct `system.system_type`.
+- **`dataUse`**: one column per distinct `data_use` across `privacy_declarations` (a system can appear in multiple columns).
+- **`dataCategories`**: one column per distinct raw category string, **unless** Fides mode applies (see below).
+
+**Filtering (`filterType` + `filters`)**:
+
+- **`filterType`**: choose a second dimension to filter by, or `""` for none. Options exclude the current `groupBy` (`FilterBar` builds “filter by” as the other two dimensions + “None”).
+- **`filters`**: multiselect string values for that dimension; systems must match **at least one** selected value on that dimension (`systemMatchesFilter` in `/Users/brendanoneill/data-maps/src/helpers/groupSystems.ts`).
+
+**Fides Data Group mode (`fidesMode`)**:
+
+- When **either** `groupBy` or `filterType` is `dataCategories`, the UI can enable **Fides Data Group** (`FilterBar`).
+- When `fidesMode` is on and categories are involved, raw categories are mapped through **`classifyCategory`** (`/Users/brendanoneill/data-maps/src/helpers/categoryClassification.ts`) to group labels like Device, Contact, Location, Financial, etc.
+- **`getFidesGroupCategoryMap`** (`groupSystems.ts`) drives secondary text under group headers and filter chips (lists of formatted category labels per group).
+
+**Implementation pipeline**: `useFilteredSystems` → `groupAndFilterSystems` (`/Users/brendanoneill/data-maps/src/helpers/groupSystems.ts`): optionally filter the full list, then build groups from **all unique keys** for `groupBy` (from the full `systems` set in `getUniqueValues`), and assign **filtered** systems into each group.
+
+**View-specific behavior**:
+
+- **Board**: **`showLines`** toggles dependency SVG lines and gates hover highlighting (`SwimlaneBoard`).
+- **List**: no dependency lines or card registry; simpler **`SystemRow`** UI.
+
+---
+
+## 5. State management (especially `useDashboardState`)
+
+**URL state (shareable) via [nuqs](https://github.com/47ng/nuqs)** — `/Users/brendanoneill/data-maps/src/hooks/useDashboardState.ts`:
+
+- `groupBy` (default `"systemType"`)
+- `filterType` (default `""`)
+- `filters` (comma-separated array of strings, default `[]`)
+
+**Local persistence (`localStorage`)**:
+
+- `showLines` (default `true`)
+- `fidesMode` (default `false`)
+- `viewMode`: `"board"` | `"list"` (default `"board"`)
+
+**Behaviors**:
+
+- Changing **`groupBy`** resets `filterType` and `filters`, and turns **`fidesMode`** off (and writes that to localStorage).
+- Changing **`filterType`** clears `filters` and turns **`fidesMode`** off.
+- **`setFidesMode(true)`** clears URL `filters` (so toggling mode does not leave stale filter values).
+- **`toggleFilter`** adds/removes a single value in `filters`.
+
+**Other state**:
+
+- **`useFilteredSystems`**: derived `groups` + `availableFilterValues` from props (memoized).
+- **`useDependencyHighlight`**: `hoverInfo` for which card is hovered and mode (`all` | `deps` | `dependents`).
+- **`useCardRegistry`**: `Map<fides_key, Set<HTMLElement>>` for line drawing when the same system appears in multiple swimlanes.
+- **React Context**: slideout and alerts as described above.
+
+---
+
+## 6. UI library / framework
+
+| Piece | Usage |
+|--------|--------|
+| **React 18** + **TypeScript** | Core UI |
+| **Vite 5** | Build tool |
+| **Tailwind CSS v4** | Styling via `@import "tailwindcss"` in `/Users/brendanoneill/data-maps/src/index.css` and `@tailwindcss/vite` in Vite config |
+| **Headless UI** (`@headlessui/react`) | `Listbox` in `Select`, `Dialog` / transitions in `SlideoutPanel` |
+| **lucide-react** | Icons |
+| **nuqs** | URL query state + `NuqsAdapter` in `main.tsx` |
+
+There is **no** Material UI, Chakra, Radix (except via Headless UI), or similar component library beyond **custom components** under `/Users/brendanoneill/data-maps/src/components/ui/` plus **Tailwind** utility classes throughout.
+
+---
+
+### Quick reference: data flow
+
+`sample_data.json` → `systemLookup.getAllSystems()` → `DashboardPage` → `useDashboardState` (URL + local prefs) + `useFilteredSystems` (`groupSystems`) → `FilterBar` + `SwimlaneBoard` / `GroupedListView` → `SystemCard` / `SystemRow` → `SlideoutContext` → `SystemDetail` (uses `systemLookup` for deps/dependents and `RadialGraph` for small radial diagrams).
+
+If you want this exported as a diagram or a checklist for new features (e.g. new `groupBy` dimensions), say what you are planning next.

@@ -813,4 +813,18 @@ Paths are under `/Users/brendanoneill/data-maps/src/components/`.
 | **Checkbox vs “Query” sentence filters** | `FilterBar.tsx`, `SentenceFilter.tsx`, `PreferencesPanel.tsx` (`filterMode` in localStorage) |
 | **Expand/collapse filter strip** | `FilterBar.tsx` + `localStorage` key `data-maps:filtersExpanded` |
 | **Board vs list view** | `FilterBar.tsx`, `PreferencesPanel.tsx`, `DashboardPage.tsx` |
-| **Show depen
+| **Show dependency lines** | `PreferencesPanel.tsx`, `SwimlaneBoard.tsx`, `useDashboardState` |
+| **Fides data group mode** | `PreferencesPanel.tsx`, `useDashboardState`, `FidesGroupBanner`, grouping/filter helpers |
+| **Slideout detail** | `SlideoutContext`, `SlideoutPanel.tsx`, `SystemCard` / `SystemRow` → `SystemDetail` |
+| **Copy link / copy summary** | `ShareMenu.tsx`, `buildShareMessage.ts`, `AlertContext` |
+| **Dependency hover + dimming + lines** | `useDependencyHighlight`, `useCardRegistry`, `SwimlaneBoard`, `SystemCard`, `DependencyLines` |
+| **Toasts** | `ShareMenu` (copy), `AlertContainer` + `Alert` |
+
+---
+
+### Entry points (for completeness)
+
+- **`/Users/brendanoneill/data-maps/src/main.tsx`** — mounts app with `NuqsAdapter` and providers.
+- **`/Users/brendanoneill/data-maps/src/App.tsx`** — `AppLayout` + `DashboardPage` only.
+
+That is the full picture of structure, components, hooks, URL behavior, dependencies, and tests for this repo.

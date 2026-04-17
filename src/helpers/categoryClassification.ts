@@ -19,6 +19,20 @@ const FIDES_GROUP_MAP: Record<string, string> = {
 };
 
 /**
+ * Extracts the identifiability segment from a raw Fideslang data category string.
+ *
+ * @param raw - Full dot-notation category (e.g. "user.derived.identifiable.device.cookie_id")
+ * @returns "identifiable", "nonidentifiable", or "unknown"
+ */
+export function extractIdentifiability(raw: string): string {
+  const segments = raw.split(".");
+  for (const seg of segments) {
+    if (seg === "identifiable" || seg === "nonidentifiable") return seg;
+  }
+  return "unknown";
+}
+
+/**
  * Extracts the Fides Group name from a raw Fideslang data category string.
  *
  * Path structure: user.{provided|derived}.{identifiable|nonidentifiable}.{group}.{specific?}

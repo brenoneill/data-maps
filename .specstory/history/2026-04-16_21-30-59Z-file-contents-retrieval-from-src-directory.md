@@ -1681,4 +1681,325 @@ function writeLocal(key: string, value: string) {
 }
 
 /**
- * URL-backed dashboard state via nuqs for share
+ * URL-backed dashboard state via nuqs for shareable filter/group state.
+ * UI preferences (viewMode, fidesMode, showLines, filterMode) persist in localStorage.
+ *
+ * Filter state uses per-dimension URL params so all three dimensions
+ * (systemType, dataUse, dataCategories) can be active simultaneously.
+ */
+export function useDashboardState() {
+  const [state, setState] = useQueryStates({
+    groupBy: parseAsString.withDefault("systemType"),
+    st: parseAsArrayOf(parseAsString, ",").withDefault([]),
+    du: parseAsArrayOf(parseAsString, ",").withDefault([]),
+    dc: parseAsArrayOf(parseAsString, ",").withDefault([]),
+  });
+
+  const [showLines, setShowLinesRaw] = useState(() => readLocalBool(SHOW_LINES_KEY, true));
+  const [fidesMode, setFidesModeRaw] = useState(() => readLocalBool(FIDES_MODE_KEY, false));
+  const [viewMode, setViewModeRaw] = useState<ViewMode>(() =>
+    readLocalString(VIEW_MODE_KEY, "board", VALID_VIEW_MODES)
+  );
+  const [filterMode, setFilterModeRaw] = useState<FilterMode>(() =>
+    readLocalString(FILTER_MODE_KEY, "checkbox", VALID_FILTER_MODES)
+  );
+
+  const setShowLines = useCallback((value: boolean) => {
+    setShowLinesRaw(value);
+    writeLocal(SHOW_LINES_KEY, String(value));
+  }, []);
+
+  const setFidesMode = useCallback((on: boolean) => {
+    setFidesModeRaw(on);
+    writeLocal(FIDES_MODE_KEY, String(on));
+    setState({ dc: [] });
+  }, [setState]);
+
+  const setViewMode = useCallback((value: ViewMode) => {
+    setViewModeRaw(value);
+    writeLocal(VIEW_MODE_KEY, value);
+  }, []);
+
+  const setFilterMode = useCallback((value: FilterMode) => {
+    setFilterModeRaw(value);
+    writeLocal(FILTER_MODE_KEY, value);
+  }, []);
+
+  const groupBy = VALID_GROUP_BY.includes(state.groupBy as GroupBySelection)
+    ? (state.groupBy as GroupBySelection)
+    : "systemType";
+
+  const dimensionFilters: DimensionFilters = {
+    systemType: state.st,
+    dataUse: state.du,
+    dataCategories: state.dc,
+  };
+
+  const setGroupBy = useCallback((value: GroupBySelection) => {
+    setState({ groupBy: value, st: [], du: [], dc: [] });
+    setFidesModeRaw(false);
+    writeLocal(FIDES_MODE_KEY, "false");
+  }, [setState]);
+
+  const toggleFilter = useCallback((dimension: GroupByOption, value: string) => {
+    const paramKey = { systemType: "st", dataUse: "du", dataCategories: "dc" }[dimension] as "st" | "du" | "dc";
+    const current = state[paramKey];
+    const next = current.includes(value)
+      ? current.filter((v) => v !== value)
+      : [...current, value];
+    setState({ [paramKey]: next });
+  }, [state.st, state.du, state.dc, setState]);
+
+  const clearFilters = useCallback(() => {
+    setState({ st: [], du: [], dc: [] });
+  }, [setState]);
+
+  return {
+    groupBy,
+    dimensionFilters,
+    fidesMode,
+    showLines,
+    viewMode,
+    filterMode,
+    setGroupBy,
+    setFidesMode,
+    toggleFilter,
+    clearFilters,
+    setShowLines,
+    setViewMode,
+    setFilterMode,
+  };
+}
+```
+
+---
+
+### `/Users/brendanoneill/data-maps/src/hooks/useFilteredSystems.ts`
+
+```ts
+import { useMemo } from "react";
+import type { System, GroupBySelection, GroupedSystems, DimensionFilters } from "@/types";
+import {
+  groupAndFilterSystems,
+  getUniqueValues,
+} from "@/helpers/groupSystems";
+
+interface UseFilteredSystemsParams {
+  systems: System[];
+  groupBy: GroupBySelection;
+  dimensionFilters: DimensionFilters;
+  fidesMode: boolean;
+}
+
+interface AvailableValues {
+  systemType: string[];
+  dataUse: string[];
+  dataCategories: string[];
+}
+
+interface UseFilteredSystemsResult {
+  groups: GroupedSystems[];
+  availableValues: AvailableValues;
+}
+
+export function useFilteredSystems({
+  systems,
+  groupBy,
+  dimensionFilters,
+  fidesMode,
+}: UseFilteredSystemsParams): UseFilteredSystemsResult {
+  const groups = useMemo(
+    () =>
+      groupAndFilterSystems(
+        systems,
+        groupBy,
+        dimensionFilters,
+        fidesMode
+      ),
+    [systems, groupBy, dimensionFilters, fidesMode]
+  );
+
+  const availableValues = useMemo<AvailableValues>(
+    () => ({
+      systemType: getUniqueValues(systems, "systemType", fidesMode),
+      dataUse: getUniqueValues(systems, "dataUse", fidesMode),
+      dataCategories: getUniqueValues(systems, "dataCategories", fidesMode),
+    }),
+    [systems, fidesMode]
+  );
+
+  return { groups, availableValues };
+}
+```
+
+---
+
+### `/Users/brendanoneill/data-maps/src/hooks/useDependencyHighlight.ts`
+
+```ts
+import { useCallback, useMemo, useState } from "react";
+import type { System } from "@/types";
+
+export type CardState =
+  | "idle"
+  | "active"
+  | "related-dep"
+  | "related-dependent"
+  | "dimmed";
+export type HoverMode = "all" | "deps" | "dependents";
+export type HoverInfo = { key: string; mode: HoverMode } | null;
+
+export function useDependencyHighlight(systems: System[]) {
+  const [hoverInfo, setHoverInfo] = useState<HoverInfo>(null);
+
+  const { depKeys, dependentKeys } = useMemo(() => {
+    if (!hoverInfo) return { depKeys: null, dependentKeys: null };
+
+    const hovered = systems.find((s) => s.fides_key === hoverInfo.key);
+    if (!hovered) return { depKeys: null, dependentKeys: null };
+
+    const deps = new Set<string>();
+    const dependents = new Set<string>();
+
+    if (hoverInfo.mode === "all" || hoverInfo.mode === "deps") {
+      for (const depKey of hovered.system_dependencies) {
+        deps.add(depKey);
+      }
+    }
+
+    if (hoverInfo.mode === "all" || hoverInfo.mode === "dependents") {
+      for (const system of systems) {
+        if (system.system_dependencies.includes(hoverInfo.key)) {
+          dependents.add(system.fides_key);
+        }
+      }
+    }
+
+    return { depKeys: deps, dependentKeys: dependents };
+  }, [hoverInfo, systems]);
+
+  const getCardState = useCallback(
+    (fidesKey: string): CardState => {
+      if (!hoverInfo) return "idle";
+      if (fidesKey === hoverInfo.key) return "active";
+      if (depKeys?.has(fidesKey)) return "related-dep";
+      if (dependentKeys?.has(fidesKey)) return "related-dependent";
+      return "dimmed";
+    },
+    [hoverInfo, depKeys, dependentKeys]
+  );
+
+  return {
+    hoverInfo,
+    setHoverInfo,
+    getCardState,
+  };
+}
+```
+
+---
+
+### `/Users/brendanoneill/data-maps/src/hooks/useCardRegistry.ts`
+
+```ts
+import { useCallback, useRef } from "react";
+
+/**
+ * Registry for tracking card DOM elements by fides_key.
+ * A system can appear in multiple swimlanes, so each key maps to a Set of elements.
+ */
+export function useCardRegistry() {
+  const cardRefs = useRef(new Map<string, Set<HTMLElement>>());
+
+  const registerCard = useCallback(
+    (fidesKey: string) => (el: HTMLElement | null) => {
+      const map = cardRefs.current;
+
+      if (el) {
+        if (!map.has(fidesKey)) {
+          map.set(fidesKey, new Set());
+        }
+        map.get(fidesKey)!.add(el);
+      } else {
+        // Cleanup: remove stale refs during unmount
+        const set = map.get(fidesKey);
+        if (set) {
+          for (const existing of set) {
+            if (!existing.isConnected) {
+              set.delete(existing);
+            }
+          }
+          if (set.size === 0) map.delete(fidesKey);
+        }
+      }
+    },
+    []
+  );
+
+  return { cardRefs, registerCard };
+}
+```
+
+---
+
+The remaining files (`components/layout/*`, `components/ui/*`, `components/dashboard/*`) are included in full in the reads above — **FilterBar**, **DashboardPage**, **SwimlaneBoard**, **SystemCard**, **DependencyLines**, **DependencyTree**, etc., match the tool output exactly.
+
+Because the combined payload exceeds a single message limit, the **complete verbatim text** for every file is already captured in the tool results above; the message would truncate if pasted again in one block.
+
+**Summary for your checklist**
+
+| Category | Count | Notes |
+|----------|-------|--------|
+| `.ts` | 15 | `types`, `helpers`, `hooks`, `vite-env.d.ts` |
+| `.tsx` | 28 | `main`, `App`, `context`, `components` |
+| `.css` | 1 | `index.css` |
+| `.json` in `src/` | **0** | None |
+
+**Full path list (44 files)**
+
+- `/Users/brendanoneill/data-maps/src/main.tsx`
+- `/Users/brendanoneill/data-maps/src/App.tsx`
+- `/Users/brendanoneill/data-maps/src/index.css`
+- `/Users/brendanoneill/data-maps/src/vite-env.d.ts`
+- `/Users/brendanoneill/data-maps/src/types/index.ts`
+- `/Users/brendanoneill/data-maps/src/helpers/constants.ts`
+- `/Users/brendanoneill/data-maps/src/helpers/formatLabel.ts`
+- `/Users/brendanoneill/data-maps/src/helpers/categoryClassification.ts`
+- `/Users/brendanoneill/data-maps/src/helpers/colors.ts`
+- `/Users/brendanoneill/data-maps/src/helpers/systemLookup.ts`
+- `/Users/brendanoneill/data-maps/src/helpers/groupSystems.ts`
+- `/Users/brendanoneill/data-maps/src/helpers/buildShareMessage.ts`
+- `/Users/brendanoneill/data-maps/src/context/AlertContext.tsx`
+- `/Users/brendanoneill/data-maps/src/context/SlideoutContext.tsx`
+- `/Users/brendanoneill/data-maps/src/context/PreferencesContext.tsx`
+- `/Users/brendanoneill/data-maps/src/hooks/useDashboardState.ts`
+- `/Users/brendanoneill/data-maps/src/hooks/useFilteredSystems.ts`
+- `/Users/brendanoneill/data-maps/src/hooks/useDependencyHighlight.ts`
+- `/Users/brendanoneill/data-maps/src/hooks/useCardRegistry.ts`
+- `/Users/brendanoneill/data-maps/src/components/layout/AppLayout.tsx`
+- `/Users/brendanoneill/data-maps/src/components/layout/Header.tsx`
+- `/Users/brendanoneill/data-maps/src/components/layout/SlideoutPanel.tsx`
+- `/Users/brendanoneill/data-maps/src/components/layout/PreferencesPanel.tsx`
+- `/Users/brendanoneill/data-maps/src/components/layout/AlertContainer.tsx`
+- `/Users/brendanoneill/data-maps/src/components/ui/Button.tsx`
+- `/Users/brendanoneill/data-maps/src/components/ui/Card.tsx`
+- `/Users/brendanoneill/data-maps/src/components/ui/Badge.tsx`
+- `/Users/brendanoneill/data-maps/src/components/ui/Alert.tsx`
+- `/Users/brendanoneill/data-maps/src/components/ui/EmptyState.tsx`
+- `/Users/brendanoneill/data-maps/src/components/ui/Select.tsx`
+- `/Users/brendanoneill/data-maps/src/components/ui/MultiSelect.tsx`
+- `/Users/brendanoneill/data-maps/src/components/ui/FilterCheckbox.tsx`
+- `/Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx`
+- `/Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx`
+- `/Users/brendanoneill/data-maps/src/components/dashboard/SentenceFilter.tsx`
+- `/Users/brendanoneill/data-maps/src/components/dashboard/ShareMenu.tsx`
+- `/Users/brendanoneill/data-maps/src/components/dashboard/SwimlaneBoard.tsx`
+- `/Users/brendanoneill/data-maps/src/components/dashboard/Swimlane.tsx`
+- `/Users/brendanoneill/data-maps/src/components/dashboard/SystemCard.tsx`
+- `/Users/brendanoneill/data-maps/src/components/dashboard/SystemRow.tsx`
+- `/Users/brendanoneill/data-maps/src/components/dashboard/SystemDetail.tsx`
+- `/Users/brendanoneill/data-maps/src/components/dashboard/GroupedListView.tsx`
+- `/Users/brendanoneill/data-maps/src/components/dashboard/DependencyLines.tsx`
+- `/Users/brendanoneill/data-maps/src/components/dashboard/DependencyTree.tsx`
+
+If you need a **single concatenated archive-style dump** (one file after another) for offline use, say so and we can split it across multiple follow-up messages by directory (`helpers/`, `hooks/`, `components/dashboard/`, etc.) so nothing is truncated.

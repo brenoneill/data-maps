@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { SentenceFilter } from "./SentenceFilter";
 import { formatLabel, formatDimensionLabel } from "@/helpers/formatLabel";
 import { getColorForValue } from "@/helpers/colors";
-import type { GroupByOption, GroupBySelection, ViewMode, FilterMode, DimensionFilters } from "@/types";
+import type { FilterDimension, GroupBySelection, ViewMode, FilterMode, DimensionFilters } from "@/types";
 import { useState, useRef, useCallback, useEffect } from "react";
 import {
   X,
@@ -26,13 +26,14 @@ interface FilterBarProps {
     systemType: string[];
     dataUse: string[];
     dataCategories: string[];
+    identifiability: string[];
   };
   fidesGroupMap: Map<string, string[]>;
   viewMode: ViewMode;
   filterMode: FilterMode;
   systemNames: string[];
   onGroupByChange: (value: GroupBySelection) => void;
-  onToggleFilter: (dimension: GroupByOption, value: string) => void;
+  onToggleFilter: (dimension: FilterDimension, value: string) => void;
   onClearFilters: () => void;
   onViewModeChange: (value: ViewMode) => void;
   onFilterModeChange: (value: FilterMode) => void;
@@ -45,7 +46,7 @@ const GROUP_BY_OPTIONS = [
   { value: "dataCategories", label: "Data Categories" },
 ];
 
-const DIMENSION_ORDER: GroupByOption[] = [
+const DIMENSION_ORDER: FilterDimension[] = [
   "systemType",
   "dataUse",
   "dataCategories",
@@ -76,6 +77,16 @@ export function FilterBar({
     }
   });
 
+  const [overflowVisible, setOverflowVisible] = useState(expanded);
+
+  useEffect(() => {
+    if (expanded) {
+      const timer = setTimeout(() => setOverflowVisible(true), 200);
+      return () => clearTimeout(timer);
+    }
+    setOverflowVisible(false);
+  }, [expanded]);
+
   const contentRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setContentHeight] = useState<number | undefined>(undefined);
 
@@ -104,7 +115,8 @@ export function FilterBar({
   const hasAnyFilters =
     dimensionFilters.systemType.length > 0 ||
     dimensionFilters.dataUse.length > 0 ||
-    dimensionFilters.dataCategories.length > 0;
+    dimensionFilters.dataCategories.length > 0 ||
+    dimensionFilters.identifiability.length > 0;
 
   return (
     <div className="flex shrink-0 flex-col border-b border-gray-800 bg-gray-950">
@@ -240,7 +252,7 @@ export function FilterBar({
       {/* Collapsible filter row */}
       <div
         data-cy="filter-panel"
-        className="overflow-hidden transition-[max-height] duration-200 ease-in-out"
+        className={`transition-[max-height] duration-200 ease-in-out ${overflowVisible ? "overflow-visible" : "overflow-hidden"}`}
         style={{ maxHeight: expanded ? contentHeight ?? "none" : 0 }}
       >
         <div ref={contentRef} className="px-6 pb-4">
@@ -277,6 +289,13 @@ export function FilterBar({
   );
 }
 
+const SUMMARY_DIMENSIONS: FilterDimension[] = [
+  "systemType",
+  "dataUse",
+  "dataCategories",
+  "identifiability",
+];
+
 function CollapsedFilterSummary({
   dimensionFilters,
 }: {
@@ -284,7 +303,7 @@ function CollapsedFilterSummary({
 }) {
   const segments: string[] = [];
 
-  for (const dim of DIMENSION_ORDER) {
+  for (const dim of SUMMARY_DIMENSIONS) {
     const selected = dimensionFilters[dim];
     if (selected.length === 0) continue;
     const label = formatDimensionLabel(dim);
@@ -309,13 +328,17 @@ function CheckboxFilters({
     systemType: string[];
     dataUse: string[];
     dataCategories: string[];
+    identifiability: string[];
   };
   fidesMode: boolean;
   fidesGroupMap: Map<string, string[]>;
   hasAnyFilters: boolean;
-  onToggleFilter: (dimension: GroupByOption, value: string) => void;
+  onToggleFilter: (dimension: FilterDimension, value: string) => void;
   onClearFilters: () => void;
 }) {
+  const identifiabilityValues = availableValues.identifiability;
+  const identifiabilitySelected = dimensionFilters.identifiability;
+
   return (
     <div className="flex flex-col gap-2">
       {DIMENSION_ORDER.map((dim) => {
@@ -325,6 +348,7 @@ function CheckboxFilters({
         const selected = dimensionFilters[dim];
         const isFidesCategories = fidesMode && dim === "dataCategories";
         const colorDimension = isFidesCategories ? ("fidesGroup" as const) : dim;
+        const isDataCategories = dim === "dataCategories";
 
         return (
           <div key={dim} className="flex flex-wrap items-start gap-2">
@@ -366,6 +390,24 @@ function CheckboxFilters({
                 Learn more
                 <ExternalLink size={10} aria-hidden="true" />
               </a>
+            )}
+
+            {isDataCategories && identifiabilityValues.length > 0 && (
+              <>
+                <div className="mx-1 mt-1 h-5 w-px bg-gray-700" aria-hidden="true" />
+                <span className="mt-1.5 shrink-0 text-xs text-gray-500">
+                  {formatDimensionLabel("identifiability")}:
+                </span>
+                {identifiabilityValues.map((val) => (
+                  <FilterCheckbox
+                    key={val}
+                    label={formatLabel(val)}
+                    checked={identifiabilitySelected.includes(val)}
+                    onChange={() => onToggleFilter("identifiability", val)}
+                    colorSet={getColorForValue(val, "identifiability")}
+                  />
+                ))}
+              </>
             )}
           </div>
         );

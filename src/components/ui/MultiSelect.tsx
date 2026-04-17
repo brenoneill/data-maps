@@ -11,6 +11,8 @@ import { Fragment } from "react";
 interface MultiSelectOption {
   value: string;
   label: string;
+  /** Renders a thin divider line above this option */
+  divider?: boolean;
 }
 
 interface MultiSelectProps {
@@ -117,7 +119,7 @@ export function MultiSelect({
               <ListboxOption
                 key={option.value}
                 value={option.value}
-                className="group relative cursor-pointer px-3 py-2 text-gray-300 select-none data-[focus]:bg-gray-700 data-[focus]:text-white"
+                className={`group relative cursor-pointer px-3 py-2 text-gray-300 select-none data-[focus]:bg-gray-700 data-[focus]:text-white ${option.divider ? "border-t border-gray-700 mt-1 pt-2" : ""}`}
               >
                 <span className="flex items-center gap-2">
                   <span

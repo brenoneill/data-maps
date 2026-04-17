@@ -125,6 +125,21 @@ const FIDES_GROUP_COLORS: Record<string, ColorSet> = {
   },
 };
 
+const IDENTIFIABILITY_COLORS: Record<string, ColorSet> = {
+  identifiable: {
+    bg: "bg-teal-500/10",
+    border: "border-teal-500/30",
+    text: "text-teal-400",
+    dot: "bg-teal-400",
+  },
+  nonidentifiable: {
+    bg: "bg-slate-500/10",
+    border: "border-slate-500/30",
+    text: "text-slate-400",
+    dot: "bg-slate-400",
+  },
+};
+
 const DEFAULT_COLOR: ColorSet = {
   bg: "bg-gray-500/10",
   border: "border-gray-500/30",
@@ -136,7 +151,8 @@ type ColorDimension =
   | "systemType"
   | "dataUse"
   | "dataCategories"
-  | "fidesGroup";
+  | "fidesGroup"
+  | "identifiability";
 
 export function getColorForValue(
   value: string,
@@ -151,6 +167,8 @@ export function getColorForValue(
       return DATA_CATEGORY_COLORS[value] ?? DEFAULT_COLOR;
     case "fidesGroup":
       return FIDES_GROUP_COLORS[value] ?? DEFAULT_COLOR;
+    case "identifiability":
+      return IDENTIFIABILITY_COLORS[value] ?? DEFAULT_COLOR;
     default:
       return DEFAULT_COLOR;
   }

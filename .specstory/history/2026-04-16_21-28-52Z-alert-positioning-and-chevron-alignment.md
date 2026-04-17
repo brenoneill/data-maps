@@ -380,8 +380,6 @@ _**Agent (claude-4.6-opus-high-thinking)**_
 
 <details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx</summary>
 
-Status: **loading**
-
 </details>
 
 </tool-use>
@@ -390,3 +388,48 @@ Status: **loading**
 <summary>Tool use: **edit_file_v2**</summary>
 
 </details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints">
+<details>
+<summary>Tool use: **read_lints**</summary>
+
+
+Parameters:
+
+```json
+{
+  "paths": [
+    "/Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx"
+  ]
+}
+```
+Result:
+
+```json
+{
+  "linterErrorsByFile": [
+    {
+      "relativeWorkspacePath": "/Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx"
+    }
+  ]
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints"><details>
+<summary>Tool use: **read_lints**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+The Hide/Show button is now positioned right next to the Filters/Query toggle it controls, with a subtle vertical divider separating that group from the unrelated View mode and Share controls. The layout now reads as two logical groups:
+
+1. **Filter controls**: [Filters | Query] + [Hide/Show] — grouped together since they all relate to the filter content
+2. **View controls**: [Board | List] + Share — separated by a divider

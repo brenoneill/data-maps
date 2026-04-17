@@ -1100,4 +1100,124 @@ _**Agent (claude-4.6-opus-high-thinking)**_
 
 _**Agent (claude-4.6-opus-high-thinking)**_
 
-Now add the `CollapsedFilterSummary` component at
+Now add the `CollapsedFilterSummary` component at the bottom of the file:
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now remove the badge from the toggle button since the summary bar replaces that role:
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+And clean up the now-unused `activeFilterCount`:
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints">
+<details>
+<summary>Tool use: **read_lints**</summary>
+
+
+Parameters:
+
+```json
+{
+  "paths": [
+    "src/components/dashboard/FilterBar.tsx"
+  ]
+}
+```
+Result:
+
+```json
+{
+  "linterErrorsByFile": [
+    {
+      "relativeWorkspacePath": "src/components/dashboard/FilterBar.tsx"
+    }
+  ]
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints"><details>
+<summary>Tool use: **read_lints**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Let me verify the final state:
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+All good. Here's what changed:
+
+When the filter panel is collapsed and there are active filters, a **summary bar** now appears between the toolbar and the board. It shows a string like:
+
+> **System Type:** Application, Integration  ·  **Data Use:** First Party Advertising  ·  **Data Categories:** Location
+
+Each dimension with active selections is listed, separated by a centered dot (`·`). It's prefixed with a filter icon and has a small chevron on the right.
+
+The entire bar is a **button** — clicking anywhere on it re-expands the filter panel. If no filters are active, the bar doesn't appear at all, keeping things clean.

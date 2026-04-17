@@ -12,11 +12,16 @@ export function buildShareMessage(
   dimensionFilters: DimensionFilters,
   systemNames: string[]
 ): string {
-  const { systemType, dataCategories, dataUse } = dimensionFilters;
+  const { systemType, dataCategories, dataUse, identifiability } = dimensionFilters;
 
   const systemTypeFragment =
     systemType.length > 0
       ? formatList(systemType.map(formatLabel))
+      : null;
+
+  const identifiabilityFragment =
+    identifiability.length > 0
+      ? formatList(identifiability.map(formatLabel))
       : null;
 
   const dataCategoryFragment =
@@ -31,6 +36,10 @@ export function buildShareMessage(
     ? `${systemTypeFragment} systems`
     : "systems";
 
+  const identifiabilityClause = identifiabilityFragment
+    ? ` containing ${identifiabilityFragment} data`
+    : "";
+
   const collectClause = dataCategoryFragment
     ? ` that collect ${dataCategoryFragment} data`
     : "";
@@ -40,7 +49,7 @@ export function buildShareMessage(
   const systemList =
     systemNames.length > 0 ? `:\n${systemNames.join(", ")}` : ".";
 
-  return `Here is a list of all the ${typeClause} we use${collectClause}${purposeClause}${systemList}`;
+  return `Here is a list of all the ${typeClause} we use${identifiabilityClause}${collectClause}${purposeClause}${systemList}`;
 }
 
 function formatList(items: string[]): string {

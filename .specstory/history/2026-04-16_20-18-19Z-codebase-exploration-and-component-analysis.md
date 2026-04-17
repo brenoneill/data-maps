@@ -2327,3 +2327,376 @@ _**Agent (composer-2-fast)**_
 <summary>Tool use: **read_file_v2**</summary>
 
 </details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/App.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/Swimlane.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/SystemCard.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/context/SlideoutContext.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/helpers/groupSystems.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+I have a clear image of the dependency tree structure.</details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+
+
+
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search">
+<details>
+<summary>Tool use: **glob_file_search** • Searched codebase "" • **50** results in **1** directory</summary>
+
+Directory: **/Users/brendanoneill/data-maps** (50 files)
+
+| File |
+|------|
+| `src/components/dashboard/SwimlaneBoard.tsx` |
+| `src/components/dashboard/FilterBar.tsx` |
+| `src/components/dashboard/DashboardPage.tsx` |
+| `.specstory/history/2026-04-16_20-07-39Z-code-review-for-dead-code-and-cleanup.md` |
+| `.specstory/statistics.json` |
+| `src/components/dashboard/SystemDetail.tsx` |
+| `.specstory/history/2026-04-16_20-08-32Z-project-structure-exploration.md` |
+| `src/components/dashboard/Swimlane.tsx` |
+| `src/components/dashboard/SystemCard.tsx` |
+| `.specstory/history/2026-04-16_19-52-03Z-hover-effects-for-dependencies-and-dependents.md` |
+| `src/components/layout/SlideoutPanel.tsx` |
+| `src/components/dashboard/DependencyLines.tsx` |
+| `src/hooks/useDependencyHighlight.ts` |
+| `src/components/dashboard/DependencyTree.tsx` |
+| `src/helpers/constants.ts` |
+| `src/helpers/formatLabel.ts` |
+| `src/helpers/groupSystems.ts` |
+| `src/helpers/categoryClassification.ts` |
+| `.specstory/history/2026-04-16_14-30-25Z-npm-run-dev-issue.md` |
+| `src/types/index.ts` |
+| `src/hooks/useFilteredSystems.ts` |
+| `src/hooks/useDashboardState.ts` |
+| `src/helpers/colors.ts` |
+| `src/helpers/systemLookup.ts` |
+| `src/components/ui/Card.tsx` |
+| `src/hooks/useCardRegistry.ts` |
+| `index.html` |
+| `src/main.tsx` |
+| `src/App.tsx` |
+| `src/components/layout/AppLayout.tsx` |
+| `src/components/layout/Header.tsx` |
+| `src/components/layout/AlertContainer.tsx` |
+| `src/components/ui/FilterCheckbox.tsx` |
+| `src/components/ui/Select.tsx` |
+| `src/components/ui/Alert.tsx` |
+| `src/components/ui/EmptyState.tsx` |
+| `src/components/ui/Badge.tsx` |
+| `src/components/ui/Button.tsx` |
+| `src/context/SlideoutContext.tsx` |
+| `src/context/AlertContext.tsx` |
+| `src/index.css` |
+| `tsconfig.json` |
+| `vite.config.ts` |
+| `package-lock.json` |
+| `package.json` |
+| `sample_data.json` |
+| `.specstory/.project.json` |
+| `tsconfig.node.json` |
+| `src/vite-env.d.ts` |
+| `README.md` |
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search"><details>
+<summary>Tool use: **glob_file_search**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/tsconfig.json</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/layout/AppLayout.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2-fast)**_
+
+<think><details><summary>Thought Process</summary>
+Let me check the README.md file for important information.</details></think>
+
+_**Agent (composer-2-fast)**_
+
+
+Here is a concise report based on the repo at `/Users/brendanoneill/data-maps`.
+
+---
+
+## 1. Overall project structure (full file tree)
+
+**Application source (authoritative):**
+
+```
+/Users/brendanoneill/data-maps/
+├── index.html
+├── package.json
+├── package-lock.json
+├── sample_data.json
+├── tsconfig.json
+├── tsconfig.node.json
+├── vite.config.ts
+├── README.md
+└── src/
+    ├── App.tsx
+    ├── main.tsx
+    ├── index.css
+    ├── vite-env.d.ts
+    ├── types/
+    │   └── index.ts
+    ├── context/
+    │   ├── AlertContext.tsx
+    │   └── SlideoutContext.tsx
+    ├── hooks/
+    │   ├── useDashboardState.ts
+    │   ├── useFilteredSystems.ts
+    │   ├── useDependencyHighlight.ts
+    │   └── useCardRegistry.ts
+    ├── helpers/
+    │   ├── categoryClassification.ts
+    │   ├── colors.ts
+    │   ├── constants.ts
+    │   ├── formatLabel.ts
+    │   ├── groupSystems.ts
+    │   └── systemLookup.ts
+    └── components/
+        ├── dashboard/
+        │   ├── DashboardPage.tsx
+        │   ├── FilterBar.tsx
+        │   ├── SwimlaneBoard.tsx
+        │   ├── Swimlane.tsx
+        │   ├── SystemCard.tsx
+        │   ├── DependencyLines.tsx
+        │   ├── DependencyTree.tsx
+        │   └── SystemDetail.tsx
+        ├── layout/
+        │   ├── AppLayout.tsx
+        │   ├── Header.tsx
+        │   ├── AlertContainer.tsx
+        │   └── SlideoutPanel.tsx
+        └── ui/
+            ├── Alert.tsx
+            ├── Badge.tsx
+            ├── Button.tsx
+            ├── Card.tsx
+            ├── EmptyState.tsx
+            ├── FilterCheckbox.tsx
+            └── Select.tsx
+```
+
+**Also present (not part of the hand-written app tree above):**
+
+- `node_modules/` — dependencies (large)
+- `dist/` — Vite build output
+- `.git/` — version control
+- `.specstory/` — local SpecStory history/metadata
+
+---
+
+## 2. Key type definitions
+
+From `/Users/brendanoneill/data-maps/src/types/index.ts`:
+
+| Type | Role |
+|------|------|
+| `PrivacyDeclaration` | `data_categories`, `data_subjects`, `data_use`, `name` |
+| `System` | `description`, `fides_key`, `name`, `privacy_declarations[]`, `system_dependencies[]` (keys), `system_type` |
+| `GroupByOption` | `"systemType" \| "dataUse" \| "dataCategories"` |
+| `GroupedSystems` | `key`, `label`, `systems: System[]` |
+| `AlertItem` | Alerts in `AlertContext` |
+
+Additional types live next to hooks, e.g. `CardState`, `HoverMode`, `HoverInfo` in `useDependencyHighlight.ts`.
+
+---
+
+## 3. How the main pieces fit together
+
+**`DashboardPage`** (`/Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx`)
+
+- Loads systems once via `getAllSystems()` from `systemLookup` (backed by `sample_data.json`).
+- **`useDashboardState`**: URL state (`nuqs`) for `groupBy`, `filterType`, `filters`, `fidesMode`; localStorage for `showLines`.
+- **`useFilteredSystems`**: Derives `groups` (swimlanes) and `availableFilterValues` from helpers in `groupSystems.ts`.
+- **`useSlideout`**: Which system’s detail panel is open.
+- Renders **`FilterBar`** → **`SwimlaneBoard`** → **`SlideoutPanel`** with **`SystemDetail`** when a system is selected.
+
+**`SwimlaneBoard`**
+
+- **`useDependencyHighlight(allSystems)`**: `hoverInfo` + `getCardState` for dependency highlighting.
+- **`useCardRegistry()`**: `Map<fides_key, Set<HTMLElement>>` so the same system can appear in multiple columns.
+- If `showLines`, renders **`DependencyLines`** (absolute SVG over the board) with `boardRef` and `cardRefs`.
+- Maps `groups` to **`Swimlane`** columns.
+
+**`DependencyLines`**
+
+- Builds directed edges from each system’s `system_dependencies` where both ends exist in the loaded systems.
+- On scroll/resize/hover, measures card DOM rects vs the board and draws cubic Bézier paths between card edges.
+- Styling depends on **`hoverInfo`** (all / deps-only / dependents-only) and dims unrelated lines when hovering.
+
+**`SystemDetail`**
+
+- Uses **`getSystemDependencies`** / **`getSystemDependents`** from `systemLookup`.
+- Imports **`RadialGraph`** from `./DependencyTree` (the file is `DependencyTree.tsx` but the exported component is **`RadialGraph`**).
+- Shows lists of deps/dependents and, for each section, a **radial SVG** (center = selected system, satellites = related systems).
+
+**`useDashboardState`**
+
+- `nuqs` `useQueryStates` for shareable URLs; validates `groupBy`; toggles filters; `setGroupBy` / `setFilterType` reset filters as needed.
+- `showLines` is React `useState` + `localStorage` key `data-maps:showLines` (not in the URL).
+
+**`DependencyTree.tsx`**
+
+- Not used on the main board; it implements **`RadialGraph`**: fixed-size SVG `viewBox`, dashed spokes from center to nodes on a circle, `foreignObject` HTML cards for each node.
+
+---
+
+## 4. How the “dependency tree” renders (two different UIs)
+
+1. **Main dashboard (swimlanes)**  
+   Dependencies are shown as **`DependencyLines`** connecting **`SystemCard`** instances registered by **`useCardRegistry`**. This is a **2D overlay** on the horizontal scroll board, not a hierarchical tree layout.
+
+2. **Slideout (`SystemDetail`)**  
+   **`RadialGraph`** in `DependencyTree.tsx` is a **radial star**: center card + dependency or dependent systems placed evenly on a circle with dashed lines from center to rim. It does not compute a DAG layer or ELK-style tree.
+
+---
+
+## 5. Sample data shape (`sample_data.json`)
+
+Top level: **JSON array of system objects**. Each object matches `System`:
+
+- **`fides_key`**: string id (also used in `system_dependencies`).
+- **`name`**, **`description`**, **`system_type`** (e.g. `Application`, `Service`, `Database`, `Integration`).
+- **`system_dependencies`**: string array of other systems’ `fides_key` values (outgoing edges).
+- **`privacy_declarations`**: array of objects with `name`, `data_use`, `data_categories[]`, `data_subjects[]`.
+
+Note: the file contains a **duplicate** `orders_service` entry (same `fides_key` twice); `getSystemMap()` in `systemLookup.ts` **keeps only the first** occurrence per `fides_key`.
+
+---
+
+## 6. State management and hooks
+
+| Piece | Mechanism |
+|--------|-----------|
+| Dashboard filters / grouping | `nuqs` URL query state (`useDashboardState`) |
+| Show dependency lines | `useState` + `localStorage` |
+| Slideout | `SlideoutContext` (`useSlideout`) |
+| Alerts | `AlertContext` (used from layout) |
+| Grouped/filtered systems | `useFilteredSystems` + `groupAndFilterSystems` |
+| Hover highlight for lines/cards | `useDependencyHighlight` |
+| Card DOM registration | `useCardRegistry` |
+
+**Entry:** `main.tsx` wraps `NuqsAdapter`, `AlertProvider`, `SlideoutProvider`, then `App`.
+
+---
+
+## 7. Styling / UI stack
+
+- **React 18** + **TypeScript** + **Vite 5**
+- **Tailwind CSS v4** via `@tailwindcss/vite` and `@import "tailwindcss"` in `src/index.css`; `@theme` for custom colors/font; base layer for body and scrollbars
+- **No** CSS Modules, styled-components, or Emotion in the listed source files
+- **@headlessui/react** (dialogs/panels as needed)
+- **lucide-react** icons
+- **`@/` path alias** → `./src` (`vite.config.ts` + `tsconfig.json`)
+
+---
+
+### Quick reference: `RadialGraph` import
+
+`SystemDetail.tsx` line 10: `import { RadialGraph } from "./DependencyTree";` — the radial “tree” lives in `DependencyTree.tsx` under that export name.
+
+If you want this written into project docs or a diagram file, switch to Agent mode and say where it should live.

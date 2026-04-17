@@ -1582,3 +1582,30 @@ One thing worth noting: `setFidesMode` also has a side effect — it clears the 
 _**User**_
 
 viewMode should not be in the url, this is irrelevant, this should be managed with localStorage only
+
+---
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+`viewMode` is **not** in the URL — it's already localStorage-only. Looking at the hook:
+
+```59:66:/Users/brendanoneill/data-maps/src/hooks/useDashboardState.ts
+  const [showLines, setShowLinesRaw] = useState(() => readLocalBool(SHOW_LINES_KEY, true));
+  const [fidesMode, setFidesModeRaw] = useState(() => readLocalBool(FIDES_MODE_KEY, false));
+  const [viewMode, setViewModeRaw] = useState<ViewMode>(() =>
+    readLocalString(VIEW_MODE_KEY, "board", VALID_VIEW_MODES)
+  );
+  const [filterMode, setFilterModeRaw] = useState<FilterMode>(() =>
+    readLocalString(FILTER_MODE_KEY, "checkbox", VALID_FILTER_MODES)
+  );
+```
+
+All four preferences (`showLines`, `fidesMode`, `viewMode`, `filterMode`) use plain `useState` initialized from localStorage. They're not part of the `useQueryStates` call on lines 52–57, which only manages `groupBy`, `st`, `du`, and `dc` in the URL.
+
+So the URL params are:
+- `groupBy`, `st`, `du`, `dc` — shareable filter/group state
+
+And localStorage handles:
+- `viewMode`, `filterMode`, `showLines`, `fidesMode` — personal UI preferences
+
+You're all good as-is.

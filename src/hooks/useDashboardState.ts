@@ -1,6 +1,6 @@
 import { useState, useCallback, useMemo } from "react";
 import { useQueryStates, parseAsString, parseAsArrayOf } from "nuqs";
-import type { GroupByOption, GroupBySelection, ViewMode, FilterMode, DimensionFilters } from "@/types";
+import type { FilterDimension, GroupBySelection, ViewMode, FilterMode, DimensionFilters } from "@/types";
 
 const VALID_GROUP_BY: GroupBySelection[] = [
   "none",
@@ -54,6 +54,7 @@ export function useDashboardState() {
     st: parseAsArrayOf(parseAsString, ",").withDefault([]),
     du: parseAsArrayOf(parseAsString, ",").withDefault([]),
     dc: parseAsArrayOf(parseAsString, ",").withDefault([]),
+    id: parseAsArrayOf(parseAsString, ",").withDefault([]),
   });
 
   const [showLines, setShowLinesRaw] = useState(() => readLocalBool(SHOW_LINES_KEY, true));
@@ -95,27 +96,28 @@ export function useDashboardState() {
       systemType: state.st,
       dataUse: state.du,
       dataCategories: state.dc,
+      identifiability: state.id,
     }),
-    [state.st, state.du, state.dc]
+    [state.st, state.du, state.dc, state.id]
   );
 
   const setGroupBy = useCallback((value: GroupBySelection) => {
-    setState({ groupBy: value, st: [], du: [], dc: [] });
+    setState({ groupBy: value, st: [], du: [], dc: [], id: [] });
     setFidesModeRaw(false);
     writeLocal(FIDES_MODE_KEY, "false");
   }, [setState]);
 
-  const toggleFilter = useCallback((dimension: GroupByOption, value: string) => {
-    const paramKey = { systemType: "st", dataUse: "du", dataCategories: "dc" }[dimension] as "st" | "du" | "dc";
+  const toggleFilter = useCallback((dimension: FilterDimension, value: string) => {
+    const paramKey = { systemType: "st", dataUse: "du", dataCategories: "dc", identifiability: "id" }[dimension] as "st" | "du" | "dc" | "id";
     const current = state[paramKey];
     const next = current.includes(value)
       ? current.filter((v) => v !== value)
       : [...current, value];
     setState({ [paramKey]: next });
-  }, [state.st, state.du, state.dc, setState]);
+  }, [state.st, state.du, state.dc, state.id, setState]);
 
   const clearFilters = useCallback(() => {
-    setState({ st: [], du: [], dc: [] });
+    setState({ st: [], du: [], dc: [], id: [] });
   }, [setState]);
 
   return {

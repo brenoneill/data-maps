@@ -3151,3 +3151,52 @@ _**Agent (claude-4.6-opus-high-thinking)**_
 <summary>Tool use: **read_file_v2**</summary>
 
 </details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+The card needs to become a flex column so the dependency footer (the divider + counts) gets pushed to the bottom. I need to:
+
+1. Make the `Card` render as `flex flex-col`
+2. Add a spacer (`mt-auto`) before the dependency section so it pins to the bottom
+3. Always render the footer area (even when no connections) so the divider line stays aligned
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SystemCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/brendanoneill/data-maps && npx tsc --noEmit 2>&1</summary>
+
+```bash
+cd /Users/brendanoneill/data-maps && npx tsc --noEmit 2>&1
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Clean. Here's what changed in `SystemCard.tsx`:
+
+1. The `Card` now has `flex flex-col` so it participates in flexbox layout vertically
+2. The dependency footer div uses `mt-auto` which pushes it to the bottom of the card, regardless of how much content is above it
+3. The footer (with its `border-t` divider line) is always rendered -- when there are no connections it shows "No dependencies" instead of being hidden entirely
+
+This means across all cards in a row, the divider line and footer will always sit at the same vertical position, aligned to the bottom of the tallest card.

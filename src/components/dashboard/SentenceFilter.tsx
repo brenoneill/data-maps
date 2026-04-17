@@ -1,6 +1,6 @@
 import { MultiSelect } from "@/components/ui/MultiSelect";
 import { formatLabel } from "@/helpers/formatLabel";
-import type { GroupByOption, DimensionFilters } from "@/types";
+import type { FilterDimension, DimensionFilters } from "@/types";
 
 interface SentenceFilterProps {
   dimensionFilters: DimensionFilters;
@@ -8,10 +8,11 @@ interface SentenceFilterProps {
     systemType: string[];
     dataUse: string[];
     dataCategories: string[];
+    identifiability: string[];
   };
   fidesMode: boolean;
   fidesGroupMap: Map<string, string[]>;
-  onToggleFilter: (dimension: GroupByOption, value: string) => void;
+  onToggleFilter: (dimension: FilterDimension, value: string) => void;
 }
 
 function buildOptions(values: string[]) {
@@ -31,8 +32,23 @@ export function SentenceFilter({
 }: SentenceFilterProps) {
   const systemTypeOptions = buildOptions(availableValues.systemType);
   const dataUseOptions = buildOptions(availableValues.dataUse);
+  const identifiabilityValues = new Set(availableValues.identifiability);
 
-  const dataCategoryOptions = buildOptions(availableValues.dataCategories);
+  const dataCombinedOptions = [
+    ...buildOptions(availableValues.identifiability),
+    ...buildOptions(availableValues.dataCategories).map((opt, i) =>
+      i === 0 ? { ...opt, divider: true } : opt
+    ),
+  ];
+
+  const dataCombinedValues = [
+    ...dimensionFilters.identifiability,
+    ...dimensionFilters.dataCategories,
+  ];
+
+  const handleDataToggle = (val: string) => {
+    onToggleFilter(identifiabilityValues.has(val) ? "identifiability" : "dataCategories", val);
+  };
 
   return (
     <div className="flex flex-wrap items-center gap-x-2 gap-y-2 text-sm text-gray-400">
@@ -49,20 +65,20 @@ export function SentenceFilter({
       <span>that collect</span>
 
       <MultiSelect
-        values={dimensionFilters.dataCategories}
-        onChange={(val) => onToggleFilter("dataCategories", val)}
-        options={dataCategoryOptions}
+        values={dataCombinedValues}
+        onChange={handleDataToggle}
+        options={dataCombinedOptions}
         placeholder="any data"
         inline
       />
 
-      {fidesMode &&
-        dimensionFilters.dataCategories.length > 0 && (
-          <FidesHint
-            selectedGroups={dimensionFilters.dataCategories}
-            fidesGroupMap={fidesGroupMap}
-          />
-        )}
+      {fidesMode && (
+        <FidesHint
+          availableGroups={availableValues.dataCategories}
+          selectedGroups={dimensionFilters.dataCategories}
+          fidesGroupMap={fidesGroupMap}
+        />
+      )}
 
       <span>for</span>
 
@@ -78,13 +94,16 @@ export function SentenceFilter({
 }
 
 function FidesHint({
+  availableGroups,
   selectedGroups,
   fidesGroupMap,
 }: {
+  availableGroups: string[];
   selectedGroups: string[];
   fidesGroupMap: Map<string, string[]>;
 }) {
-  const allCategories = selectedGroups.flatMap(
+  const groups = selectedGroups.length > 0 ? selectedGroups : availableGroups;
+  const allCategories = groups.flatMap(
     (g) => fidesGroupMap.get(g) ?? []
   );
   if (allCategories.length === 0) return null;

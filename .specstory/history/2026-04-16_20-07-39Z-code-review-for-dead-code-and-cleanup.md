@@ -1303,7 +1303,24 @@ _**Agent (claude-4.6-opus-high-thinking)**_
 
 <details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SystemDetail.tsx</summary>
 
-Status: **loading**
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now replace all the `resolved` references with `system` in `SystemDetail.tsx`.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SystemDetail.tsx</summary>
 
 </details>
 
@@ -1313,3 +1330,455 @@ Status: **loading**
 <summary>Tool use: **edit_file_v2**</summary>
 
 </details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Delete unused DependencyModal.tsx",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Delete unused src/assets/react.svg",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "Remove redundant resolveSystem in SystemDetail.tsx",
+      "id": "3",
+      "status": "completed"
+    },
+    {
+      "content": "Lift getFidesGroupCategoryMap to DashboardPage to avoid duplicate computation",
+      "id": "4",
+      "status": "in_progress"
+    },
+    {
+      "content": "Verify no lint errors after changes",
+      "id": "5",
+      "status": "pending"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Delete unused DependencyModal.tsx",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Delete unused src/assets/react.svg",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "Remove redundant resolveSystem in SystemDetail.tsx",
+      "id": "3",
+      "status": "in_progress"
+    },
+    {
+      "content": "Lift getFidesGroupCategoryMap to DashboardPage to avoid duplicate computation",
+      "id": "4",
+      "status": "pending"
+    },
+    {
+      "content": "Verify no lint errors after changes",
+      "id": "5",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now I need to lift `getFidesGroupCategoryMap` into `DashboardPage` and pass the result down to both `FilterBar` and `SwimlaneBoard`. Let me re-read the current files to work precisely.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now update `FilterBar` to accept `fidesGroupMap` as a prop instead of computing it internally.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now update the `FilterBar` function signature and remove the internal `useMemo` for `fidesGroupMap`.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now update `SwimlaneBoard` to accept `fidesGroupMap` as a prop instead of computing it.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SwimlaneBoard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SwimlaneBoard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Delete unused DependencyModal.tsx",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Delete unused src/assets/react.svg",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "Remove redundant resolveSystem in SystemDetail.tsx",
+      "id": "3",
+      "status": "completed"
+    },
+    {
+      "content": "Lift getFidesGroupCategoryMap to DashboardPage to avoid duplicate computation",
+      "id": "4",
+      "status": "completed"
+    },
+    {
+      "content": "Verify no lint errors after changes",
+      "id": "5",
+      "status": "in_progress"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Delete unused DependencyModal.tsx",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Delete unused src/assets/react.svg",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "Remove redundant resolveSystem in SystemDetail.tsx",
+      "id": "3",
+      "status": "completed"
+    },
+    {
+      "content": "Lift getFidesGroupCategoryMap to DashboardPage to avoid duplicate computation",
+      "id": "4",
+      "status": "in_progress"
+    },
+    {
+      "content": "Verify no lint errors after changes",
+      "id": "5",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints">
+<details>
+<summary>Tool use: **read_lints**</summary>
+
+
+Parameters:
+
+```json
+{
+  "paths": [
+    "/Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx",
+    "/Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx",
+    "/Users/brendanoneill/data-maps/src/components/dashboard/SwimlaneBoard.tsx",
+    "/Users/brendanoneill/data-maps/src/components/dashboard/SystemDetail.tsx"
+  ]
+}
+```
+Result:
+
+```json
+{
+  "linterErrorsByFile": [
+    {
+      "relativeWorkspacePath": "/Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx"
+    },
+    {
+      "relativeWorkspacePath": "/Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx"
+    },
+    {
+      "relativeWorkspacePath": "/Users/brendanoneill/data-maps/src/components/dashboard/SwimlaneBoard.tsx"
+    },
+    {
+      "relativeWorkspacePath": "/Users/brendanoneill/data-maps/src/components/dashboard/SystemDetail.tsx"
+    }
+  ]
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints"><details>
+<summary>Tool use: **read_lints**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Let me also verify the build compiles cleanly.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: npx tsc --noEmit 2>&1</summary>
+
+```bash
+npx tsc --noEmit 2>&1
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Delete unused DependencyModal.tsx",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Delete unused src/assets/react.svg",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "Remove redundant resolveSystem in SystemDetail.tsx",
+      "id": "3",
+      "status": "completed"
+    },
+    {
+      "content": "Lift getFidesGroupCategoryMap to DashboardPage to avoid duplicate computation",
+      "id": "4",
+      "status": "completed"
+    },
+    {
+      "content": "Verify no lint errors after changes",
+      "id": "5",
+      "status": "completed"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Delete unused DependencyModal.tsx",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Delete unused src/assets/react.svg",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "Remove redundant resolveSystem in SystemDetail.tsx",
+      "id": "3",
+      "status": "completed"
+    },
+    {
+      "content": "Lift getFidesGroupCategoryMap to DashboardPage to avoid duplicate computation",
+      "id": "4",
+      "status": "completed"
+    },
+    {
+      "content": "Verify no lint errors after changes",
+      "id": "5",
+      "status": "in_progress"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+All clean — zero TypeScript errors and no lint issues. Here's a summary of what was done:
+
+**Deleted (dead code):**
+- `src/components/dashboard/DependencyModal.tsx` — entirely unused component (154 lines)
+- `src/assets/react.svg` — default Vite scaffold asset, never imported
+
+**Cleaned up `SystemDetail.tsx`:**
+- Removed the redundant `resolveSystem` call and import — the component already receives the `System` object as a prop, so re-resolving it was a no-op
+
+**De-duplicated `getFidesGroupCategoryMap`:**
+- Both `FilterBar` and `SwimlaneBoard` were independently computing the same Fides group map from the same data. Lifted the computation into `DashboardPage` and passed the result down as a `fidesGroupMap` prop to both components, removing the duplicate `useMemo` calls and the `getFidesGroupCategoryMap` / `useMemo` imports from each child.
+
+**Kept intact (as requested):**
+- The entire alert system (`AlertContext`, `AlertContainer`, `Alert`, `AlertItem` type) — ready for your toast notifications when the settings area is built.

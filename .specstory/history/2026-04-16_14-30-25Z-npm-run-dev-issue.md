@@ -16615,6 +16615,11 @@ Please address those minor issues
 
 _**Agent (claude-4.6-opus-high-thinking)**_
 
+<think><details><summary>Thought Process</summary>
+Let me address all 6 issues identified in the review. Let me create a todo list and work through them.</details></think>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
 <tool-use data-tool-type="unknown" data-tool-name="todo_write">
 <details>
 <summary>Tool use: **todo_write**</summary>
@@ -16627,7 +16632,78 @@ Parameters:
   "merge": true
 }
 ```
-Status: **loading**
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Remove dead &#96;FilterDimension&#96; type from types/index.ts",
+      "id": "remove-filter-dimension",
+      "status": "in_progress"
+    },
+    {
+      "content": "Simplify &#96;classifyCategory&#96; to return a string instead of &#96;CategoryClassification&#96; with dead &#96;targeted&#96; field",
+      "id": "simplify-classify",
+      "status": "pending"
+    },
+    {
+      "content": "Remove stale &#96;fidesGroup&#96; entry from &#96;formatDimensionLabel&#96;",
+      "id": "remove-fides-format",
+      "status": "pending"
+    },
+    {
+      "content": "Extract duplicated &#96;FIDESLANG_DOCS_URL&#96; to a shared constant",
+      "id": "extract-docs-url",
+      "status": "pending"
+    },
+    {
+      "content": "Tighten &#96;chipColorDimension!&#96; non-null assertion in FilterBar",
+      "id": "fix-non-null",
+      "status": "pending"
+    },
+    {
+      "content": "Remove dead &#96;DependencyTree&#96; export and un-export &#96;RadialNodeCard&#96;",
+      "id": "cleanup-dep-tree",
+      "status": "pending"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Remove fidesGroup from GroupByOption, FilterDimension, VALID_GROUP_BY, and GROUP_BY_OPTIONS",
+      "id": "shrink-types",
+      "status": "completed"
+    },
+    {
+      "content": "Add fidesMode query param to useDashboardState with toggle helper",
+      "id": "fides-mode-state",
+      "status": "completed"
+    },
+    {
+      "content": "Update getUniqueValues, systemMatchesFilter, and groupAndFilterSystems to accept fidesMode boolean",
+      "id": "group-filter-logic",
+      "status": "completed"
+    },
+    {
+      "content": "Thread fidesMode through useFilteredSystems, DashboardPage, FilterBar, and SwimlaneBoard",
+      "id": "thread-fides-mode",
+      "status": "completed"
+    },
+    {
+      "content": "Add Fides Data Group toggle pill in FilterBar when Data Categories is active",
+      "id": "filter-bar-toggle",
+      "status": "completed"
+    },
+    {
+      "content": "Update SwimlaneBoard to use fidesMode instead of fidesGroup groupBy checks",
+      "id": "swimlane-board-update",
+      "status": "completed"
+    }
+  ],
+  "success": true
+}
+```
+Status: **completed**
 
 
 </details>
@@ -16644,8 +16720,6 @@ _**Agent (claude-4.6-opus-high-thinking)**_
 
 <details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/types/index.ts</summary>
 
-Status: **loading**
-
 </details>
 
 </tool-use>
@@ -16658,7 +16732,7 @@ Status: **loading**
 _**Agent (claude-4.6-opus-high-thinking)**_
 
 <tool-use data-tool-type="read" data-tool-name="read_file_v2">
-<details><summary>Tool use: **read_file_v2** • Read file: </summary>
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/helpers/categoryClassification.ts</summary>
 
 </details>
 </tool-use>
@@ -16682,7 +16756,79 @@ Parameters:
   "merge": true
 }
 ```
-Status: **loading**
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Remove dead &#96;FilterDimension&#96; type from types/index.ts",
+      "id": "remove-filter-dimension",
+      "status": "completed"
+    },
+    {
+      "content": "Simplify &#96;classifyCategory&#96; to return a string instead of &#96;CategoryClassification&#96; with dead &#96;targeted&#96; field",
+      "id": "simplify-classify",
+      "status": "in_progress"
+    },
+    {
+      "content": "Remove stale &#96;fidesGroup&#96; entry from &#96;formatDimensionLabel&#96;",
+      "id": "remove-fides-format",
+      "status": "pending"
+    },
+    {
+      "content": "Extract duplicated &#96;FIDESLANG_DOCS_URL&#96; to a shared constant",
+      "id": "extract-docs-url",
+      "status": "pending"
+    },
+    {
+      "content": "Tighten &#96;chipColorDimension!&#96; non-null assertion in FilterBar",
+      "id": "fix-non-null",
+      "status": "pending"
+    },
+    {
+      "content": "Remove dead &#96;DependencyTree&#96; export and un-export &#96;RadialNodeCard&#96;",
+      "id": "cleanup-dep-tree",
+      "status": "pending"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Remove dead &#96;FilterDimension&#96; type from types/index.ts",
+      "id": "remove-filter-dimension",
+      "status": "in_progress"
+    },
+    {
+      "content": "Simplify &#96;classifyCategory&#96; to return a string instead of &#96;CategoryClassification&#96; with dead &#96;targeted&#96; field",
+      "id": "simplify-classify",
+      "status": "pending"
+    },
+    {
+      "content": "Remove stale &#96;fidesGroup&#96; entry from &#96;formatDimensionLabel&#96;",
+      "id": "remove-fides-format",
+      "status": "pending"
+    },
+    {
+      "content": "Extract duplicated &#96;FIDESLANG_DOCS_URL&#96; to a shared constant",
+      "id": "extract-docs-url",
+      "status": "pending"
+    },
+    {
+      "content": "Tighten &#96;chipColorDimension!&#96; non-null assertion in FilterBar",
+      "id": "fix-non-null",
+      "status": "pending"
+    },
+    {
+      "content": "Remove dead &#96;DependencyTree&#96; export and un-export &#96;RadialNodeCard&#96;",
+      "id": "cleanup-dep-tree",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
 
 
 </details>
@@ -16699,7 +16845,24 @@ _**Agent (claude-4.6-opus-high-thinking)**_
 
 <details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/helpers/categoryClassification.ts</summary>
 
-Status: **loading**
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now I need to update every call site that was doing `.fidesGroup` on the return value, since it now returns a plain string.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/helpers/groupSystems.ts</summary>
 
 </details>
 
@@ -16709,3 +16872,865 @@ Status: **loading**
 <summary>Tool use: **edit_file_v2**</summary>
 
 </details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/helpers/groupSystems.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/helpers/groupSystems.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/helpers/groupSystems.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now tackle items 3 (stale formatDimensionLabel entry), 4 (duplicated URL), 5 (non-null assertion), and 6 (dead exports).
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Remove dead &#96;FilterDimension&#96; type from types/index.ts",
+      "id": "remove-filter-dimension",
+      "status": "completed"
+    },
+    {
+      "content": "Simplify &#96;classifyCategory&#96; to return a string instead of &#96;CategoryClassification&#96; with dead &#96;targeted&#96; field",
+      "id": "simplify-classify",
+      "status": "completed"
+    },
+    {
+      "content": "Remove stale &#96;fidesGroup&#96; entry from &#96;formatDimensionLabel&#96;",
+      "id": "remove-fides-format",
+      "status": "in_progress"
+    },
+    {
+      "content": "Extract duplicated &#96;FIDESLANG_DOCS_URL&#96; to a shared constant",
+      "id": "extract-docs-url",
+      "status": "pending"
+    },
+    {
+      "content": "Tighten &#96;chipColorDimension!&#96; non-null assertion in FilterBar",
+      "id": "fix-non-null",
+      "status": "pending"
+    },
+    {
+      "content": "Remove dead &#96;DependencyTree&#96; export and un-export &#96;RadialNodeCard&#96;",
+      "id": "cleanup-dep-tree",
+      "status": "pending"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Remove dead &#96;FilterDimension&#96; type from types/index.ts",
+      "id": "remove-filter-dimension",
+      "status": "completed"
+    },
+    {
+      "content": "Simplify &#96;classifyCategory&#96; to return a string instead of &#96;CategoryClassification&#96; with dead &#96;targeted&#96; field",
+      "id": "simplify-classify",
+      "status": "in_progress"
+    },
+    {
+      "content": "Remove stale &#96;fidesGroup&#96; entry from &#96;formatDimensionLabel&#96;",
+      "id": "remove-fides-format",
+      "status": "pending"
+    },
+    {
+      "content": "Extract duplicated &#96;FIDESLANG_DOCS_URL&#96; to a shared constant",
+      "id": "extract-docs-url",
+      "status": "pending"
+    },
+    {
+      "content": "Tighten &#96;chipColorDimension!&#96; non-null assertion in FilterBar",
+      "id": "fix-non-null",
+      "status": "pending"
+    },
+    {
+      "content": "Remove dead &#96;DependencyTree&#96; export and un-export &#96;RadialNodeCard&#96;",
+      "id": "cleanup-dep-tree",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/helpers/formatLabel.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now extract the duplicated URL. Let me check what shared constants file exists or find the best place for it.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search">
+<details>
+<summary>Tool use: **glob_file_search** • Searched codebase "" • **0** results in **1** directory</summary>
+
+Directory: **/Users/brendanoneill/data-maps** (0 files)
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search"><details>
+<summary>Tool use: **glob_file_search**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search">
+<details>
+<summary>Tool use: **glob_file_search** • Searched codebase "" • **0** results in **1** directory</summary>
+
+Directory: **/Users/brendanoneill/data-maps** (0 files)
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search"><details>
+<summary>Tool use: **glob_file_search**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Remove dead &#96;FilterDimension&#96; type from types/index.ts",
+      "id": "remove-filter-dimension",
+      "status": "completed"
+    },
+    {
+      "content": "Simplify &#96;classifyCategory&#96; to return a string instead of &#96;CategoryClassification&#96; with dead &#96;targeted&#96; field",
+      "id": "simplify-classify",
+      "status": "completed"
+    },
+    {
+      "content": "Remove stale &#96;fidesGroup&#96; entry from &#96;formatDimensionLabel&#96;",
+      "id": "remove-fides-format",
+      "status": "completed"
+    },
+    {
+      "content": "Extract duplicated &#96;FIDESLANG_DOCS_URL&#96; to a shared constant",
+      "id": "extract-docs-url",
+      "status": "in_progress"
+    },
+    {
+      "content": "Tighten &#96;chipColorDimension!&#96; non-null assertion in FilterBar",
+      "id": "fix-non-null",
+      "status": "pending"
+    },
+    {
+      "content": "Remove dead &#96;DependencyTree&#96; export and un-export &#96;RadialNodeCard&#96;",
+      "id": "cleanup-dep-tree",
+      "status": "pending"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Remove dead &#96;FilterDimension&#96; type from types/index.ts",
+      "id": "remove-filter-dimension",
+      "status": "completed"
+    },
+    {
+      "content": "Simplify &#96;classifyCategory&#96; to return a string instead of &#96;CategoryClassification&#96; with dead &#96;targeted&#96; field",
+      "id": "simplify-classify",
+      "status": "completed"
+    },
+    {
+      "content": "Remove stale &#96;fidesGroup&#96; entry from &#96;formatDimensionLabel&#96;",
+      "id": "remove-fides-format",
+      "status": "in_progress"
+    },
+    {
+      "content": "Extract duplicated &#96;FIDESLANG_DOCS_URL&#96; to a shared constant",
+      "id": "extract-docs-url",
+      "status": "pending"
+    },
+    {
+      "content": "Tighten &#96;chipColorDimension!&#96; non-null assertion in FilterBar",
+      "id": "fix-non-null",
+      "status": "pending"
+    },
+    {
+      "content": "Remove dead &#96;DependencyTree&#96; export and un-export &#96;RadialNodeCard&#96;",
+      "id": "cleanup-dep-tree",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/helpers/constants.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/SwimlaneBoard.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SwimlaneBoard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now fix the non-null assertion on `chipColorDimension`. The issue is that `chipColorDimension` can be `undefined` when `filterType` is empty, but the code block it's in is guarded by `filterType &&`, so it's always truthy. Let me tighten the type.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Remove dead &#96;FilterDimension&#96; type from types/index.ts",
+      "id": "remove-filter-dimension",
+      "status": "completed"
+    },
+    {
+      "content": "Simplify &#96;classifyCategory&#96; to return a string instead of &#96;CategoryClassification&#96; with dead &#96;targeted&#96; field",
+      "id": "simplify-classify",
+      "status": "completed"
+    },
+    {
+      "content": "Remove stale &#96;fidesGroup&#96; entry from &#96;formatDimensionLabel&#96;",
+      "id": "remove-fides-format",
+      "status": "completed"
+    },
+    {
+      "content": "Extract duplicated &#96;FIDESLANG_DOCS_URL&#96; to a shared constant",
+      "id": "extract-docs-url",
+      "status": "completed"
+    },
+    {
+      "content": "Tighten &#96;chipColorDimension!&#96; non-null assertion in FilterBar",
+      "id": "fix-non-null",
+      "status": "in_progress"
+    },
+    {
+      "content": "Remove dead &#96;DependencyTree&#96; export and un-export &#96;RadialNodeCard&#96;",
+      "id": "cleanup-dep-tree",
+      "status": "pending"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Remove dead &#96;FilterDimension&#96; type from types/index.ts",
+      "id": "remove-filter-dimension",
+      "status": "completed"
+    },
+    {
+      "content": "Simplify &#96;classifyCategory&#96; to return a string instead of &#96;CategoryClassification&#96; with dead &#96;targeted&#96; field",
+      "id": "simplify-classify",
+      "status": "completed"
+    },
+    {
+      "content": "Remove stale &#96;fidesGroup&#96; entry from &#96;formatDimensionLabel&#96;",
+      "id": "remove-fides-format",
+      "status": "completed"
+    },
+    {
+      "content": "Extract duplicated &#96;FIDESLANG_DOCS_URL&#96; to a shared constant",
+      "id": "extract-docs-url",
+      "status": "in_progress"
+    },
+    {
+      "content": "Tighten &#96;chipColorDimension!&#96; non-null assertion in FilterBar",
+      "id": "fix-non-null",
+      "status": "pending"
+    },
+    {
+      "content": "Remove dead &#96;DependencyTree&#96; export and un-export &#96;RadialNodeCard&#96;",
+      "id": "cleanup-dep-tree",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now the last item -- clean up dead exports in `DependencyTree.tsx`.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Remove dead &#96;FilterDimension&#96; type from types/index.ts",
+      "id": "remove-filter-dimension",
+      "status": "completed"
+    },
+    {
+      "content": "Simplify &#96;classifyCategory&#96; to return a string instead of &#96;CategoryClassification&#96; with dead &#96;targeted&#96; field",
+      "id": "simplify-classify",
+      "status": "completed"
+    },
+    {
+      "content": "Remove stale &#96;fidesGroup&#96; entry from &#96;formatDimensionLabel&#96;",
+      "id": "remove-fides-format",
+      "status": "completed"
+    },
+    {
+      "content": "Extract duplicated &#96;FIDESLANG_DOCS_URL&#96; to a shared constant",
+      "id": "extract-docs-url",
+      "status": "completed"
+    },
+    {
+      "content": "Tighten &#96;chipColorDimension!&#96; non-null assertion in FilterBar",
+      "id": "fix-non-null",
+      "status": "completed"
+    },
+    {
+      "content": "Remove dead &#96;DependencyTree&#96; export and un-export &#96;RadialNodeCard&#96;",
+      "id": "cleanup-dep-tree",
+      "status": "in_progress"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Remove dead &#96;FilterDimension&#96; type from types/index.ts",
+      "id": "remove-filter-dimension",
+      "status": "completed"
+    },
+    {
+      "content": "Simplify &#96;classifyCategory&#96; to return a string instead of &#96;CategoryClassification&#96; with dead &#96;targeted&#96; field",
+      "id": "simplify-classify",
+      "status": "completed"
+    },
+    {
+      "content": "Remove stale &#96;fidesGroup&#96; entry from &#96;formatDimensionLabel&#96;",
+      "id": "remove-fides-format",
+      "status": "completed"
+    },
+    {
+      "content": "Extract duplicated &#96;FIDESLANG_DOCS_URL&#96; to a shared constant",
+      "id": "extract-docs-url",
+      "status": "completed"
+    },
+    {
+      "content": "Tighten &#96;chipColorDimension!&#96; non-null assertion in FilterBar",
+      "id": "fix-non-null",
+      "status": "in_progress"
+    },
+    {
+      "content": "Remove dead &#96;DependencyTree&#96; export and un-export &#96;RadialNodeCard&#96;",
+      "id": "cleanup-dep-tree",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/DependencyTree.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Let me check who imports what from this file.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "/Users/brendanoneill/data-maps/src",
+  "pattern": "from.*DependencyTree"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "/Users/brendanoneill/data-maps/src",
+  "pattern": "from.*DependencyTree",
+  "topFiles": [
+    {
+      "matchCount": 1,
+      "uri": "src/components/dashboard/DependencyModal.tsx"
+    }
+  ],
+  "totalFiles": 1,
+  "totalMatches": 1
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Only `RadialGraph` is imported externally. `DependencyTree` and `RadialNodeCard` are never imported from outside this file. `RadialNodeCard` is used internally by `RadialGraph`, and `DependencyTree` is completely dead.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/DependencyTree.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/DependencyTree.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now clean up the unused imports that were only used by `DependencyTree`.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/DependencyTree.tsx</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+The now-unused imports: `resolveSystem`, `getSystemDependencies`, `getSystemDependents`, `ArrowDown`, `ArrowUp`, and the `DependencyTreeProps` interface.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/DependencyTree.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now let me verify everything compiles cleanly.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Remove dead &#96;FilterDimension&#96; type from types/index.ts",
+      "id": "remove-filter-dimension",
+      "status": "completed"
+    },
+    {
+      "content": "Simplify &#96;classifyCategory&#96; to return a string instead of &#96;CategoryClassification&#96; with dead &#96;targeted&#96; field",
+      "id": "simplify-classify",
+      "status": "completed"
+    },
+    {
+      "content": "Remove stale &#96;fidesGroup&#96; entry from &#96;formatDimensionLabel&#96;",
+      "id": "remove-fides-format",
+      "status": "completed"
+    },
+    {
+      "content": "Extract duplicated &#96;FIDESLANG_DOCS_URL&#96; to a shared constant",
+      "id": "extract-docs-url",
+      "status": "completed"
+    },
+    {
+      "content": "Tighten &#96;chipColorDimension!&#96; non-null assertion in FilterBar",
+      "id": "fix-non-null",
+      "status": "completed"
+    },
+    {
+      "content": "Remove dead &#96;DependencyTree&#96; export and un-export &#96;RadialNodeCard&#96;",
+      "id": "cleanup-dep-tree",
+      "status": "completed"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Remove dead &#96;FilterDimension&#96; type from types/index.ts",
+      "id": "remove-filter-dimension",
+      "status": "completed"
+    },
+    {
+      "content": "Simplify &#96;classifyCategory&#96; to return a string instead of &#96;CategoryClassification&#96; with dead &#96;targeted&#96; field",
+      "id": "simplify-classify",
+      "status": "completed"
+    },
+    {
+      "content": "Remove stale &#96;fidesGroup&#96; entry from &#96;formatDimensionLabel&#96;",
+      "id": "remove-fides-format",
+      "status": "completed"
+    },
+    {
+      "content": "Extract duplicated &#96;FIDESLANG_DOCS_URL&#96; to a shared constant",
+      "id": "extract-docs-url",
+      "status": "completed"
+    },
+    {
+      "content": "Tighten &#96;chipColorDimension!&#96; non-null assertion in FilterBar",
+      "id": "fix-non-null",
+      "status": "completed"
+    },
+    {
+      "content": "Remove dead &#96;DependencyTree&#96; export and un-export &#96;RadialNodeCard&#96;",
+      "id": "cleanup-dep-tree",
+      "status": "in_progress"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: cd /Users/brendanoneill/data-maps && npx tsc --noEmit 2>&1</summary>
+
+```bash
+cd /Users/brendanoneill/data-maps && npx tsc --noEmit 2>&1
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Clean build, zero errors. Here's a summary of everything that was cleaned up:
+
+1. **Removed dead `FilterDimension` type** from `src/types/index.ts` -- it was exported but never imported anywhere.
+
+2. **Simplified `classifyCategory`** in `src/helpers/categoryClassification.ts` -- it now returns a plain `string` (the Fides Group name) instead of a `CategoryClassification` object with a `targeted` field that no caller ever read. Removed the `CategoryClassification` interface entirely.
+
+3. **Removed stale `"fidesGroup"` entry** from the `formatDimensionLabel` map in `src/helpers/formatLabel.ts` -- it was unreachable since `"fidesGroup"` is no longer a valid `GroupByOption`.
+
+4. **Extracted `FIDESLANG_DOCS_URL`** into a shared `src/helpers/constants.ts` file and updated both `FilterBar.tsx` and `SwimlaneBoard.tsx` to import from there instead of duplicating the string.
+
+5. **Removed `!` non-null assertion** on `chipColorDimension` in `FilterBar.tsx` by defaulting the fallback to `"systemType"` instead of `undefined`, making the type always defined.
+
+6. **Cleaned up `DependencyTree.tsx`** -- removed the dead `DependencyTree` component (never imported), un-exported `RadialNodeCard` (only used internally), and removed the now-unused imports (`resolveSystem`, `getSystemDependencies`, `getSystemDependents`, `ArrowDown`, `ArrowUp`) and the `DependencyTreeProps` interface.

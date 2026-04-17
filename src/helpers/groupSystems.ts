@@ -1,6 +1,6 @@
-import type { System, GroupByOption, GroupBySelection, GroupedSystems, DimensionFilters } from "@/types";
+import type { System, FilterDimension, GroupBySelection, GroupedSystems, DimensionFilters } from "@/types";
 import { formatLabel } from "./formatLabel";
-import { classifyCategory } from "./categoryClassification";
+import { classifyCategory, extractIdentifiability } from "./categoryClassification";
 
 /**
  * Extracts unique values for a given dimension from all systems.
@@ -14,7 +14,7 @@ import { classifyCategory } from "./categoryClassification";
  */
 export function getUniqueValues(
   systems: System[],
-  dimension: GroupByOption,
+  dimension: FilterDimension,
   fidesMode = false
 ): string[] {
   const values = new Set<string>();
@@ -33,6 +33,14 @@ export function getUniqueValues(
         for (const decl of system.privacy_declarations) {
           for (const cat of decl.data_categories) {
             values.add(fidesMode ? classifyCategory(cat) : cat);
+          }
+        }
+        break;
+      case "identifiability":
+        for (const decl of system.privacy_declarations) {
+          for (const cat of decl.data_categories) {
+            const id = extractIdentifiability(cat);
+            if (id !== "unknown") values.add(id);
           }
         }
         break;
@@ -74,7 +82,7 @@ export function getFidesGroupCategoryMap(
 
 function systemMatchesFilter(
   system: System,
-  dimension: GroupByOption,
+  dimension: FilterDimension,
   filterValues: string[],
   fidesMode: boolean
 ): boolean {
@@ -98,12 +106,18 @@ function systemMatchesFilter(
       return system.privacy_declarations.some((d) =>
         d.data_categories.some((c) => filterValues.includes(c))
       );
+    case "identifiability":
+      return system.privacy_declarations.some((d) =>
+        d.data_categories.some((c) =>
+          filterValues.includes(extractIdentifiability(c))
+        )
+      );
     default:
       return true;
   }
 }
 
-const DIMENSIONS: GroupByOption[] = ["systemType", "dataUse", "dataCategories"];
+const DIMENSIONS: FilterDimension[] = ["systemType", "dataUse", "dataCategories", "identifiability"];
 
 /**
  * Groups systems into swimlane buckets by the selected dimension,

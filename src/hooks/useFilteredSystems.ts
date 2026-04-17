@@ -16,6 +16,7 @@ interface AvailableValues {
   systemType: string[];
   dataUse: string[];
   dataCategories: string[];
+  identifiability: string[];
 }
 
 interface UseFilteredSystemsResult {
@@ -45,6 +46,7 @@ export function useFilteredSystems({
       systemType: getUniqueValues(systems, "systemType", fidesMode),
       dataUse: getUniqueValues(systems, "dataUse", fidesMode),
       dataCategories: getUniqueValues(systems, "dataCategories", fidesMode),
+      identifiability: getUniqueValues(systems, "identifiability"),
     }),
     [systems, fidesMode]
   );

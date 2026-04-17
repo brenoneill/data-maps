@@ -1869,7 +1869,58 @@ Parameters:
   "merge": true
 }
 ```
-Status: **loading**
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Remove DependencyModal component file",
+      "id": "1",
+      "status": "in_progress"
+    },
+    {
+      "content": "Remove modal state/callbacks from DashboardPage",
+      "id": "2",
+      "status": "pending"
+    },
+    {
+      "content": "Remove 'See more' button references (no modal to link from)",
+      "id": "3",
+      "status": "pending"
+    },
+    {
+      "content": "Update SystemCard dep/dependent buttons to open slideout instead of modal",
+      "id": "4",
+      "status": "pending"
+    },
+    {
+      "content": "Clean up unused imports",
+      "id": "5",
+      "status": "pending"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Add 'See more' button to DependencyModal (close modal, open slideout)",
+      "id": "a",
+      "status": "completed"
+    },
+    {
+      "content": "Add 'See graph' button to SystemDetail (close slideout, open dep modal)",
+      "id": "b",
+      "status": "completed"
+    },
+    {
+      "content": "Wire callbacks through DashboardPage",
+      "id": "c",
+      "status": "completed"
+    }
+  ],
+  "success": true
+}
+```
+Status: **completed**
 
 
 </details>
@@ -1882,8 +1933,12 @@ Status: **loading**
 
 _**Agent (claude-4.6-opus-high-thinking)**_
 
+Let me first check what's using the modal and `onOpenDeps` so I can trace all the wiring.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
 <tool-use data-tool-type="read" data-tool-name="read_file_v2">
-<details><summary>Tool use: **read_file_v2** • Read file: </summary>
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx</summary>
 
 </details>
 </tool-use>
@@ -1896,7 +1951,7 @@ _**Agent (claude-4.6-opus-high-thinking)**_
 _**Agent (claude-4.6-opus-high-thinking)**_
 
 <tool-use data-tool-type="read" data-tool-name="read_file_v2">
-<details><summary>Tool use: **read_file_v2** • Read file: </summary>
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/SystemCard.tsx</summary>
 
 </details>
 </tool-use>
@@ -1909,7 +1964,7 @@ _**Agent (claude-4.6-opus-high-thinking)**_
 _**Agent (claude-4.6-opus-high-thinking)**_
 
 <tool-use data-tool-type="read" data-tool-name="read_file_v2">
-<details><summary>Tool use: **read_file_v2** • Read file: </summary>
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/SwimlaneBoard.tsx</summary>
 
 </details>
 </tool-use>
@@ -1922,7 +1977,7 @@ _**Agent (claude-4.6-opus-high-thinking)**_
 _**Agent (claude-4.6-opus-high-thinking)**_
 
 <tool-use data-tool-type="read" data-tool-name="read_file_v2">
-<details><summary>Tool use: **read_file_v2** • Read file: </summary>
+<details><summary>Tool use: **read_file_v2** • Read file: /Users/brendanoneill/data-maps/src/components/dashboard/Swimlane.tsx</summary>
 
 </details>
 </tool-use>
@@ -1931,3 +1986,379 @@ _**Agent (claude-4.6-opus-high-thinking)**_
 <summary>Tool use: **read_file_v2**</summary>
 
 </details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now I have the full picture. The dep/dependent count buttons on `SystemCard` currently call `onOpenDeps` which opens the modal. I need to change those to open the slideout instead, then remove the entire `onOpenDeps` chain and the modal.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SystemCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now update the dep/dependent count buttons to open the slideout instead of calling `onOpenDeps`.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SystemCard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Remove DependencyModal component file",
+      "id": "1",
+      "status": "in_progress"
+    },
+    {
+      "content": "Remove modal state/callbacks from DashboardPage",
+      "id": "2",
+      "status": "pending"
+    },
+    {
+      "content": "Remove 'See more' button references (no modal to link from)",
+      "id": "3",
+      "status": "pending"
+    },
+    {
+      "content": "Update SystemCard dep/dependent buttons to open slideout instead of modal",
+      "id": "4",
+      "status": "completed"
+    },
+    {
+      "content": "Clean up unused imports",
+      "id": "5",
+      "status": "pending"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Remove DependencyModal component file",
+      "id": "1",
+      "status": "in_progress"
+    },
+    {
+      "content": "Remove modal state/callbacks from DashboardPage",
+      "id": "2",
+      "status": "pending"
+    },
+    {
+      "content": "Remove 'See more' button references (no modal to link from)",
+      "id": "3",
+      "status": "pending"
+    },
+    {
+      "content": "Update SystemCard dep/dependent buttons to open slideout instead of modal",
+      "id": "4",
+      "status": "pending"
+    },
+    {
+      "content": "Clean up unused imports",
+      "id": "5",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now remove `onOpenDeps` from `Swimlane`.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/Swimlane.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/Swimlane.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now remove `onOpenDeps` from `SwimlaneBoard`.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SwimlaneBoard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/SwimlaneBoard.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now clean up `DashboardPage` — remove the modal, all modal state, and the import.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/DashboardPage.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now delete the modal file.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="delete_file">
+<details><summary>Tool use: **delete_file**</summary>
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="delete_file"><details>
+<summary>Tool use: **delete_file**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints">
+<details>
+<summary>Tool use: **read_lints**</summary>
+
+
+Parameters:
+
+```json
+{
+  "paths": [
+    "src/components/dashboard/DashboardPage.tsx",
+    "src/components/dashboard/SystemCard.tsx",
+    "src/components/dashboard/SwimlaneBoard.tsx",
+    "src/components/dashboard/Swimlane.tsx"
+  ]
+}
+```
+Result:
+
+```json
+{
+  "linterErrorsByFile": [
+    {
+      "relativeWorkspacePath": "src/components/dashboard/DashboardPage.tsx"
+    },
+    {
+      "relativeWorkspacePath": "src/components/dashboard/SystemCard.tsx"
+    },
+    {
+      "relativeWorkspacePath": "src/components/dashboard/SwimlaneBoard.tsx"
+    },
+    {
+      "relativeWorkspacePath": "src/components/dashboard/Swimlane.tsx"
+    }
+  ]
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints"><details>
+<summary>Tool use: **read_lints**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Remove DependencyModal component file",
+      "id": "1",
+      "status": "completed"
+    },
+    {
+      "content": "Remove modal state/callbacks from DashboardPage",
+      "id": "2",
+      "status": "completed"
+    },
+    {
+      "content": "Remove 'See more' button references (no modal to link from)",
+      "id": "3",
+      "status": "completed"
+    },
+    {
+      "content": "Update SystemCard dep/dependent buttons to open slideout instead of modal",
+      "id": "4",
+      "status": "completed"
+    },
+    {
+      "content": "Clean up unused imports",
+      "id": "5",
+      "status": "completed"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Remove DependencyModal component file",
+      "id": "1",
+      "status": "in_progress"
+    },
+    {
+      "content": "Remove modal state/callbacks from DashboardPage",
+      "id": "2",
+      "status": "pending"
+    },
+    {
+      "content": "Remove 'See more' button references (no modal to link from)",
+      "id": "3",
+      "status": "pending"
+    },
+    {
+      "content": "Update SystemCard dep/dependent buttons to open slideout instead of modal",
+      "id": "4",
+      "status": "completed"
+    },
+    {
+      "content": "Clean up unused imports",
+      "id": "5",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Done. Here's what was removed/changed:
+
+- **Deleted** `DependencyModal.tsx` entirely.
+- **DashboardPage** — stripped out all modal state (`depSystem`, `depModalOpen`, `openDepModal`, `closeDepModal`, `handleModalSeeMore`), removed the `<DependencyModal>` render, and dropped the `onOpenDeps` prop from `<SwimlaneBoard>`.
+- **SwimlaneBoard** / **Swimlane** — removed the `onOpenDeps` prop chain.
+- **SystemCard** — the dep/dependent count indicators are now plain `<span>` elements (they still trigger the hover highlight for dependency lines). Clicking the card itself opens the slideout, which now has the radial graphs inline.

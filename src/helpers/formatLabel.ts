@@ -6,6 +6,11 @@ const DATA_CATEGORY_LABELS: Record<string, string> = {
   "user.provided.identifiable.financial": "Financial",
 };
 
+const IDENTIFIABILITY_LABELS: Record<string, string> = {
+  identifiable: "Identifiable",
+  nonidentifiable: "Non-Identifiable",
+};
+
 const DATA_USE_LABELS: Record<string, string> = {
   "advertising.third_party": "Third Party Advertising",
   "advertising.first_party": "First Party Advertising",
@@ -29,6 +34,7 @@ function titleCase(str: string): string {
 export function formatLabel(value: string): string {
   if (DATA_CATEGORY_LABELS[value]) return DATA_CATEGORY_LABELS[value];
   if (DATA_USE_LABELS[value]) return DATA_USE_LABELS[value];
+  if (IDENTIFIABILITY_LABELS[value]) return IDENTIFIABILITY_LABELS[value];
 
   const segments = value.split(".");
   const lastSegment = segments[segments.length - 1];
@@ -45,6 +51,7 @@ export function formatDimensionLabel(
     systemType: "System Type",
     dataUse: "Data Use",
     dataCategories: "Data Categories",
+    identifiability: "Identifiability",
   };
   return map[dimension] ?? dimension;
 }

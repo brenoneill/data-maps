@@ -54,15 +54,12 @@ export function DashboardPage() {
     return Array.from(seen).sort();
   }, [groups]);
 
-  const dataCategoriesActive =
-    groupBy === "dataCategories" || dimensionFilters.dataCategories.length > 0;
-
   const fidesGroupMap = useMemo(
     () =>
-      dataCategoriesActive && fidesMode
+      fidesMode
         ? getFidesGroupCategoryMap(systems)
         : new Map<string, string[]>(),
-    [dataCategoriesActive, fidesMode]
+    [fidesMode]
   );
 
   return (

@@ -1523,3 +1523,50 @@ _**Agent (claude-4.6-opus-high-thinking)**_
 <summary>Tool use: **read_file_v2**</summary>
 
 </details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<think><details><summary>Thought Process</summary>
+The user wants the filter bar to auto-expand when the user clicks "Filters" or "Query" in the filter mode toggle. Currently, clicking those buttons only switches the filter mode but doesn't expand the collapsed filter area. The fix is to auto-expand when the user changes filter mode.
+
+The filter mode buttons call `onFilterModeChange` which comes from `DashboardPage` → `useDashboardState.setFilterMode`. The expansion state (`expanded`) is local to `FilterBar`.
+
+The simplest fix: when the user clicks Filters or Query, also expand the bar if it's collapsed. I can do this by modifying the onClick handlers for the filter mode buttons to also set `expanded = true`.</details></think>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+The issue is that clicking "Filters" or "Query" switches the mode but doesn't expand the bar if it's collapsed. I'll make the filter mode buttons also expand the bar.
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: /Users/brendanoneill/data-maps/src/components/dashboard/FilterBar.tsx</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (claude-4.6-opus-high-thinking)**_
+
+Now clicking either "Filters" or "Query" will also expand the filter bar if it was collapsed, so the user immediately sees the filter content they selected.
