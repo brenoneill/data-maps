@@ -1,7 +1,7 @@
 # data-maps
 
 ## Deployed at
-https://data-maps-3uotr8piw-bren-oneills-projects.vercel.app/
+https://data-maps.vercel.app/
 
 ## If you want to run - see bottom
 
