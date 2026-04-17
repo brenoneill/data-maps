@@ -1,5 +1,47 @@
 # data-maps
 
+## Deployed at
+https://data-maps-fbstinmhg-bren-oneills-projects.vercel.app/
+
+## If you want to run - see bottom
+
+# Requested Information
+
+## Time
+Just under 4 hours. 45 minutes of planning. A little over 3 hours of dev work
+
+## Assumptions
+- User is accessing on desktop and has a reasonably sized monitor (I didn't build for small or excessively large screens given time constraints)
+
+- User is somewhat familiar with the platform (I didn't have built in tooltips, hints etc)
+
+- User is not a very technical person and appreciates simplicity and clear information
+
+- User is generally accessing to get specific information to share with stakeholders or to add to reports and their main goal is to find the answers they want while minimiing the cognitive load required (for this reason I made the dependency lines optional in the preferenes slideout, they are informative but I don't assume they are required for most use cases and I added very basic "Share" functionality)
+
+- Identifiable data will be requested more; and is more important than Unindentifiable data (Even though all the data provided is identifiable, I thought it important to add it into the filters as I assume it will form a significant number of request e.g. Get me all identifiable data collected by our database)
+
+## Tradeoffs
+
+- URL driven vs App State vs Local Storage: I ultimately went with URL driven for the filters because ultimately I think there is the most value in enabling the user to share a direct link to a filter state, rather than local storage where they would have the benefit of returning to where they last picked up, I didn't see value for this excercise in a hybrid approach for that.
+
+- Features vs Tests: I added basic Cypress Component Tests for key components. I would have liked to have spent more time on the test suite; I would've added e2e tests also, but I felt it would be better to spend time on features and UX, rather than lots of tests.
+
+- Dense Component Structure: I created a somewhat dense folder structure for a small project. I like to keep code separated, I also generally like to use helper components for files with very hefty blocks of HTML as I think components really help with readability but can obviously cause scalability issues wif they introduce excessive prop drilling.
+
+## Special Featurs
+
+- Dependency Graphs: I added in the functionality to connect the dependencies and to create a clear link between systems. As this looks nice, and gives good clear information, it can be hard to get a full picture, so I broke it down to dependencies and dependents and I added graphs into the Sidebar which give a really clear understanding of the system. Given more time it is something I would build out, I was hoping to get multi-level into the graph but I didn't have time.
+
+- Natural Language Search: I added natural language query as an option because I think it will reduce the cognitive load for some users. In particiular, this was representing a modern shift towards natural language requests (AI). I was trying to decide whether to use this sentence builder or actually connect something to Claude API using the ai-sdk but ultimately for the purpose of the excercise I thought it best not to connect to outside providers
+
+- Fides 'Integration': I added in the preference for a user to filter using the 'Fideslang' structure. I think with a bigger dataset this would be very helpful and found the structure really helpful. Using this structure I was also able to enable the user to filter vased on 'identifiable' data (even though all the data in this was idenitifiable)
+
+## AOB and Feedback
+Nothing else really. I actually enjoyed the excercise, there was a lot of ways to go and I think it was well structured.
+
+# Get up and running in local
+
 React dashboard for exploring and filtering systems data (Vite + TypeScript + Tailwind).
 
 ## Prerequisites
@@ -42,41 +84,6 @@ npm ci
 - **Imports**: `@/` maps to `src/` (see `vite.config.ts`).
 
 Stack highlights: React 18, TypeScript, Vite, Tailwind CSS v4.
-
-# Requested Information
-
-## Time
-Just under 4 hours. 45 minutes of planning. A little over 3 hours of dev work
-
-## Assumptions
-- User is accessing on desktop and has a reasonably sized monitor (I didn't build for small or excessively large screens given time constraints)
-
-- User is somewhat familiar with the platform (I didn't have built in tooltips, hints etc)
-
-- User is not a very technical person and appreciates simplicity and clear information
-
-- User is generally accessing to get specific information to share with stakeholders or to add to reports and their main goal is to find the answers they want while minimiing the cognitive load required (for this reason I made the dependency lines optional in the preferenes slideout, they are informative but I don't assume they are required for most use cases and I added very basic "Share" functionality)
-
-- Identifiable data will be requested more; and is more important than Unindentifiable data (Even though all the data provided is identifiable, I thought it important to add it into the filters as I assume it will form a significant number of request e.g. Get me all identifiable data collected by our database)
-
-## Tradeoffs
-
-- URL driven vs App State vs Local Storage: I ultimately went with URL driven for the filters because ultimately I think there is the most value in enabling the user to share a direct link to a filter state, rather than local storage where they would have the benefit of returning to where they last picked up, I didn't see value for this excercise in a hybrid approach for that.
-
-- Features vs Tests: I added basic Cypress Component Tests for key components. I would have liked to have spent more time on the test suite; I would've added e2e tests also, but I felt it would be better to spend time on features and UX, rather than lots of tests.
-
-- Dense Component Structure: I created a somewhat dense folder structure for a small project. I like to keep code separated, I also generally like to use helper components for files with very hefty blocks of HTML as I think components really help with readability but can obviously cause scalability issues wif they introduce excessive prop drilling.
-
-## Special Featurs
-
-- Dependency Graphs: I added in the functionality to connect the dependencies and to create a clear link between systems. As this looks nice, and gives good clear information, it can be hard to get a full picture, so I broke it down to dependencies and dependents and I added graphs into the Sidebar which give a really clear understanding of the system. Given more time it is something I would build out, I was hoping to get multi-level into the graph but I didn't have time.
-
-- Natural Language Search: I added natural language query as an option because I think it will reduce the cognitive load for some users. In particiular, this was representing a modern shift towards natural language requests (AI). I was trying to decide whether to use this sentence builder or actually connect something to Claude API using the ai-sdk but ultimately for the purpose of the excercise I thought it best not to connect to outside providers
-
-- Fides 'Integration': I added in the preference for a user to filter using the 'Fideslang' structure. I think with a bigger dataset this would be very helpful and found the structure really helpful. Using this structure I was also able to enable the user to filter vased on 'identifiable' data (even though all the data in this was idenitifiable)
-
-## AOB and Feedback
-Nothing else really. I actually enjoyed the excercise, there was a lot of ways to go and I think it was well structured.
 
 
 
