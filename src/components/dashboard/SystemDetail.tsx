@@ -6,6 +6,7 @@ import {
   getSystemDependencies,
   getSystemDependents,
 } from "@/helpers/systemLookup";
+import type { LucideIcon } from "lucide-react";
 import { Database, Globe, Shield, ArrowDown, ArrowUp } from "lucide-react";
 import { RadialGraph } from "./DependencyTree";
 
@@ -96,67 +97,70 @@ export function SystemDetail({ system }: SystemDetailProps) {
           </div>
         </section>
       )}
-      {/* Dependencies */}
-      {deps.length > 0 && (
-        <section>
-          <h3 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-blue-400/70">
-            <ArrowDown size={14} aria-hidden="true" />
-            Dependencies
-            <span className="rounded-full bg-gray-800 px-2 py-0.5 text-[10px] font-medium text-gray-400">
-              {deps.length}
-            </span>
-          </h3>
-          <div className="space-y-2">
-            {deps.map((dep) => (
-              <div
-                key={dep.fides_key}
-                className="flex items-center gap-2 rounded-lg border border-gray-800 bg-gray-900 px-3 py-2"
-              >
-                <span className="text-sm font-medium text-gray-200">
-                  {dep.name}
-                </span>
-                <Badge
-                  colorSet={getColorForValue(dep.system_type, "systemType")}
-                >
-                  {dep.system_type}
-                </Badge>
-              </div>
-            ))}
-          </div>
-          <RadialGraph rootSystem={system} systems={deps} />
-        </section>
-      )}
-
-      {/* Dependents */}
-      {dependents.length > 0 && (
-        <section>
-          <h3 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-violet-400/70">
-            <ArrowUp size={14} aria-hidden="true" />
-            Dependents
-            <span className="rounded-full bg-gray-800 px-2 py-0.5 text-[10px] font-medium text-gray-400">
-              {dependents.length}
-            </span>
-          </h3>
-          <div className="space-y-2">
-            {dependents.map((dep) => (
-              <div
-                key={dep.fides_key}
-                className="flex items-center gap-2 rounded-lg border border-gray-800 bg-gray-900 px-3 py-2"
-              >
-                <span className="text-sm font-medium text-gray-200">
-                  {dep.name}
-                </span>
-                <Badge
-                  colorSet={getColorForValue(dep.system_type, "systemType")}
-                >
-                  {dep.system_type}
-                </Badge>
-              </div>
-            ))}
-          </div>
-          <RadialGraph rootSystem={system} systems={dependents} />
-        </section>
-      )}
+      <RelatedSystemsSection
+        rootSystem={system}
+        systems={deps}
+        title="Dependencies"
+        titleAccentClassName="text-blue-400/70"
+        Icon={ArrowDown}
+      />
+      <RelatedSystemsSection
+        rootSystem={system}
+        systems={dependents}
+        title="Dependents"
+        titleAccentClassName="text-violet-400/70"
+        Icon={ArrowUp}
+      />
     </div>
+  );
+}
+
+interface RelatedSystemsSectionProps {
+  rootSystem: System;
+  systems: System[];
+  title: string;
+  titleAccentClassName: string;
+  Icon: LucideIcon;
+}
+
+function RelatedSystemsSection({
+  rootSystem,
+  systems,
+  title,
+  titleAccentClassName,
+  Icon,
+}: RelatedSystemsSectionProps) {
+  if (systems.length === 0) {
+    return null;
+  }
+
+  return (
+    <section>
+      <h3
+        className={`mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider ${titleAccentClassName}`}
+      >
+        <Icon size={14} aria-hidden="true" />
+        {title}
+        <span className="rounded-full bg-gray-800 px-2 py-0.5 text-[10px] font-medium text-gray-400">
+          {systems.length}
+        </span>
+      </h3>
+      <div className="space-y-2">
+        {systems.map((dep) => (
+          <div
+            key={dep.fides_key}
+            className="flex items-center gap-2 rounded-lg border border-gray-800 bg-gray-900 px-3 py-2"
+          >
+            <span className="text-sm font-medium text-gray-200">
+              {dep.name}
+            </span>
+            <Badge colorSet={getColorForValue(dep.system_type, "systemType")}>
+              {dep.system_type}
+            </Badge>
+          </div>
+        ))}
+      </div>
+      <RadialGraph rootSystem={rootSystem} systems={systems} />
+    </section>
   );
 }
