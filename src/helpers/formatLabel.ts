@@ -32,6 +32,7 @@ function titleCase(str: string): string {
  * @returns Readable label (e.g. "Email")
  */
 export function formatLabel(value: string): string {
+  //Convert into more readable labels
   if (DATA_CATEGORY_LABELS[value]) return DATA_CATEGORY_LABELS[value];
   if (DATA_USE_LABELS[value]) return DATA_USE_LABELS[value];
   if (IDENTIFIABILITY_LABELS[value]) return IDENTIFIABILITY_LABELS[value];

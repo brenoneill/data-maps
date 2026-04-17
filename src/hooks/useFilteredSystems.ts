@@ -34,6 +34,8 @@ export function useFilteredSystems({
     [systems, groupBy, dimensionFilters, fidesMode]
   );
 
+  // Remaining filter options from all systems (recomputed when data or Fides mode changes).
+  // Systems never really changes though for this case because it's a static dataset but kept scalbility in mind
   const availableValues = useMemo<AvailableFilterValues>(
     () => ({
       systemType: getUniqueValues(systems, "systemType", fidesMode),

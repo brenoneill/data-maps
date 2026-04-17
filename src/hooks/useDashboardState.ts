@@ -12,6 +12,7 @@ const VALID_GROUP_BY: GroupBySelection[] = [
 const VALID_VIEW_MODES: ViewMode[] = ["board", "list"];
 const VALID_FILTER_MODES: FilterMode[] = ["checkbox", "sentence"];
 
+//Map the paramters to prevent excessively long urls
 const DIMENSION_TO_PARAM = {
   systemType: "st",
   dataUse: "du",
@@ -24,6 +25,7 @@ const FIDES_MODE_KEY = "data-maps:fidesMode";
 const VIEW_MODE_KEY = "data-maps:viewMode";
 const FILTER_MODE_KEY = "data-maps:filterMode";
 
+//Read from local storage with defensive validation
 function readLocalBool(key: string, fallback: boolean): boolean {
   try {
     const stored = localStorage.getItem(key);
@@ -33,6 +35,7 @@ function readLocalBool(key: string, fallback: boolean): boolean {
   }
 }
 
+//Read from local storage with defensive validation
 function readLocalString<T extends string>(key: string, fallback: T, valid: T[]): T {
   try {
     const stored = localStorage.getItem(key);
@@ -78,6 +81,8 @@ export function useDashboardState() {
     writeLocal(SHOW_LINES_KEY, String(value));
   }, []);
 
+
+  //Block of functions for setting local state for preferences, if we were to scale and add more preferences, we could make dynamic
   const setFidesMode = useCallback((on: boolean) => {
     setFidesModeRaw(on);
     writeLocal(FIDES_MODE_KEY, String(on));

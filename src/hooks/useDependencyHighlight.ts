@@ -10,6 +10,7 @@ export type CardState =
 export type HoverMode = "all" | "deps" | "dependents";
 export type HoverInfo = { key: string; mode: HoverMode } | null;
 
+//Hook to handle the logic for the dependency highlighting of system cards
 export function useDependencyHighlight(systems: System[]) {
   const [hoverInfo, setHoverInfo] = useState<HoverInfo>(null);
 
@@ -22,6 +23,7 @@ export function useDependencyHighlight(systems: System[]) {
     const deps = new Set<string>();
     const dependents = new Set<string>();
 
+    //All shows when card is hovered, deps or dependents shows when card i
     if (hoverInfo.mode === "all" || hoverInfo.mode === "deps") {
       for (const depKey of hovered.system_dependencies) {
         deps.add(depKey);

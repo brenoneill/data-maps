@@ -85,6 +85,7 @@ export function FilterBar({
   const contentRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setContentHeight] = useState<number | undefined>(undefined);
 
+  //To handle the logic to determine height of the filter row, require for smooth transitions
   const measureHeight = useCallback(() => {
     if (contentRef.current) {
       setContentHeight(contentRef.current.scrollHeight);
@@ -332,8 +333,9 @@ function CheckboxFilters({
       {DIMENSION_ORDER.map((dim) => {
         const values = availableValues[dim];
         if (values.length === 0) return null;
-
+        // Selected values for this dimension (synced from URL query params)
         const selected = dimensionFilters[dim];
+        //Fides Mode is a special case where we group data categories by Fides Group
         const isFidesCategories = fidesMode && dim === "dataCategories";
         const colorDimension = isFidesCategories ? ("fidesGroup" as const) : dim;
         const isDataCategories = dim === "dataCategories";
