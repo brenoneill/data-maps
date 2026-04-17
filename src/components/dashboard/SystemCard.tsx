@@ -7,7 +7,8 @@ import { getSystemDependents } from "@/helpers/systemLookup";
 import type { System } from "@/types";
 import type { CardState, HoverInfo } from "@/hooks/useDependencyHighlight";
 import { useSlideout } from "@/context/SlideoutContext";
-import { ChevronRight, ArrowDown, ArrowUp } from "lucide-react";
+import { ChevronRight, ArrowDown, ArrowUp, Fingerprint } from "lucide-react";
+import { extractIdentifiability } from "@/helpers/categoryClassification";
 
 const cardStateStyles: Record<CardState, string> = {
   idle: "",
@@ -120,6 +121,12 @@ export function SystemCard({
                 colorSet={getColorForValue(cat, "dataCategories")}
               >
                 {formatLabel(cat)}
+                {extractIdentifiability(cat) === "identifiable" && (
+                  <span title="Identifiable data">
+                    <Fingerprint size={11} aria-hidden="true" className="shrink-0 opacity-60" />
+                    <span className="sr-only">Identifiable</span>
+                  </span>
+                )}
               </Badge>
             ))}
           </div>

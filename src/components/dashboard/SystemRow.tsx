@@ -6,7 +6,8 @@ import { formatLabel } from "@/helpers/formatLabel";
 import { getSystemDependents } from "@/helpers/systemLookup";
 import { useSlideout } from "@/context/SlideoutContext";
 import type { System } from "@/types";
-import { ChevronRight, ArrowDown, ArrowUp } from "lucide-react";
+import { ChevronRight, ArrowDown, ArrowUp, Fingerprint } from "lucide-react";
+import { extractIdentifiability } from "@/helpers/categoryClassification";
 
 interface SystemRowProps {
   system: System;
@@ -64,6 +65,12 @@ export function SystemRow({ system }: SystemRowProps) {
               className="text-[10px]"
             >
               {formatLabel(cat)}
+              {extractIdentifiability(cat) === "identifiable" && (
+                <span title="Identifiable data">
+                  <Fingerprint size={9} aria-hidden="true" className="shrink-0 opacity-60" />
+                  <span className="sr-only">Identifiable</span>
+                </span>
+              )}
             </Badge>
           ))}
         </div>
