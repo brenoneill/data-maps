@@ -17,15 +17,19 @@ Just under 4 hours. 45 minutes of planning. A little over 3 hours of dev work
 
 - User is not a very technical person and appreciates simplicity and clear information
 
-- User is generally accessing to get specific information to share with stakeholders or to add to reports and their main goal is to find the answers they want while minimiing the cognitive load required (for this reason I made the dependency lines optional in the preferenes slideout, they are informative but I don't assume they are required for most use cases and I added very basic "Share" functionality)
+- User is generally accessing to get specific information to share with stakeholders or to add to reports and their main goal is to find the answers they want while requiring a minimal cognitive load (for this reason I made the dependency lines optional in the preferenes slideout, they are informative but I don't assume they are required for most use cases and I added very basic "Share" functionality)
 
-- Identifiable data will be requested more; and is more important than Unindentifiable data (Even though all the data provided is identifiable, I thought it important to add it into the filters as I assume it will form a significant number of request e.g. Get me all identifiable data collected by our database)
+- Identifiable data will be requested more; and is more important than Unindentifiable data (Even though all the provided data is identifiable, I thought it important to add it into the filters as I assume it will form a significant number of request e.g. Get me all identifiable data collected by our database)
 
 ## Tradeoffs
 
-- URL driven vs App State vs Local Storage: I ultimately went with URL driven for the filters because ultimately I think there is the most value in enabling the user to share a direct link to a filter state, rather than local storage where they would have the benefit of returning to where they last picked up, I didn't see value for this excercise in a hybrid approach for that.
+- URL driven vs App State vs Local Storage: I ultimately went with URL driven for the filters because ultimately I think there is the most value in enabling the user to share a direct link to a filter state, rather than local storage where they would have the benefit of returning to where they last picked up, I didn't see value for this excercise in a hybrid approach for that. For the user's preference selections, I went wit
+
+- Swimlanes vs Canvas/Placement: I was in two minds whether to go with swimlanes or more of a Canvas like Miro. The Canvas would work really well for the dependencies but ultimately I felt that retrieval of lists would be more important than understnading the relationships at a quick glance - for this reason I also include a 'List' view and 'No Groupings' because it may be a preference for user's trying to access information in a way as familiar as possible.
 
 - Features vs Tests: I added basic Cypress Component Tests for key components. I would have liked to have spent more time on the test suite; I would've added e2e tests also, but I felt it would be better to spend time on features and UX, rather than lots of tests.
+
+- App-wide context for Alerts: I setup app-wide context for alerts, I did this at the very start, I initially thought there would be more need for alerts/toasts - however, I only needed it in one place, this may have been overkill for only one use, but I still think it's good to have the setup as it's such a staple in any app
 
 - Dense Component Structure: I created a somewhat dense folder structure for a small project. I like to keep code separated, I also generally like to use helper components for files with very hefty blocks of HTML as I think components really help with readability but can obviously cause scalability issues wif they introduce excessive prop drilling.
 
@@ -38,7 +42,9 @@ Just under 4 hours. 45 minutes of planning. A little over 3 hours of dev work
 - Fides 'Integration': I added in the preference for a user to filter using the 'Fideslang' structure. I think with a bigger dataset this would be very helpful and found the structure really helpful. Using this structure I was also able to enable the user to filter vased on 'identifiable' data (even though all the data in this was idenitifiable)
 
 ## AOB and Feedback
-Nothing else really. I actually enjoyed the excercise, there was a lot of ways to go and I think it was well structured.
+I'm not too happy with the clear button, I would have liked to tidy that up a bit, it's in a different position for filters and query, I also would probably repoisition the 'Hide Filters' button - however, I was very close to the 4 hours so decided to go with it as is. The label showing when filters are hidden is a little jumpy, so that's also something I'd like to address along with some general tinkering of animations.
+
+I actually enjoyed the excercise, there was a lot of ways to go and I think it was well structured.
 
 # Get up and running in local
 
