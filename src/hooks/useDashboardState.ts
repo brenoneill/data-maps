@@ -12,6 +12,13 @@ const VALID_GROUP_BY: GroupBySelection[] = [
 const VALID_VIEW_MODES: ViewMode[] = ["board", "list"];
 const VALID_FILTER_MODES: FilterMode[] = ["checkbox", "sentence"];
 
+const DIMENSION_TO_PARAM = {
+  systemType: "st",
+  dataUse: "du",
+  dataCategories: "dc",
+  identifiability: "id",
+} as const;
+
 const SHOW_LINES_KEY = "data-maps:showLines";
 const FIDES_MODE_KEY = "data-maps:fidesMode";
 const VIEW_MODE_KEY = "data-maps:viewMode";
@@ -108,7 +115,7 @@ export function useDashboardState() {
   }, [setState]);
 
   const toggleFilter = useCallback((dimension: FilterDimension, value: string) => {
-    const paramKey = { systemType: "st", dataUse: "du", dataCategories: "dc", identifiability: "id" }[dimension] as "st" | "du" | "dc" | "id";
+    const paramKey = DIMENSION_TO_PARAM[dimension];
     const current = state[paramKey];
     const next = current.includes(value)
       ? current.filter((v) => v !== value)

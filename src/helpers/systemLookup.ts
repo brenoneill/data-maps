@@ -25,7 +25,7 @@ function getSystemMap(): Map<string, System> {
  * @param fidesKey - The unique identifier of the system
  * @returns The system object, or undefined if not found
  */
-export function resolveSystem(fidesKey: string): System | undefined {
+function resolveSystem(fidesKey: string): System | undefined {
   return getSystemMap().get(fidesKey);
 }
 

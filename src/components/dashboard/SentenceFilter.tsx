@@ -1,15 +1,10 @@
 import { MultiSelect } from "@/components/ui/MultiSelect";
 import { formatLabel } from "@/helpers/formatLabel";
-import type { FilterDimension, DimensionFilters } from "@/types";
+import type { FilterDimension, DimensionFilters, AvailableFilterValues } from "@/types";
 
 interface SentenceFilterProps {
   dimensionFilters: DimensionFilters;
-  availableValues: {
-    systemType: string[];
-    dataUse: string[];
-    dataCategories: string[];
-    identifiability: string[];
-  };
+  availableValues: AvailableFilterValues;
   fidesMode: boolean;
   fidesGroupMap: Map<string, string[]>;
   onToggleFilter: (dimension: FilterDimension, value: string) => void;

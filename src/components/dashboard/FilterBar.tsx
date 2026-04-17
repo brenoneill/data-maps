@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { SentenceFilter } from "./SentenceFilter";
 import { formatLabel, formatDimensionLabel } from "@/helpers/formatLabel";
 import { getColorForValue } from "@/helpers/colors";
-import type { FilterDimension, GroupBySelection, ViewMode, FilterMode, DimensionFilters } from "@/types";
+import type { FilterDimension, GroupBySelection, ViewMode, FilterMode, DimensionFilters, AvailableFilterValues } from "@/types";
 import { useState, useRef, useCallback, useEffect } from "react";
 import {
   X,
@@ -22,12 +22,7 @@ interface FilterBarProps {
   groupBy: GroupBySelection;
   dimensionFilters: DimensionFilters;
   fidesMode: boolean;
-  availableValues: {
-    systemType: string[];
-    dataUse: string[];
-    dataCategories: string[];
-    identifiability: string[];
-  };
+  availableValues: AvailableFilterValues;
   fidesGroupMap: Map<string, string[]>;
   viewMode: ViewMode;
   filterMode: FilterMode;
@@ -52,6 +47,8 @@ const DIMENSION_ORDER: FilterDimension[] = [
   "dataCategories",
 ];
 
+const FILTERS_EXPANDED_KEY = "data-maps:filtersExpanded";
+
 export function FilterBar({
   groupBy,
   dimensionFilters,
@@ -67,11 +64,9 @@ export function FilterBar({
   onViewModeChange,
   onFilterModeChange,
 }: FilterBarProps) {
-  const STORAGE_KEY = "data-maps:filtersExpanded";
-
   const [expanded, setExpanded] = useState(() => {
     try {
-      return localStorage.getItem(STORAGE_KEY) !== "false";
+      return localStorage.getItem(FILTERS_EXPANDED_KEY) !== "false";
     } catch {
       return true;
     }
@@ -108,7 +103,7 @@ export function FilterBar({
     const next = !expanded;
     setExpanded(next);
     try {
-      localStorage.setItem(STORAGE_KEY, String(next));
+      localStorage.setItem(FILTERS_EXPANDED_KEY, String(next));
     } catch { /* storage unavailable */ }
   };
 
@@ -324,12 +319,7 @@ function CheckboxFilters({
   onClearFilters,
 }: {
   dimensionFilters: DimensionFilters;
-  availableValues: {
-    systemType: string[];
-    dataUse: string[];
-    dataCategories: string[];
-    identifiability: string[];
-  };
+  availableValues: AvailableFilterValues;
   fidesMode: boolean;
   fidesGroupMap: Map<string, string[]>;
   hasAnyFilters: boolean;

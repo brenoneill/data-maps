@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import type { System, GroupBySelection, GroupedSystems, DimensionFilters } from "@/types";
+import type { System, GroupBySelection, GroupedSystems, DimensionFilters, AvailableFilterValues } from "@/types";
 import {
   groupAndFilterSystems,
   getUniqueValues,
@@ -12,16 +12,9 @@ interface UseFilteredSystemsParams {
   fidesMode: boolean;
 }
 
-interface AvailableValues {
-  systemType: string[];
-  dataUse: string[];
-  dataCategories: string[];
-  identifiability: string[];
-}
-
 interface UseFilteredSystemsResult {
   groups: GroupedSystems[];
-  availableValues: AvailableValues;
+  availableValues: AvailableFilterValues;
 }
 
 export function useFilteredSystems({
@@ -41,7 +34,7 @@ export function useFilteredSystems({
     [systems, groupBy, dimensionFilters, fidesMode]
   );
 
-  const availableValues = useMemo<AvailableValues>(
+  const availableValues = useMemo<AvailableFilterValues>(
     () => ({
       systemType: getUniqueValues(systems, "systemType", fidesMode),
       dataUse: getUniqueValues(systems, "dataUse", fidesMode),

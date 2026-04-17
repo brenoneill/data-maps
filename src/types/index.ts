@@ -33,6 +33,13 @@ export interface DimensionFilters {
   identifiability: string[];
 }
 
+export interface AvailableFilterValues {
+  systemType: string[];
+  dataUse: string[];
+  dataCategories: string[];
+  identifiability: string[];
+}
+
 export interface GroupedSystems {
   key: string;
   label: string;
